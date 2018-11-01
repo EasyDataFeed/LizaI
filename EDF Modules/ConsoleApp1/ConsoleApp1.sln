@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{817E9093-F7E2-4640-B571-8BFCBC814D8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{601ADA6E-A195-4636-B1AE-B95D3EC516AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramCore", "TelegramSession\TelegramCore.csproj", "{FCFFC77F-B530-4C73-83CF-949044DAF112}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Debug|x86.ActiveCfg = Debug|x86
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Debug|x86.Build.0 = Debug|x86
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Release|x86.ActiveCfg = Release|x86
+		{817E9093-F7E2-4640-B571-8BFCBC814D8D}.Release|x86.Build.0 = Release|x86
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Debug|x86.ActiveCfg = Debug|x86
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Debug|x86.Build.0 = Debug|x86
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Release|x86.ActiveCfg = Release|Any CPU
+		{601ADA6E-A195-4636-B1AE-B95D3EC516AB}.Release|x86.Build.0 = Release|Any CPU
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Debug|x86.ActiveCfg = Debug|x86
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Debug|x86.Build.0 = Debug|x86
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Release|x86.ActiveCfg = Release|x86
+		{FCFFC77F-B530-4C73-83CF-949044DAF112}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E084822-FEEC-4395-85A8-E2218C61750A}
+	EndGlobalSection
+EndGlobal
