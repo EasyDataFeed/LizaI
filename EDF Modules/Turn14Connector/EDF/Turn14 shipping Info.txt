@@ -1,0 +1,234 @@
+{
+	"data": [{
+		"id": 1,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Next Day Air",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 2,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Second Day Air",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 3,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Ground",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 4,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Worldwide Express",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 5,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Worldwide Expedited",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 6,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Standard",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 7,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Three-Day Select",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 8,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Next Day Air Saver",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 9,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Next Day Air Early A.M.",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 10,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Worldwide Express Plus",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 11,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Second Day Air A.M.",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 12,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS Saver",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 14,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "USPS Express Mail International",
+			"carrier_name": "USPS"
+		}
+	},
+	{
+		"id": 15,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "USPS Priority Mail",
+			"carrier_name": "USPS"
+		}
+	},
+	{
+		"id": 16,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "USPS Priority Mail International",
+			"carrier_name": "USPS"
+		}
+	},
+	{
+		"id": 17,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "Pick Up",
+			"carrier_name": "Pickup"
+		}
+	},
+	{
+		"id": 20,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS SurePost",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 21,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "DHL Express Worldwide",
+			"carrier_name": "DHL"
+		}
+	},
+	{
+		"id": 22,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "FedEx First Overnight",
+			"carrier_name": "FedEx"
+		}
+	},
+	{
+		"id": 23,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "FedEx Priority Overnight",
+			"carrier_name": "FedEx"
+		}
+	},
+	{
+		"id": 24,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "FedEx Standard Overnight",
+			"carrier_name": "FedEx"
+		}
+	},
+	{
+		"id": 25,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "FedEx 2 Day",
+			"carrier_name": "FedEx"
+		}
+	},
+	{
+		"id": 26,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "FedEx Express Saver",
+			"carrier_name": "FedEx"
+		}
+	},
+	{
+		"id": 27,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "FedEx Ground",
+			"carrier_name": "FedEx"
+		}
+	},
+	{
+		"id": 28,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "FedEx Ground Home Delivery",
+			"carrier_name": "FedEx"
+		}
+	},
+	{
+		"id": 29,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "UPS LTL Freight",
+			"carrier_name": "UPS"
+		}
+	},
+	{
+		"id": 31,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "OnTrac Sunrise",
+			"carrier_name": "OnTrac"
+		}
+	},
+	{
+		"id": 32,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "OnTrac Sunrise Gold",
+			"carrier_name": "OnTrac"
+		}
+	},
+	{
+		"id": 33,
+		"type": "Shipping",
+		"attributes": {
+			"transportation_name": "OnTrac Ground",
+			"carrier_name": "OnTrac"
+		}
+	}]
+}

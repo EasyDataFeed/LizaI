@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<ScraperSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SpecialSettings xsi:type="ExtSettings" />
+  <Name>GreenHouseFabrics</Name>
+  <MaxThreads>1</MaxThreads>
+  <MaxDelay>0</MaxDelay>
+  <MaxImageDownloadThreads>0</MaxImageDownloadThreads>
+  <MaxImageUploadThreads>0</MaxImageUploadThreads>
+  <Logins>
+    <LoginInfo>
+      <Login>bestprice@mahoneswallpapershop.com</Login>
+      <Password>fabrics</Password>
+      <IsActive>true</IsActive>
+      <LastTried>0001-01-01T00:00:00</LastTried>
+      <LastSuccessed>0001-01-01T00:00:00</LastSuccessed>
+    </LoginInfo>
+  </Logins>
+  <EnableSchedule>false</EnableSchedule>
+  <Schedule>
+    <ScheduleItem>
+      <Code>00000000-0000-0000-0000-000000000000</Code>
+      <Start>0001-01-01T10:00:00</Start>
+      <End>0001-01-01T23:00:00</End>
+      <Interval>60</Interval>
+      <Enabled>false</Enabled>
+      <NextRunIn />
+      <IsServer>false</IsServer>
+    </ScheduleItem>
+  </Schedule>
+  <Brands />
+  <BrandsStr />
+  <FtpAddress />
+  <FtpUsername />
+  <FtpPassword />
+  <CustomFtpAddress />
+  <CustomFtpUsername />
+  <CustomFtpPassword />
+  <LocalPath>c:\</LocalPath>
+  <OutputBadDataToError>false</OutputBadDataToError>
+  <ConvertPDFToJpg>false</ConvertPDFToJpg>
+  <SkipExistingImages>false</SkipExistingImages>
+  <SkipUploadOfExistingImages>false</SkipUploadOfExistingImages>
+  <DontOverwriteImagesOnFtp>false</DontOverwriteImagesOnFtp>
+  <UseOurFTP>0</UseOurFTP>
+  <S3Settings>
+    <UploadToS3>false</UploadToS3>
+    <ExportByBrand>false</ExportByBrand>
+    <OverwriteFile>false</OverwriteFile>
+    <BucketName>SCE.Images</BucketName>
+    <Folder>GreenHouseFabrics</Folder>
+  </S3Settings>
+  <Proxies />
+  <MaxRequestsViaProxy>0</MaxRequestsViaProxy>
+  <ExportProfiles>
+    <ExportProfile>
+      <Code>63db57ef-a66f-4e72-a00e-739ae6eb9c4d</Code>
+      <Name>Default</Name>
+      <Fields>
+        <FieldInfo>
+          <ExcludeRules />
+          <Header>Action</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <CustomValue>update</CustomValue>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Prodid</FieldName>
+          <Header>Prodid</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ProductType</FieldName>
+          <Header>Product Type</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>PartNumber</FieldName>
+          <Header>Part Number</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Cost</FieldName>
+          <Header>Cost</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>MSRP</FieldName>
+          <Header>MSRP</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>WebPrice</FieldName>
+          <Header>Web Price</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Inventory</FieldName>
+          <Header>QTY</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+      </Fields>
+      <IsDefault>true</IsDefault>
+      <IsSCE>true</IsSCE>
+      <IsSCEDefault>false</IsSCEDefault>
+      <AdditionalStaticFields />
+      <UseStaticFields>false</UseStaticFields>
+    </ExportProfile>
+  </ExportProfiles>
+  <LocalExportSettings>
+    <ExportSettings>
+      <ProfileCode>63db57ef-a66f-4e72-a00e-739ae6eb9c4d</ProfileCode>
+      <FileName>GreenHouseFabrics</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+    <ExportSettings>
+      <ProfileCode>63db57ef-a66f-4e72-a00e-739ae6eb9c4d</ProfileCode>
+      <FileName>GreenHouseFabrics</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+  </LocalExportSettings>
+  <FtpExportSettings>
+    <ExportSettings>
+      <ProfileCode>63db57ef-a66f-4e72-a00e-739ae6eb9c4d</ProfileCode>
+      <FileName>GreenHouseFabrics</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+    <ExportSettings>
+      <ProfileCode>63db57ef-a66f-4e72-a00e-739ae6eb9c4d</ProfileCode>
+      <FileName>GreenHouseFabrics</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+  </FtpExportSettings>
+  <S3ExportSettings />
+  <ExportRules />
+  <BulletsMoveInfos />
+  <CategoryInfos />
+  <FileName>GreenHouseFabrics</FileName>
+  <OverwriteFile>true</OverwriteFile>
+  <FtpFileName>GreenHouseFabrics</FtpFileName>
+  <OverwriteFtpFile>false</OverwriteFtpFile>
+  <UseProxy>false</UseProxy>
+  <UseFtp>false</UseFtp>
+  <UploadResultsToS3>false</UploadResultsToS3>
+  <Fields>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Action</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue>update</CustomValue>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Prodid</FieldName>
+      <Header>Prodid</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>ProductType</FieldName>
+      <Header>Product Type</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>PartNumber</FieldName>
+      <Header>Part Number</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Cost</FieldName>
+      <Header>Cost</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>MSRP</FieldName>
+      <Header>MSRP</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>WebPrice</FieldName>
+      <Header>Web Price</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Inventory</FieldName>
+      <Header>QTY</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+  </Fields>
+  <SaveLocally>true</SaveLocally>
+  <Googlebot>true</Googlebot>
+  <Url />
+  <MaxRecords>3</MaxRecords>
+  <LocalSaveByBrand>false</LocalSaveByBrand>
+  <FtpSaveByBrand>false</FtpSaveByBrand>
+  <LimitRecords>false</LimitRecords>
+  <UseLogin>true</UseLogin>
+  <ProcessAssembly>GreenHouseFabrics.dll</ProcessAssembly>
+  <ConvertImages>false</ConvertImages>
+  <DownloadImages>false</DownloadImages>
+  <UploadImagesToFtp>false</UploadImagesToFtp>
+  <SCEServerAddress>https://api.shoppingcartelite.com/master/sceapi.asmx</SCEServerAddress>
+  <SCEBatchProcess>false</SCEBatchProcess>
+  <SCEUploadType>0</SCEUploadType>
+  <SCEDemoSite>scedesignsample.com</SCEDemoSite>
+  <NotificationSettings />
+</ScraperSettings>
