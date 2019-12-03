@@ -2,11 +2,11 @@
 <ScraperSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SpecialSettings xsi:type="ExtSettings">
     <FTPLogin>TPW_MJ@efilestorage.com</FTPLogin>
-    <FTPPassword>TTb.]hB@GiEI</FTPPassword>
+    <FTPPassword>Jhq20Ksvxw1Opz84r</FTPPassword>
     <FTPHost>efilestorage.com</FTPHost>
-    <SupplierFilePath>C:\Users\lepri\OneDrive\Desktop\SupplierEDGE.csv</SupplierFilePath>
-    <SupplierFileSkip>C:\Users\lepri\OneDrive\Desktop\SupplierSkipEDGE.csv</SupplierFileSkip>
-    <SupplierFileZeroSkip>C:\Users\lepri\OneDrive\Desktop\SupplierZeroInventory.csv</SupplierFileZeroSkip>
+    <SupplierFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\EdgeInfo\EDF\SupplierEDGE.csv</SupplierFilePath>
+    <SupplierFileSkip>E:\Leprizoriy\Work SCE\EDF\EDF Modules\EdgeInfo\EDF\SupplierSkipEDGE.csv</SupplierFileSkip>
+    <SupplierFileZeroSkip>E:\Leprizoriy\Work SCE\EDF\EDF Modules\EdgeInfo\EDF\SupplierZeroInventory.csv</SupplierFileZeroSkip>
     <DoBatch>false</DoBatch>
   </SpecialSettings>
   <Name>EdgeInfo</Name>

@@ -7,6 +7,7 @@ namespace Acumotors.DataItems
 {
     public class UpdateInfo
     {
+        public string Brand { get; set; }
         public string WDCode { get; set; }
         public string SupplierNumber { get; set; }
         public string DateOfSnapshot { get; set; }
@@ -23,5 +24,10 @@ namespace Acumotors.DataItems
         public double CorePrice { get; set; }
         public string ItemPackageQuantity { get; set; }
         public string UPC { get; set; }
+        public string AboutPart { get; set; }
+        public string CustomTitle { get; set; }
+        public string Custom_attr1 { get; set; }
+        public string Custom_attr2 { get; set; }
+        public string Custom_attr3 { get; set; }
     }
 }

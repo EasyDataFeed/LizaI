@@ -40,5 +40,11 @@ namespace EdgeInfo.DataItems
         public string PickupAvailable {get;set;}
         public string ProcessingPeriod { get; set; }
         public string Featured { get; set; }
+        public string CustomHtmlBelowPrice { get; set; }
+        public string ShippingType { get; set; } = "dynamic";
+        public string ShippingCarrier1 { get; set; } = "FedEX";
+        public string ShippingCarrier2 { get; set; }
+        public string Allowground { get; set; } = "1";
+        public string pickupAvailable { get; set; } = "0";
     }
 }

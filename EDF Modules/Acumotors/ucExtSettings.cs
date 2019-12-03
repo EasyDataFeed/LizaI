@@ -56,6 +56,16 @@ namespace Databox.Libs.Acumotors
                 throw new Exception("You must select file");
         }
 
+        private void buttonEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            string filePath = GetFilePath();
+
+            if (!string.IsNullOrEmpty(filePath))
+                buttonEdit2.Text = filePath;
+            else
+                throw new Exception("You must select file");
+        }
+
         private void radioGroupCompatibilityCheck_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (radioGroupPercentage.SelectedIndex != -1)
@@ -82,6 +92,27 @@ namespace Databox.Libs.Acumotors
             else
             {
                 radioGroupPercentage.SelectedIndex = 0;
+            }
+
+            if (ExtSett.UseGoogleSheets)
+            {
+                layoutControlItem7.Enabled = true;
+            }
+            else
+            {
+                layoutControlItem7.Enabled = false;
+            }
+        }
+
+        private void Export(object sender, EventArgs e)
+        {
+            if (ExtSett.UseGoogleSheets)
+            {
+                layoutControlItem7.Enabled = true;
+            }
+            else
+            {
+                layoutControlItem7.Enabled = false;
             }
         }
     }

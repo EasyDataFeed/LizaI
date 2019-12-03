@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 <ScraperSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SpecialSettings xsi:type="ExtSettings">
-    <BrandsFilePath>D:\Leprizoriy\Work SCE\EDF\EDF Modules\Acumotors\EDF\WHI Brand Code List.csv</BrandsFilePath>
+    <BrandsFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\Acumotors\EDF\WHI Brand Code List.csv</BrandsFilePath>
     <DoBatch>false</DoBatch>
     <PercentageForMSRP>50</PercentageForMSRP>
     <doPricePerPound>false</doPricePerPound>
     <minSurcharge>0</minSurcharge>
     <surchargePerLb>0</surchargePerLb>
     <Percentage>true</Percentage>
+    <UseGoogleSheets>true</UseGoogleSheets>
+    <GoogleSheetsLink>https://docs.google.com/spreadsheets/d/1_JtOnBzEG_ZYuixiVLQuG6JQrZln1KglKbrPDRCF-yc/edit#gid=0</GoogleSheetsLink>
     <BrandsAlignmentsItems />
     <TransferInfoItems />
     <UpdateInfos />
@@ -41,9 +43,9 @@
   </Schedule>
   <Brands />
   <BrandsStr />
-  <FtpAddress>srftp.whisolutions.com</FtpAddress>
-  <FtpUsername>therekgroup2_ebay</FtpUsername>
-  <FtpPassword>w48uwske56ujw54y</FtpPassword>
+  <FtpAddress>efilestorage.com/elizabetivanova_gmail.com/Acumotors</FtpAddress>
+  <FtpUsername>scefiles@efilestorage.com</FtpUsername>
+  <FtpPassword>12345%%54321</FtpPassword>
   <CustomFtpAddress>srftp.whisolutions.com</CustomFtpAddress>
   <CustomFtpUsername>therekgroup2_ebay</CustomFtpUsername>
   <CustomFtpPassword>w48uwske56ujw54y</CustomFtpPassword>
@@ -53,7 +55,7 @@
   <SkipExistingImages>false</SkipExistingImages>
   <SkipUploadOfExistingImages>false</SkipUploadOfExistingImages>
   <DontOverwriteImagesOnFtp>false</DontOverwriteImagesOnFtp>
-  <UseOurFTP>0</UseOurFTP>
+  <UseOurFTP>1</UseOurFTP>
   <S3Settings>
     <UploadToS3>false</UploadToS3>
     <ExportByBrand>false</ExportByBrand>
@@ -3742,6 +3744,8 @@
   <ConvertImages>false</ConvertImages>
   <DownloadImages>false</DownloadImages>
   <UploadImagesToFtp>false</UploadImagesToFtp>
+  <CustomImagesPublicPath>http://efilestorage.com/scefiles/elizabetivanova_gmail.com/Acumotors</CustomImagesPublicPath>
+  <ImagesPublicPath>http://efilestorage.com/scefiles/elizabetivanova_gmail.com/Acumotors</ImagesPublicPath>
   <SCEAPIKey>jgcronvfz141t1fvi1qwtk</SCEAPIKey>
   <SCEAPISecret>yg53fe2umj0hwmker0z1eh</SCEAPISecret>
   <SCEAccessKey>uWaJhbpLOw1kRO3X47m8hw==</SCEAccessKey>

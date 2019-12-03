@@ -1,0 +1,2472 @@
+<?xml version="1.0"?>
+<ScraperSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SpecialSettings xsi:type="ExtSettings">
+    <EbayItemsFilePath />
+    <VehicleCompatibility>false</VehicleCompatibility>
+    <FullDescription>false</FullDescription>
+  </SpecialSettings>
+  <Name>ScraperEbayApi</Name>
+  <MaxThreads>5</MaxThreads>
+  <MaxDelay>0</MaxDelay>
+  <MaxImageDownloadThreads>0</MaxImageDownloadThreads>
+  <MaxImageUploadThreads>0</MaxImageUploadThreads>
+  <Logins />
+  <EnableSchedule>false</EnableSchedule>
+  <Schedule>
+    <ScheduleItem>
+      <Code>00000000-0000-0000-0000-000000000000</Code>
+      <Start>0001-01-01T10:00:00</Start>
+      <End>0001-01-01T23:00:00</End>
+      <Interval>60</Interval>
+      <Enabled>false</Enabled>
+      <NextRunIn />
+      <IsServer>false</IsServer>
+    </ScheduleItem>
+  </Schedule>
+  <Brands />
+  <BrandsStr />
+  <FtpAddress />
+  <FtpUsername />
+  <FtpPassword />
+  <CustomFtpAddress />
+  <CustomFtpUsername />
+  <CustomFtpPassword />
+  <LocalPath>c:\</LocalPath>
+  <OutputBadDataToError>false</OutputBadDataToError>
+  <ConvertPDFToJpg>false</ConvertPDFToJpg>
+  <SkipExistingImages>false</SkipExistingImages>
+  <SkipUploadOfExistingImages>false</SkipUploadOfExistingImages>
+  <DontOverwriteImagesOnFtp>false</DontOverwriteImagesOnFtp>
+  <UseOurFTP>0</UseOurFTP>
+  <S3Settings>
+    <UploadToS3>false</UploadToS3>
+    <ExportByBrand>false</ExportByBrand>
+    <OverwriteFile>false</OverwriteFile>
+    <BucketName>SCE.Images</BucketName>
+    <Folder>ScraperEbayApi</Folder>
+  </S3Settings>
+  <Proxies />
+  <MaxRequestsViaProxy>0</MaxRequestsViaProxy>
+  <ExportProfiles>
+    <ExportProfile>
+      <Code>0b6e41b8-1d7c-4dba-88bb-61e2108f3e4a</Code>
+      <Name>Default</Name>
+      <Fields>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Timestamp</FieldName>
+          <Header>Timestamp</Header>
+          <VisibleIndex>0</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ItemNumber</FieldName>
+          <Header>ItemID</Header>
+          <VisibleIndex>1</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Quantity</FieldName>
+          <Header>Quantity</Header>
+          <VisibleIndex>5</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>UserId</FieldName>
+          <Header>UserId</Header>
+          <VisibleIndex>12</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ConvertedCurrentPrice</FieldName>
+          <Header>ConvertedCurrentPrice</Header>
+          <VisibleIndex>8</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ListingStatus</FieldName>
+          <Header>ListingStatus</Header>
+          <VisibleIndex>10</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>HitCount</FieldName>
+          <Header>HitCount</Header>
+          <VisibleIndex>11</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>StoreName</FieldName>
+          <Header>StoreName</Header>
+          <VisibleIndex>13</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>QuantitySold</FieldName>
+          <Header>QuantitySold</Header>
+          <VisibleIndex>6</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ShippingServiceCost</FieldName>
+          <Header>ShippingServiceCost</Header>
+          <VisibleIndex>14</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ShippingType</FieldName>
+          <Header>ShippingType</Header>
+          <VisibleIndex>15</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ListedShippingServiceCost</FieldName>
+          <Header>ListedShippingServiceCost</Header>
+          <VisibleIndex>16</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>OriginalRetailPrice</FieldName>
+          <Header>OriginalRetailPrice</Header>
+          <VisibleIndex>9</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Brand</FieldName>
+          <Header>Brand</Header>
+          <VisibleIndex>3</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ItemCompatibilityCount</FieldName>
+          <Header>ItemCompatibilityCount</Header>
+          <VisibleIndex>17</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Make</FieldName>
+          <Header>Make</Header>
+          <VisibleIndex>22</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Model</FieldName>
+          <Header>Model</Header>
+          <VisibleIndex>23</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Trim</FieldName>
+          <Header>Trim</Header>
+          <VisibleIndex>25</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Engine</FieldName>
+          <Header>Engine</Header>
+          <VisibleIndex>26</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Year</FieldName>
+          <Header>Year</Header>
+          <VisibleIndex>24</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Notes</FieldName>
+          <Header>Notes</Header>
+          <VisibleIndex>27</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ProductTitle</FieldName>
+          <Header>Product Title</Header>
+          <VisibleIndex>2</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Specifications</FieldName>
+          <Header>Specifications</Header>
+          <VisibleIndex>21</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>ManufacturerNumber</FieldName>
+          <Header>ManufacturerNumber</Header>
+          <VisibleIndex>18</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>InterchangePartNumber</FieldName>
+          <Header>InterchangePartNumber</Header>
+          <VisibleIndex>19</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>OtherPartNumber</FieldName>
+          <Header>OtherPartNumber</Header>
+          <VisibleIndex>20</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>PartNumber</FieldName>
+          <Header>SKU</Header>
+          <VisibleIndex>4</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+        <FieldInfo>
+          <ExcludeRules />
+          <FieldName>Description</FieldName>
+          <Header>Description</Header>
+          <VisibleIndex>7</VisibleIndex>
+          <Export>true</Export>
+          <IsImageColumn>false</IsImageColumn>
+          <IsRequired>false</IsRequired>
+          <NoHtmlAllowed>false</NoHtmlAllowed>
+          <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+          <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+          <Case>Ignore</Case>
+          <StripHtml>false</StripHtml>
+          <MaxLength>0</MaxLength>
+          <SearchForImage>false</SearchForImage>
+          <SearchForAttachments>false</SearchForAttachments>
+          <ValidateAgainstRules>false</ValidateAgainstRules>
+          <ValidationProfileCode xsi:nil="true" />
+        </FieldInfo>
+      </Fields>
+      <IsDefault>true</IsDefault>
+      <IsSCE>true</IsSCE>
+      <IsSCEDefault>false</IsSCEDefault>
+      <AdditionalStaticFields />
+      <UseStaticFields>false</UseStaticFields>
+    </ExportProfile>
+  </ExportProfiles>
+  <LocalExportSettings>
+    <ExportSettings>
+      <ProfileCode>0b6e41b8-1d7c-4dba-88bb-61e2108f3e4a</ProfileCode>
+      <FileName>ScraperEbayApi</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+    <ExportSettings>
+      <ProfileCode>0b6e41b8-1d7c-4dba-88bb-61e2108f3e4a</ProfileCode>
+      <FileName>ScraperEbayApi</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+  </LocalExportSettings>
+  <FtpExportSettings>
+    <ExportSettings>
+      <ProfileCode>0b6e41b8-1d7c-4dba-88bb-61e2108f3e4a</ProfileCode>
+      <FileName>ScraperEbayApi</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+    <ExportSettings>
+      <ProfileCode>0b6e41b8-1d7c-4dba-88bb-61e2108f3e4a</ProfileCode>
+      <FileName>ScraperEbayApi</FileName>
+      <ProfileName>Default</ProfileName>
+      <Zip>false</Zip>
+      <MaxRecords>0</MaxRecords>
+      <ExportByBrand>false</ExportByBrand>
+    </ExportSettings>
+  </FtpExportSettings>
+  <S3ExportSettings />
+  <ExportRules />
+  <BulletsMoveInfos />
+  <CategoryInfos />
+  <FileName>ScraperEbayApi</FileName>
+  <OverwriteFile>true</OverwriteFile>
+  <FtpFileName>ScraperEbayApi</FtpFileName>
+  <OverwriteFtpFile>false</OverwriteFtpFile>
+  <UseProxy>false</UseProxy>
+  <UseFtp>false</UseFtp>
+  <UploadResultsToS3>false</UploadResultsToS3>
+  <Fields>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Product Type</Header>
+      <VisibleIndex>-1</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue>3</CustomValue>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Name</FieldName>
+      <Header>Anchor Text</Header>
+      <VisibleIndex>0</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Name</FieldName>
+      <Header>Product Title</Header>
+      <VisibleIndex>1</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Sub Title</Header>
+      <VisibleIndex>2</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Brand</FieldName>
+      <Header>Brand</Header>
+      <VisibleIndex>3</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Description</FieldName>
+      <Header>Description</Header>
+      <VisibleIndex>4</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Additional Description</Header>
+      <VisibleIndex>5</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Bullet Point</Header>
+      <VisibleIndex>6</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Name</FieldName>
+      <Header>META Description</Header>
+      <VisibleIndex>7</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>META Keywords</Header>
+      <VisibleIndex>8</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>LargeImageUrl1</FieldName>
+      <Header>General Image</Header>
+      <VisibleIndex>9</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Category</FieldName>
+      <Header>Main Category</Header>
+      <VisibleIndex>10</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Sub Category</Header>
+      <VisibleIndex>11</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Section Category</Header>
+      <VisibleIndex>12</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Specifications</Header>
+      <VisibleIndex>13</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Featured</Header>
+      <VisibleIndex>14</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Supplier</Header>
+      <VisibleIndex>15</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue>Shopping Cart Elite</CustomValue>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Re-Order Supplier</Header>
+      <VisibleIndex>16</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Warehouse</Header>
+      <VisibleIndex>17</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Workflow</Header>
+      <VisibleIndex>18</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Processing Time</Header>
+      <VisibleIndex>19</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue>5</CustomValue>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Handling Surcharge</Header>
+      <VisibleIndex>20</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue>0</CustomValue>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Type</Header>
+      <VisibleIndex>21</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue>dynamic</CustomValue>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Ground Rate</Header>
+      <VisibleIndex>22</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping 3-Day Air Rate</Header>
+      <VisibleIndex>23</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping 2-Day Air Rate</Header>
+      <VisibleIndex>24</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Next-Day Air Rate</Header>
+      <VisibleIndex>25</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Inter. North America</Header>
+      <VisibleIndex>26</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Inter. South America</Header>
+      <VisibleIndex>27</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Inter. Europe</Header>
+      <VisibleIndex>28</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Inter. Africa</Header>
+      <VisibleIndex>29</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Inter. Asia</Header>
+      <VisibleIndex>30</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Inter. Oceania</Header>
+      <VisibleIndex>31</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Quantity</FieldName>
+      <Header>Qty</Header>
+      <VisibleIndex>32</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue />
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Items Per Qty</Header>
+      <VisibleIndex>33</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue>1</CustomValue>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>PartNumber</FieldName>
+      <Header>ASIN</Header>
+      <VisibleIndex>34</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>ModelNumber</FieldName>
+      <Header>Manufacturer Part Number</Header>
+      <VisibleIndex>35</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>ImageUrl</FieldName>
+      <Header>Application Specific Image</Header>
+      <VisibleIndex>36</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Application Specifications</Header>
+      <VisibleIndex>37</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Warning Note</Header>
+      <VisibleIndex>38</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Cost</FieldName>
+      <Header>MSRP</Header>
+      <VisibleIndex>39</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>MSRP</FieldName>
+      <Header>Jobber</Header>
+      <VisibleIndex>40</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Cost</FieldName>
+      <Header>Web Price</Header>
+      <VisibleIndex>41</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>Cost</FieldName>
+      <Header>Cost Price</Header>
+      <VisibleIndex>42</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>ItemWeight</FieldName>
+      <Header>Item Weight</Header>
+      <VisibleIndex>43</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName />
+      <Header>Item Height</Header>
+      <VisibleIndex>44</VisibleIndex>
+      <Export>true</Export>
+      <CustomValue />
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName />
+      <Header>Item Width</Header>
+      <VisibleIndex>45</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Item Length</Header>
+      <VisibleIndex>46</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName>ShippingWeight</FieldName>
+      <Header>Shipping Weight</Header>
+      <VisibleIndex>47</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName />
+      <Header>Shipping Height</Header>
+      <VisibleIndex>48</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <FieldName />
+      <Header>Shipping Width</Header>
+      <VisibleIndex>49</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Shipping Length</Header>
+      <VisibleIndex>50</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Primary Option Title</Header>
+      <VisibleIndex>51</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Primary Choice</Header>
+      <VisibleIndex>52</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Second Option Title</Header>
+      <VisibleIndex>53</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Second Option Choice</Header>
+      <VisibleIndex>54</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Second Option Part Number Ext</Header>
+      <VisibleIndex>55</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Third Option Title</Header>
+      <VisibleIndex>56</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Third Option Choice</Header>
+      <VisibleIndex>57</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Third Option Part Number Ext</Header>
+      <VisibleIndex>58</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Vehicle Make</Header>
+      <VisibleIndex>59</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Vehicle Model</Header>
+      <VisibleIndex>60</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Vehicle Sub Model</Header>
+      <VisibleIndex>61</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Start Year</Header>
+      <VisibleIndex>62</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>End Year</Header>
+      <VisibleIndex>63</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Engine</Header>
+      <VisibleIndex>64</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Aspiration</Header>
+      <VisibleIndex>65</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Cylinder Type</Header>
+      <VisibleIndex>66</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Drive Type</Header>
+      <VisibleIndex>67</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Brakes</Header>
+      <VisibleIndex>68</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>ABS</Header>
+      <VisibleIndex>69</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Transmission</Header>
+      <VisibleIndex>70</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Doors</Header>
+      <VisibleIndex>71</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Body Type</Header>
+      <VisibleIndex>72</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Bed Type</Header>
+      <VisibleIndex>73</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Navigation</Header>
+      <VisibleIndex>74</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Climate Control</Header>
+      <VisibleIndex>75</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Radio</Header>
+      <VisibleIndex>76</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Heated Seats</Header>
+      <VisibleIndex>77</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Sunroof</Header>
+      <VisibleIndex>78</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Vehicle Engine Options</Header>
+      <VisibleIndex>79</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Vehicle Interior Options</Header>
+      <VisibleIndex>80</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Vehicle Exterior Options</Header>
+      <VisibleIndex>81</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Vehicle Warning Note</Header>
+      <VisibleIndex>82</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>VehicleOptions</Header>
+      <VisibleIndex>83</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Wheel Diameter</Header>
+      <VisibleIndex>84</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Wheel Width</Header>
+      <VisibleIndex>85</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Wheel Finish</Header>
+      <VisibleIndex>86</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Wheel Offset</Header>
+      <VisibleIndex>87</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Wheel HubBore</Header>
+      <VisibleIndex>88</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Wheel BoltPattern</Header>
+      <VisibleIndex>89</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Section Width</Header>
+      <VisibleIndex>90</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Aspect Ratio</Header>
+      <VisibleIndex>91</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Diameter</Header>
+      <VisibleIndex>92</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Speed Rating</Header>
+      <VisibleIndex>93</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Load Index</Header>
+      <VisibleIndex>94</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Tire Type</Header>
+      <VisibleIndex>95</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Load Range</Header>
+      <VisibleIndex>96</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+    <FieldInfo>
+      <ExcludeRules />
+      <Header>Side Wall</Header>
+      <VisibleIndex>97</VisibleIndex>
+      <Export>true</Export>
+      <IsImageColumn>false</IsImageColumn>
+      <IsRequired>false</IsRequired>
+      <NoHtmlAllowed>false</NoHtmlAllowed>
+      <NoDuplicatesAllowed>false</NoDuplicatesAllowed>
+      <UseDataFromAdditionalSources>false</UseDataFromAdditionalSources>
+      <Case>Ignore</Case>
+      <StripHtml>false</StripHtml>
+      <MaxLength>0</MaxLength>
+      <SearchForImage>false</SearchForImage>
+      <SearchForAttachments>false</SearchForAttachments>
+      <ValidateAgainstRules>false</ValidateAgainstRules>
+      <ValidationProfileCode xsi:nil="true" />
+    </FieldInfo>
+  </Fields>
+  <SaveLocally>true</SaveLocally>
+  <Googlebot>true</Googlebot>
+  <Url />
+  <MaxRecords>3</MaxRecords>
+  <LocalSaveByBrand>false</LocalSaveByBrand>
+  <FtpSaveByBrand>false</FtpSaveByBrand>
+  <LimitRecords>false</LimitRecords>
+  <UseLogin>false</UseLogin>
+  <ProcessAssembly>ScraperEbayApi.dll</ProcessAssembly>
+  <ConvertImages>false</ConvertImages>
+  <DownloadImages>false</DownloadImages>
+  <UploadImagesToFtp>false</UploadImagesToFtp>
+  <SCEServerAddress>https://api.shoppingcartelite.com/master/sceapi.asmx</SCEServerAddress>
+  <SCEBatchProcess>false</SCEBatchProcess>
+  <SCEUploadType>0</SCEUploadType>
+  <SCEDemoSite>scedesignsample.com</SCEDemoSite>
+  <NotificationSettings />
+</ScraperSettings>

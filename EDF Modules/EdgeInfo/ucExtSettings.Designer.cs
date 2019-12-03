@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.buttonEditSupplierFileSkip = new DevExpress.XtraEditors.ButtonEdit();
-            this.bsSett = new System.Windows.Forms.BindingSource();
+            this.bsSett = new System.Windows.Forms.BindingSource(this.components);
             this.textEditFTPHost = new DevExpress.XtraEditors.TextEdit();
             this.textEditFTPPassword = new DevExpress.XtraEditors.TextEdit();
             this.textEditFTPLogin = new DevExpress.XtraEditors.TextEdit();

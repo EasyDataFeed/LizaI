@@ -139,15 +139,16 @@ namespace EdgeInfo.Helpers
         {
             try
             {
-                string headers = "action,Product Type,prodid,Part Number,Supplier,Warehouse,MSRP,Jobber,Web Price,Cost Price,Processing Time,Specifications,Featured";
+                string headers = "action,Product Type,prodid,Part Number,Supplier,Warehouse,MSRP,Jobber,Web Price,Cost Price,Processing Time,Specifications,Featured,custom html below price,Shipping Type,Shipping Carrier 1," +
+                    "Shipping Carrier 2,allowground,pickup available";
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine(headers);
 
                 foreach (PriceUpdateInfo item in priceUpdateItems)
                 {
-                    string[] productArr = new string[13] { item.Action, item.ProductType,item.ProdId,item.PartNumber,item.Supplier
-                        ,item.Warehouse,item.MSRP.ToString(),item.Jobber.ToString()
-                        ,item.WebPrice.ToString(),item.CostPrice.ToString(),item.ProcessingPeriod,item.Specification,item.Featured };
+                    string[] productArr = new string[19] { item.Action, item.ProductType,item.ProdId,item.PartNumber,item.Supplier,item.Warehouse,item.MSRP.ToString(),item.Jobber.ToString()
+                        ,item.WebPrice.ToString(),item.CostPrice.ToString(),item.ProcessingPeriod,item.Specification,item.Featured,item.CustomHtmlBelowPrice,item.ShippingType,item.ShippingCarrier1,item.ShippingCarrier2
+                        ,item.Allowground,item.pickupAvailable };
                     for (int i = 0; i < productArr.Length; i++)
                         if (!String.IsNullOrEmpty(productArr[i]) && !String.IsNullOrWhiteSpace(productArr[i]))
                             productArr[i] = StringToCSVCell(productArr[i]);

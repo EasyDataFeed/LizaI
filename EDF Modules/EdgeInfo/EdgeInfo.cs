@@ -91,11 +91,9 @@ namespace WheelsScraper
                 {
                     MessagePrinter.PrintMessage($"File for supplier's zero inventory is empty", ImportanceLevel.High);
                 }
-
-                //Имя для локального(который скачивается файла c FTP
+                
                 string ftpFileName = FileHelper.GetSettingsPath("ftpFile.csv");
-
-                //Скачать самый новый файл из фтп
+                
                 MessagePrinter.PrintMessage($"Download FTP file");
                 string localFilePath = RequestHelper.DownloadLatesFile(extSett.FTPLogin, extSett.FTPPassword, extSett.FTPHost, ftpFileName);
                 if (string.IsNullOrEmpty(localFilePath))
@@ -123,12 +121,7 @@ namespace WheelsScraper
                 {
                     File.Delete(ftpFileName);
                 }
-
-
-                //TODO: Нужно всегда писать пользователю сообщение на каком этапе исполняется программа
-                //Download SCE product Export
-                //скачать SCE EXPORT файлов может быть несколько и нужно считать каждый 
-
+                
                 MessagePrinter.PrintMessage($"Download SCE export... please wait");
                 List<string> sceFiles = SceApiHelper.LoadProductsExport(Settings);
 
@@ -145,10 +138,8 @@ namespace WheelsScraper
                 //считывание Sce Export
                 MessagePrinter.PrintMessage($"Read SCE export... please wait");
                 List<SceExportItem> sceExportItems = new List<SceExportItem>();
-                //sceExportItems.AddRange(FileHelper.ReadSceExportFile(sceFile1));
                 foreach (string sceFile in sceFiles)
                 {
-                    //считать sce export
                     sceExportItems.AddRange(FileHelper.ReadSceExportFile(sceFile));
                 }
 
@@ -157,7 +148,6 @@ namespace WheelsScraper
                 List<ProcessingPeriod> processingPeriod = new List<ProcessingPeriod>();
                 foreach (string file in processing)
                 {
-                    //считать Processing period
                     processingPeriod.AddRange(FileHelper.ReadProcessingPeriod(file));
                 }
 
@@ -170,9 +160,7 @@ namespace WheelsScraper
                     MessagePrinter.PrintMessage($"SCE export empty", ImportanceLevel.Critical);
                     return;
                 }
-
-                //когда мы считали все файлы и у нас они находяться в памяти программы
-                //нужно удалить старые файлы в данном случае sce export
+                
                 foreach (string sceFile in sceFiles)
                 {
                     if (File.Exists(sceFile))
@@ -180,29 +168,24 @@ namespace WheelsScraper
                         File.Delete(sceFile);
                     }
                 }
-
-                //коллекция для апдейта прайсов
+                
                 List<PriceUpdateInfo> priceUpdateItems = new List<PriceUpdateInfo>();
-
-                //коллекция для апдейта инвентаря
+                
                 List<InventoryUpdateInfo> inventoryUpdateItems = new List<InventoryUpdateInfo>();
-
-                //коллекция исключений
-                //List<string> exceptionList = new List<string> { "Leo Schachter Diamonds",
-                //"RDI Trading", "RA Riam Group", "Sahar Atid", "Rosy Blue, Clearance" };
-
+                
                 foreach (SceExportItem sceExportItem in sceExportItems)
                 {
-                    //if (sceExportItem.PartNumber == "EBS3909MOP")
+                    //if (sceExportItem.PartNumber == "MF022048-14B_18")
                     //{
 
                     //}
+                    
                     if (CheckSupplier(sceExportItem.Supplier, supplierItems))
                         continue;
 
                     foreach (FtpDataItem ftpDataItem in ftpDataItems)
                     {
-                        //if ($"{ftpDataItem.ItStyleCode}-{ftpDataItem.ItSize.TrimEnd( '0', '.' )}" == "EBS3909MOP")
+                        //if ($"{ftpDataItem.ItStyleCode}-{ftpDataItem.ItSize.TrimEnd('0', '.')}" == "EBS3909MOP")
                         //{
 
                         //}
@@ -241,6 +224,11 @@ namespace WheelsScraper
                                 {
                                     if (ftpDataItem.ItVendorId == item.EdgeName)
                                     {
+                                        //if (sceExportItem.PartNumber == "MF022048-14B_18")
+                                        //{
+
+                                        //}
+
                                         priceUpdateItems.Add(new PriceUpdateInfo
                                         {
                                             Action = "update",
@@ -305,12 +293,11 @@ namespace WheelsScraper
                     }
 
                 }
-
-                //удаление дубликатов из priceUpdate с использованием компаратора
+                
                 priceUpdateItems = priceUpdateItems.Distinct(new PriceUpdateInfo.PartNumberEqualityComparer()).ToList();
                 foreach (var priceUpdateItem in priceUpdateItems)
                 {
-                    //if (priceUpdateItem.ProdId == "10163")
+                    //if (priceUpdateItem.PartNumber == "MF022048-14B_18")
                     //{
 
                     //}
@@ -319,7 +306,7 @@ namespace WheelsScraper
                     {
                         priceUpdateItem.Specification = SpecHead + pickupEmptySpec;
                     }
-                    else if (priceUpdateItem.Specification.Contains(SpecHead)) //пройтись по каждой из спецификации и попробывать найти наш класс
+                    else if (priceUpdateItem.Specification.Contains(SpecHead))
                     {
                         string specs = priceUpdateItem.Specification.Replace(SpecHead, string.Empty);
                         var specsArray = specs.Split('^');
@@ -350,17 +337,13 @@ namespace WheelsScraper
                             }
                             catch (Exception e)
                             {
-                                MessagePrinter.PrintMessage($"Some problem in spec - ProdId:{priceUpdateItem.ProdId} - Spec:{priceUpdateItem.Specification}",ImportanceLevel.High);
+                                MessagePrinter.PrintMessage($"Some problem in spec - ProdId:{priceUpdateItem.ProdId} - Spec:{priceUpdateItem.Specification}", ImportanceLevel.High);
                             }
 
                         }
                     }
                 }
-
-                //не трогать в экспорте все парт номера которые присутствуют в апдейте
-                //Проставить процессинг период согласно файлу
-                //Проставить пикап равным 0
-                //убрать спецификацию
+                
                 List<string> notExistSuppliers = new List<string>();
 
                 foreach (var sceExportItem in sceExportItems)
@@ -369,22 +352,16 @@ namespace WheelsScraper
                     if (priceUpdateItem != null)
                         continue;
 
+                    //if (sceExportItem.PartNumber == "MF022048-14B_18")
+                    //{
+
+                    //}
+
                     if (CheckSupplier(sceExportItem.Supplier, supplierItems))
                         continue;
 
                     if (notExistSuppliers.Contains(sceExportItem.Supplier))
                         continue;
-
-                    //if (!priceUpdateItem.Specification.Contains(pickupSpec))
-                    //    continue;
-
-                    //pickupItem.Specifications =
-                    //    "Specifications##Designer~Hera~1^Shop By Price~$100-249~0^PickUp<class=\"pickup12\"/>~Available^Designer~Hearts on Fire~1";
-
-                    //pickupItem.Specifications =
-                    //    "Specifications##PickUp<class=\"pickup12\"/>~Available^Designer~Hearts on Fire~1";
-
-                    //var emptySpec = pickupItem.Specifications.Replace(pickupEmptySpec, "").Replace("^^", "^").Replace("~~", "~").Replace("Specifications##^", SpecHead);
 
                     bool supplierFound = false;
 
@@ -412,6 +389,7 @@ namespace WheelsScraper
 
                             if (pickup != sceExportItem.PickupAvailable || spec != sceExportItem.Specifications ||
                                 processingTime != sceExportItem.ProcessingPeriod)
+                            {
                                 priceUpdateItems.Add(new PriceUpdateInfo
                                 {
                                     ProdId = sceExportItem.ProdId,
@@ -429,6 +407,7 @@ namespace WheelsScraper
                                     Action = "update",
                                     ProcessingPeriod = processingTime
                                 });
+                            }
                             else
                             {
 
@@ -444,26 +423,16 @@ namespace WheelsScraper
                     }
                 }
 
-                if (priceUpdateItems.Count > 0)
+                foreach (var item in priceUpdateItems)
                 {
-                    MessagePrinter.PrintMessage($"Create local price file");
-                    string filePath = FileHelper.CreatePriceUpdateFile(FileHelper.GetSettingsPath("EdgePriceUpdate.csv"), priceUpdateItems);
-                    if (!string.IsNullOrEmpty(filePath))
+                    //if (item.PartNumber == "MF022048-14B_18")
+                    //{
+
+                    //}
+
+                    if (item.Specification.Contains("Available In Store"))
                     {
-                        MessagePrinter.PrintMessage("Upload price batch file to FTP");
-                        string url = FtpHelper.UploadFileToFtp(Settings.FtpAddress, Settings.FtpUsername, Settings.FtpPassword, "EdgePriceUpdate.csv", filePath, true);
-                        if (!string.IsNullOrEmpty(url))
-                        {
-                            string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
-                            if (extSett.DoBatch)
-                            {
-                                int batchId = SceApiHelper.BatchUpdate(urlForBatch, Settings);
-                                MessagePrinter.PrintMessage($"File Batched. BatchId - {batchId}");
-                            }
-                        }
-                        //удалить локальный файл
-                        if (File.Exists(filePath))
-                            File.Delete(filePath);
+                        item.CustomHtmlBelowPrice = $"<p class=\"wrap-appoint-btn\"><img src=\"/files//marks_2/appointment_button2.png\" data-appointlet-organization=\"marks-jewelers\" data-appointlet-field-sku={item.PartNumber} class=\"appointment_button\"></p>";
                     }
                 }
 
@@ -478,7 +447,7 @@ namespace WheelsScraper
 
                     bool found = false;
 
-                    //if (exportItem.PartNumber == "EBS3909MOP")
+                    //if (exportItem.PartNumber == "MF022048-14B_18")
                     //{
 
                     //}
@@ -529,6 +498,43 @@ namespace WheelsScraper
                     }
                 }
 
+                foreach (var item in update)
+                {
+                    if (item.Qty > 0 && item.Qty != 99)
+                    {
+                        foreach (var priceUpdate in priceUpdateItems)
+                        {
+                            if (item.PartNumber == priceUpdate.PartNumber && item.Supplier == priceUpdate.Supplier)
+                            {
+                                priceUpdate.ShippingCarrier2 = "USPS";
+                                priceUpdate.pickupAvailable = "1";
+                            }
+                        }
+                    }
+                }
+
+                if (priceUpdateItems.Count > 0)
+                {
+                    MessagePrinter.PrintMessage($"Create local price file");
+                    string filePath = FileHelper.CreatePriceUpdateFile(FileHelper.GetSettingsPath("EdgePriceUpdate.csv"), priceUpdateItems);
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        MessagePrinter.PrintMessage("Upload price batch file to FTP");
+                        string url = FtpHelper.UploadFileToFtp(Settings.FtpAddress, Settings.FtpUsername, Settings.FtpPassword, "EdgePriceUpdate.csv", filePath, true);
+                        if (!string.IsNullOrEmpty(url))
+                        {
+                            string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
+                            if (extSett.DoBatch)
+                            {
+                                int batchId = SceApiHelper.BatchUpdate(urlForBatch, Settings);
+                                MessagePrinter.PrintMessage($"File Batched. BatchId - {batchId}");
+                            }
+                        }
+                        if (File.Exists(filePath))
+                            File.Delete(filePath);
+                    }
+                }
+
                 if (update.Count > 0)
                 {
                     MessagePrinter.PrintMessage($"Create local inventory file");
@@ -542,8 +548,6 @@ namespace WheelsScraper
                             string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
                             MessagePrinter.PrintMessage($"Invntory file uploaded - {urlForBatch}");
                         }
-
-                        //удалить локальный файл
                         if (File.Exists(filePath))
                             File.Delete(filePath);
                     }
@@ -561,10 +565,10 @@ namespace WheelsScraper
         {
             foreach (SupplierItems exceptionItem in exceptionList)
             {
-                if (supplier == "RDI Trading")
-                {
+                //if (supplier == "RDI Trading")
+                //{
 
-                }
+                //}
                 if (string.Equals(supplier, exceptionItem.SupplierName,
                     StringComparison.OrdinalIgnoreCase))
                     return true;

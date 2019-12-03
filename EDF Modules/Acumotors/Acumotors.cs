@@ -15,6 +15,9 @@ using Acumotors.DataItems;
 using Acumotors.Helpers;
 using System.Globalization;
 using Acumotors.Extensions;
+using Google.Apis.Sheets.v4.Data;
+using System.Reflection;
+using System.Resources;
 
 namespace WheelsScraper
 {
@@ -22,17 +25,46 @@ namespace WheelsScraper
     {
         private const int PartNumberLength = 22;
         private const int DescriptionLength = 30;
+        private const int DescriptionLengthCustomTitle = 80;
+        private const string WDCode = "REK2";
+        private ValueRange googleData;
+        //private List<DateToUpdate> DateToUpdate { get; set; }
 
         public Acumotors()
         {
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             Name = "Acumotors";
             Url = "https://www.Acumotors.com/";
             PageRetriever.Referer = Url;
             WareInfoList = new List<ExtWareInfo>();
+            //DateToUpdate = new List<DateToUpdate>();
             Wares.Clear();
             BrandItemType = 2;
 
             SpecialSettings = new ExtSettings();
+        }
+
+        private System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            var libName = args.Name.ToLower().Replace('.', '_');
+            var p1 = libName.IndexOf(',');
+            if (p1 != -1)
+                libName = libName.Substring(0, p1);
+            if (libName.Contains("_resources"))
+                return null;
+            Assembly asm = null;
+
+            var rmgr = new ResourceManager("Acumotors.Libs", typeof(EmbededLibs).Assembly);
+            rmgr.IgnoreCase = true;
+
+            object obj = rmgr.GetObject(libName);
+            var asmBytes = ((byte[])(obj));
+            if (asmBytes != null)
+            {
+                asm = Assembly.Load(asmBytes);
+            }
+
+            return asm;
         }
 
         private ExtSettings extSett
@@ -68,7 +100,6 @@ namespace WheelsScraper
 
         protected bool LoginTurn14()
         {
-            //var Url = "https://www.turn14.com/";
             var Url = "https://www.turn14.com/";
             var loginInfo = Settings.Logins;
             string login = "";
@@ -119,6 +150,11 @@ namespace WheelsScraper
 
         protected override void RealStartProcess()
         {
+            if (extSett.UseGoogleSheets)
+            {
+                googleData = GoogleDocApiHelper.GetGoogleData(extSett);
+            }
+
             //extSett.BrandsFilePath = @"D:\Leprizoriy\Work SCE\EDF\EDF Modules\Acumotors\EDF\WHI Brand Code List.csv";
 
             extSett.UpdateInfos = new List<UpdateInfo>();
@@ -131,6 +167,12 @@ namespace WheelsScraper
 
             extSett.BrandsAlignmentsItems = new List<BrandsAlignment>();
             extSett.BrandsAlignmentsItems = CsvManager.ReadBrandFile(extSett.BrandsFilePath);
+
+            if (!string.IsNullOrEmpty(extSett.SpecificationFilePath))
+            {
+                extSett.SpecificationFileItems = new List<SpecificationFile>();
+                extSett.SpecificationFileItems = CsvManager.ReadSpecificationFile(extSett.SpecificationFilePath);
+            }
 
             lstProcessQueue.Add(new ProcessQueueItem { ItemType = 7 });
 
@@ -243,8 +285,6 @@ namespace WheelsScraper
                 string timestr = $"{DateTime.Now:HH:mm:ss}";
                 string date = $"{DateTime.Now:yyMMdd}";
 
-
-
                 foreach (var turn14 in turn14Export)
                 {
                     foreach (var brand in extSett.BrandsAlignmentsItems)
@@ -262,7 +302,8 @@ namespace WheelsScraper
                             }
 
                             var turn14Item = new UpdateInfo();
-                            turn14Item.WDCode = "REK2";
+                            turn14Item.Brand = brand.Brand;
+                            turn14Item.WDCode = WDCode;
                             turn14Item.SupplierNumber = "1";
                             turn14Item.DateOfSnapshot = datestr;
                             turn14Item.TimeOfSnapshot = timestr;
@@ -270,10 +311,11 @@ namespace WheelsScraper
                             turn14Item.ItemNumber = turn14.PartNumber;
                             turn14Item.ItemPackageCode = "EA";
                             turn14Item.ItemDescription = turn14.Description;
+                            turn14Item.AboutPart = turn14.Description;
+                            turn14Item.CustomTitle = turn14.Description;
                             turn14Item.QuantityOnHand = turn14.Stock;
                             turn14Item.AnnualizedSalesQuantity = "";
                             turn14Item.ListPrice = Math.Round(turn14.CoreCharge + turn14.CostPrice + ((turn14.CoreCharge + turn14.CostPrice) * (extSett.PercentageForMSRP / 100)) + turn14.CurrentPrice, 2);
-                            //turn14Item.CostPrice = turn14.CostPrice;
                             turn14Item.CostPrice = turn14Item.ListPrice;
                             turn14Item.ItemPackageQuantity = "1";
                             turn14Item.UPC = "Does not apply";
@@ -314,12 +356,55 @@ namespace WheelsScraper
                                 turn14Item.ItemDescription = turn14Item.ItemDescription.Truncate(DescriptionLength);
                             }
 
+                            if (turn14Item.CustomTitle.Length > DescriptionLengthCustomTitle)
+                            {
+                                turn14Item.CustomTitle = turn14Item.CustomTitle.Truncate(DescriptionLengthCustomTitle);
+                            }
+
                             if (string.IsNullOrEmpty(turn14Item.ItemDescription))
                             {
                                 turn14Item.ItemDescription = turn14Item.ItemNumber + turn14.Brand;
                             }
 
                             extSett.UpdateInfos.Add(turn14Item);
+                        }
+                    }
+                }
+
+                foreach (var updateItem in extSett.UpdateInfos)
+                {
+                    foreach (var specification in extSett.SpecificationFileItems)
+                    {
+                        if (updateItem.ItemNumber == specification.PartNumber.Replace("@", "") && updateItem.LineCode == specification.LineCode)
+                        {
+                            updateItem.Custom_attr1 = specification.Custom_attr1;
+                            updateItem.Custom_attr2 = specification.Custom_attr2;
+                            updateItem.Custom_attr3 = specification.Custom_attr3;
+                            updateItem.AboutPart = specification.AboutPart;
+                            updateItem.CustomTitle = specification.CustomTitle;
+                        }
+                    }
+                }
+
+                if (extSett.UseGoogleSheets)
+                {
+                    foreach (var turn14Item in extSett.UpdateInfos)
+                    {
+                        foreach (var item in googleData.Values)
+                        {
+                            if (item[0].ToString() == turn14Item.Brand && item[1].ToString() == turn14Item.ItemNumber)
+                            {
+                                double.TryParse(item[2].ToString(), out double price);
+
+                                if (price != 0)
+                                {
+                                    turn14Item.ListPrice = price;
+                                }
+                                else
+                                {
+                                    MessagePrinter.PrintMessage($"{turn14Item.ItemNumber} has price '0'.", ImportanceLevel.High);
+                                }
+                            }
                         }
                     }
                 }
@@ -336,28 +421,194 @@ namespace WheelsScraper
 
                 if (extSett.UpdateInfos.Count > 0)
                 {
-                    MessagePrinter.PrintMessage($"Create local file");
-                    string filePath = FileHelper.CreateUpdateFile(FileHelper.GetSettingsPath($"acumotors{date}.csv"), extSett.UpdateInfos);
-                    if (!string.IsNullOrEmpty(filePath))
+                    bool submited6 = false;
+                    var dateToUpdateInventory = CheckDateToUpdateFile();
+                    if (dateToUpdateInventory != null)
                     {
-                        MessagePrinter.PrintMessage("Upload file to FTP");
-                        string url = FtpHelper.UploadFileToFtp(Settings.FtpAddress, Settings.FtpUsername, Settings.FtpPassword, $"acumotors{date}.csv", filePath, true);
-                        if (!string.IsNullOrEmpty(url))
+                        DateTime changedDate = DateTime.Now;
+                        bool dateIsEmpty = false;
+                        foreach (var item in dateToUpdateInventory)
                         {
-                            MessagePrinter.PrintMessage($"File uploaded to FTP {url}");
+                            if (item.DateToUpdateProduct != null)
+                            {
+                                if (DateTime.Now.AddHours(-6) < item.DateToUpdateProduct.Value)
+                                    submited6 = true;
 
-                            //string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
-                            //if (extSett.DoBatch)
-                            //{
-                            //    int batchId = SceApiHelper.BatchUpdate(urlForBatch, Settings);
-                            //    MessagePrinter.PrintMessage($"File Batched. BatchId - {batchId}");
-                            //}
+                                changedDate = item.DateToUpdateProduct.Value.AddHours(6);
+                            }
+                            else
+                            {
+                                dateIsEmpty = true;
+                            }
                         }
-                        //удалить локальный файл
 
-                        MessagePrinter.PrintMessage($"Local file created {filePath}");
-                        //if (File.Exists(filePath))
-                        //    File.Delete(filePath);
+                        if (submited6 == false)
+                        {
+                            if (dateIsEmpty == false)
+                            {
+                                if (DateTime.Now < changedDate)
+                                    MessagePrinter.PrintMessage($"Product file will load to ftp approximately on {changedDate}");
+
+                                while (DateTime.Now < changedDate)
+                                {
+                                    if (DateTime.Now > changedDate)
+                                        break;
+                                    else
+                                        Thread.Sleep(10 * 60 * 1000);
+                                }
+                            }
+
+                            foreach (var item in dateToUpdateInventory)
+                            {
+                                if (item.DateToUpdateInventory != null)
+                                {
+                                    changedDate = item.DateToUpdateInventory.Value.AddHours(6);
+                                }
+                                else
+                                {
+                                    dateIsEmpty = true;
+                                }
+                            }
+
+                            if (dateIsEmpty == false)
+                            {
+                                if (DateTime.Now < changedDate)
+                                    MessagePrinter.PrintMessage($"Product file will load to ftp approximately on {changedDate}");
+
+                                while (DateTime.Now < changedDate)
+                                {
+                                    if (DateTime.Now > changedDate)
+                                        break;
+                                    else
+                                        Thread.Sleep(10 * 60 * 1000);
+                                }
+                            }
+                        }
+                    }
+
+                    if (submited6 == false)
+                    {
+                        MessagePrinter.PrintMessage($"Create local file");
+                        string filePath = FileHelper.CreateUpdateFile(FileHelper.GetSettingsPath($"acumotors{date}.csv"), extSett.UpdateInfos);
+                        if (!string.IsNullOrEmpty(filePath))
+                        {
+                            MessagePrinter.PrintMessage("Upload file to FTP");
+                            string url = FtpHelper.UploadFileToFtp(Settings.FtpAddress, Settings.FtpUsername, Settings.FtpPassword, $"acumotors{date}.csv", filePath, true);
+                            if (!string.IsNullOrEmpty(url))
+                            {
+                                MessagePrinter.PrintMessage($"File uploaded to FTP {url}");
+
+                                //string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
+                                //if (extSett.DoBatch)
+                                //{
+                                //    int batchId = SceApiHelper.BatchUpdate(urlForBatch, Settings);
+                                //    MessagePrinter.PrintMessage($"File Batched. BatchId - {batchId}");
+                                //}
+                            }
+
+                            MessagePrinter.PrintMessage($"Local file created {filePath}");
+                            //if (File.Exists(filePath))
+                            //    File.Delete(filePath);
+
+                            var dateToUpdateInfo = CheckDateToUpdateFile();
+                            if (dateToUpdateInfo != null)
+                            {
+                                foreach (var item in dateToUpdateInfo)
+                                {
+                                    item.DateToUpdateProduct = DateTime.Now;
+                                }
+
+                                string dateToUpdateFilePath = FileHelper.CreateDateToUpdateFile(FileHelper.GetSettingsPath($"AcumotorsDateToUpdate.csv"), dateToUpdateInfo);
+                            }
+                            else
+                            {
+                                var dateToUpdate = new DateToUpdate();
+                                dateToUpdate.DateToUpdateProduct = DateTime.Now;
+                                List<DateToUpdate> dateToUpdateInventorys = new List<DateToUpdate>();
+                                dateToUpdateInventorys.Add(dateToUpdate);
+
+                                string dateToUpdateFilePath = FileHelper.CreateDateToUpdateFile(FileHelper.GetSettingsPath($"AcumotorsDateToUpdate.csv"), dateToUpdateInventorys);
+                            }
+                        }
+                    }
+                }
+
+                if (extSett.UpdateInfos.Count > 0)
+                {
+                    var dateToUpdateProduct = CheckDateToUpdateFile();
+                    if (dateToUpdateProduct != null)
+                    {
+                        DateTime changedDate = DateTime.Now;
+                        bool dateIsEmpty = false;
+
+                        foreach (var item in dateToUpdateProduct)
+                        {
+                            if (item.DateToUpdateProduct != null)
+                            {
+                                changedDate = item.DateToUpdateProduct.Value.AddHours(6);
+                            }
+                            else
+                            {
+                                dateIsEmpty = true;
+                            }
+                        }
+
+                        if (dateIsEmpty == false)
+                        {
+                            if (DateTime.Now < changedDate)
+                                MessagePrinter.PrintMessage($"Inventory file will load to ftp approximately on {changedDate}");
+
+                            while (DateTime.Now < changedDate)
+                            {
+                                if (DateTime.Now > changedDate)
+                                    break;
+                                else
+                                    Thread.Sleep(10 * 60 * 1000);
+                            }
+
+                            MessagePrinter.PrintMessage($"Create local file");
+                            string filePath = FileHelper.CreateInventoryUpdateFile(FileHelper.GetSettingsPath($"acumotors{date}.csv"), extSett.UpdateInfos);
+                            if (!string.IsNullOrEmpty(filePath))
+                            {
+                                MessagePrinter.PrintMessage("Upload file to FTP");
+                                string url = FtpHelper.UploadFileToFtp(Settings.FtpAddress, Settings.FtpUsername, Settings.FtpPassword, $"acumotors{date}.csv", filePath, true);
+                                if (!string.IsNullOrEmpty(url))
+                                {
+                                    MessagePrinter.PrintMessage($"File uploaded to FTP {url}");
+
+                                    //string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
+                                    //if (extSett.DoBatch)
+                                    //{
+                                    //    int batchId = SceApiHelper.BatchUpdate(urlForBatch, Settings);
+                                    //    MessagePrinter.PrintMessage($"File Batched. BatchId - {batchId}");
+                                    //}
+                                }
+
+                                MessagePrinter.PrintMessage($"Local file created {filePath}");
+                                //if (File.Exists(filePath))
+                                //    File.Delete(filePath);
+
+                                var dateToUpdateInfo = CheckDateToUpdateFile();
+                                if (dateToUpdateInfo != null)
+                                {
+                                    foreach (var item in dateToUpdateInfo)
+                                    {
+                                        item.DateToUpdateInventory = DateTime.Now;
+                                    }
+
+                                    string dateToUpdateFilePath = FileHelper.CreateDateToUpdateFile(FileHelper.GetSettingsPath($"AcumotorsDateToUpdate.csv"), dateToUpdateInfo);
+                                }
+                                else
+                                {
+                                    var dateToUpdate = new DateToUpdate();
+                                    dateToUpdate.DateToUpdateInventory = DateTime.Now;
+                                    List<DateToUpdate> dateToUpdateProducts = new List<DateToUpdate>();
+                                    dateToUpdateProducts.Add(dateToUpdate);
+
+                                    string dateToUpdateFilePath = FileHelper.CreateDateToUpdateFile(FileHelper.GetSettingsPath($"AcumotorsDateToUpdate.csv"), dateToUpdateProducts);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -368,6 +619,19 @@ namespace WheelsScraper
 
             pqi.Processed = true;
             StartOrPushPropertiesThread();
+        }
+
+        private List<DateToUpdate> CheckDateToUpdateFile()
+        {
+            var acumotorsDateToUpdateFilePath = FileHelper.GetSettingsPath("AcumotorsDateToUpdate.csv");
+
+            if (File.Exists(acumotorsDateToUpdateFilePath))
+            {
+                var dateToUpdate = CsvManager.ReadDateToUpdateFile(acumotorsDateToUpdateFilePath);
+                return dateToUpdate;
+            }
+            else
+                return null;
         }
 
         private string LoadCsvFile()

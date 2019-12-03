@@ -1,9 +1,11 @@
 Supplier Name,Edge Name,Supplier Delivery Time (Ships In:)
 A and D Gem Corp,AD,42 Days
 ALOR,ALOR,10 Days
+ASHI Diamonds LLC,ASHI,42 Days
 Ballast,BAL,10 Days
 Bellisima,CNY,10 Days
 Classic of NY,CNY,10 Days
+Clearance,CLE,3 Days
 Dalumi,DDC,42 Days
 Dalvey,DAL,7 Days
 EMA Jewelry,EJ,10 Days
@@ -11,16 +13,18 @@ Enchanted Disney,DIS,3 Days
 Fana,FAN,42 Days
 FID/Roman,FID,42 Days
 Fischer,FJD,42 Days
+Forevermark,,35 Days
 Hearts On Fire,HOF,10 Days
 Hera,HERA,10 Days
-International Diamond Distributors,IDD,10 Days
 INOX,INOX,10 Days
+International Diamond Distributors,IDD,10 Days
 JEWLVISION,JV,42 Days
 John Hardy,JH,10 Days
 Kronaby,KRON,10 Days
 Lafonn,LAF,7 Days
-Malo,MALO,5 Days
-R A Riam (Marks 89),RAR,10 Days
+Malo Band,MALO,5 Days
+Marks Estate Department,MED,35 Days
+Marks Inc.,MRK,28 Days
 Michele,MIC.,10 Days
 MIDAS Chain,MID,10 Days
 MK Diamonds,MKD,42 Days
@@ -29,12 +33,14 @@ Montegrappa,MTG,10 Days
 Noam Carver,NC,28 Days
 Picnic Time,PIC,14 Days
 Quality Gold,QG,10 Days
-Rembrandt Charms,REM,3 Days
+R A Riam (Marks 89),RAR,10 Days
 Royal Gem Manufacturing Inc,RJMI,42 Days
+RQC Ltd,REM,3 Days
 Seiko,SE,10 Days
 Shinola,SHI,10 Days
 Shy Creations,SHY,10 Days
 Simona,CNY,10 Days
+Sophia by Design,SOPH,28 Days
 Sylvie,SYL,28 Days
 Tag Heuer,TAG,10 Days
 TF Est 1968,TF,10 Days
@@ -42,4 +48,3 @@ Venetti,VEN,42 Days
 Verragio,VER,42 Days
 VIMCO,VIM,42 Days
 Zodiac,ZOD,10 Days
-Marks Inc.,,28 Days

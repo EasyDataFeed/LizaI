@@ -120,7 +120,9 @@ namespace WheelsScraper
                     throw new Exception(message);
                 }
 
-                string data = $"redirectUrl=&User={HttpUtility.UrlEncode(login.Login)}&Password={HttpUtility.UrlEncode(login.Password)}";
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+                string data = $"redirectUrl=https%3A%2F%2Fwww.fschumacher.com%2F&User={HttpUtility.UrlEncode(login.Login)}&Password={HttpUtility.UrlEncode(login.Password/*.Replace("!", "%21")*/)}".Replace("!", "%21");
+                //string data = $"redirectUrl=&User={HttpUtility.UrlEncode(login.Login)}&Password={HttpUtility.UrlEncode(login.Password)}";
                 // "redirectUrl=https%3A%2F%2Ffschumacher.com%2F%3Fshow%3Dlogin&User=carolyn%40mahoneswallpapershop.com&Password=scvcok9va";
                 //PageRetriever.Headers.Clear();    
                 //PageRetriever.Headers.Add("Cookie", extSett.Cookies);
@@ -129,7 +131,7 @@ namespace WheelsScraper
 
                 //var html1 = PageRetriever.ReadFromServer("https://fschumacher.com/item/176502", true);
 
-                if (pageRes.Contains("MY SCHUMACHER"))
+                if (!pageRes.Contains("/Assets/images/HomePage/Icon_Profile.svg"))
                 {
                     MessagePrinter.PrintMessage("http://fschumacher.com - logged in success.");
                     cc = PageRetriever.cc;
@@ -325,7 +327,7 @@ namespace WheelsScraper
                 return;
 
             //pqi.URL = "https://fschumacher.com/item/5005880";
-            // pqi.URL = "https://fschumacher.com/item/5008292";
+            //pqi.URL = "http://fschumacher.com/item/C9000-20";
 
             //if (abc == 2)
             try
@@ -443,35 +445,63 @@ namespace WheelsScraper
 
                 #region Item Quantity Info
 
-                List<string> dyelotInfo = new List<string>();
+                string dyelotInfo = "";
 
-                var stockInfo = htmlDoc.DocumentNode.SelectNodes("//span[contains(text(),'DYELOT')]");
-                if (stockInfo != null)
+                //var stockInfo = htmlDoc.DocumentNode.SelectNodes("//span[contains(text(),'DYELOT')]");
+                //if (stockInfo != null)
+                //{
+                //    foreach (HtmlNode htmlNode in stockInfo)
+                //    {
+                //        dyelotInfo.Add(htmlNode.InnerTextOrNull());
+                //    }
+                //}
+
+                try
                 {
-                    foreach (HtmlNode htmlNode in stockInfo)
+                    var html1 = PageRetriever.ReadFromServer($"http://fschumacher.com/Inventory/QuickInventoryView?sku={sku}", true);
+                    var htmlDoc1 = new HtmlDocument();
+                    html1 = HttpUtility.HtmlDecode(html1);
+                    htmlDoc1.LoadHtml(html1);
+
+                    //var stockInfo = htmlDoc1.DocumentNode.SelectSingleNode("//div[contains(text(),'DYELOT')]");
+                    //if (stockInfo != null)
+                    //{
+                    //    dyelotInfo = stockInfo.InnerTextOrNull();
+                    //    double quantityAvailable = 0;
+                    //    string quantityAvailableStr = dyelotInfo.Substring(0, dyelotInfo.IndexOf(" "));
+
+                    //    if (quantityAvailableStr.IsNumeric())
+                    //    {
+                    //        quantityAvailable += ParseDouble(quantityAvailableStr);
+                    //    }
+
+                    //    if (quantityAvailable != 0)
+                    //        wi.QuantityAvailable = (int)quantityAvailable;
+                    //}
+
+                    var stockInfos = htmlDoc1.DocumentNode.SelectNodes("//div[@class = 'large-5 medium-5 small-5 columns dyelottile']");
+                    if (stockInfos != null)
                     {
-                        dyelotInfo.Add(htmlNode.InnerTextOrNull());
+                        double quantityAvailable = 0;
+                        foreach (var stockInfo in stockInfos)
+                        {
+                            var stock = stockInfo.InnerTextOrNull();
+                            var spStock = stock.Split();
+                            var yards = spStock[0];
+
+                            if (yards.IsNumeric())
+                            {
+                                quantityAvailable += ParseDouble(yards);
+                            }
+                        }
+
+                        if (quantityAvailable != 0)
+                            wi.QuantityAvailable = (int)quantityAvailable;
                     }
                 }
-
-                if (dyelotInfo.Count > 0)
+                catch (Exception e)
                 {
-                    dyelotInfo = dyelotInfo.Distinct().ToList();
 
-                    double quantityAvailable = 0;
-
-                    foreach (string delot in dyelotInfo)
-                    {
-                        string quantityAvailableStr = delot.Substring(0, delot.IndexOf(" "));
-
-                        if (quantityAvailableStr.IsNumeric())
-                        {
-                            quantityAvailable += ParseDouble(quantityAvailableStr);
-                        }
-                    }
-
-                    if (quantityAvailable != 0)
-                        wi.QuantityAvailable = (int)quantityAvailable;
                 }
 
                 #endregion

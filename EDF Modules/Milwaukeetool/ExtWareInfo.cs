@@ -42,5 +42,8 @@ namespace Milwaukeetool
         public string MainCategory { get; set; }
         public string SubCategory { get; set; }
         public string SectionCategory { get; set; }
+        public string Action { get; set; }
+        public string ProductType { get; set; }
+        public string ProductUrl { get; set; }
     }
 }
