@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Pinterest.Enums;
 using WheelsScraper;
 
 namespace Databox.Libs.Pinterest
@@ -88,6 +89,33 @@ namespace Databox.Libs.Pinterest
             {
                 layoutControlItem1.Enabled = false;
             }
+
+            radioGroupDestCategory.SelectedIndex = (int) ExtSett.ActionType;
+        }
+
+        private void radioGroupDestCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (radioGroupDestCategory.SelectedIndex != -1)
+            {
+                if (radioGroupDestCategory.Properties.Items[radioGroupDestCategory.SelectedIndex].Description == "Brand")
+                {
+                    ExtSett.ActionType = ActionType.Brand;
+                }
+                else if (radioGroupDestCategory.Properties.Items[radioGroupDestCategory.SelectedIndex].Description == "Main Category")
+                {
+                    ExtSett.ActionType = ActionType.MainCategory;
+                }
+                else if (radioGroupDestCategory.Properties.Items[radioGroupDestCategory.SelectedIndex].Description == "Sub Category")
+                {
+                    ExtSett.ActionType = ActionType.SubCategory;
+                }
+            }
+            else
+            {
+                radioGroupDestCategory.SelectedIndex = 1;
+            }
+
+            RefreshBindings();
         }
     }
 }

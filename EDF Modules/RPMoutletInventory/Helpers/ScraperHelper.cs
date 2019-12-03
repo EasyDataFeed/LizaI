@@ -91,8 +91,7 @@ namespace RPMoutletInventory.Helpers
 
                 counter++;
 
-                string[] productArr = new string[8] { "update", item.ProdTypeSce.ToString(), item.ProdIdSce.ToString(), item.PartNumberSce
-                                                    , item.WebPrice, item.CostPrice, item.Msrp, item.Jobber };
+                string[] productArr = new string[8] { "update", item.ProdTypeSce.ToString(), item.ProdIdSce.ToString(), item.PartNumberSce, item.WebPrice, item.CostPrice, item.Msrp, item.Jobber };
                 for (int i = 0; i < productArr.Length; i++)
                     if (!String.IsNullOrEmpty(productArr[i]) && !String.IsNullOrWhiteSpace(productArr[i]))
                         productArr[i] = StringToCSVCell(productArr[i]);

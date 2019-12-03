@@ -121,7 +121,7 @@ namespace WheelsScraper
                                     //MessagePrinter.PrintMessage($"File Batched. BatchId - {batchId}");
                                 }
                             }
-                            //удалить локальный файл
+                            
                             if (File.Exists(filePath))
                                 File.Delete(filePath);
                         }
@@ -149,8 +149,7 @@ namespace WheelsScraper
                                 string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
                                 MessagePrinter.PrintMessage($"Invntory file uploaded - {urlForBatch}");
                             }
-
-                            //удалить локальный файл
+                            
                             if (File.Exists(filePath))
                                 File.Delete(filePath);
                         }
@@ -294,7 +293,6 @@ namespace WheelsScraper
             {
                 MessagePrinter.PrintMessage($"Checking Turn14 credentials");
                 Turn14ApiHelper.SetAuthInfo(extSett.ClientId, extSett.ClientSecret);
-                //Turn14apiHelper.SetAuthInfo("asd", extSett.ClientSecret);
                 Turn14ApiHelper.GetToken();
                 MessagePrinter.PrintMessage($"Turn14 credentials is valid");
             }
@@ -514,7 +512,7 @@ namespace WheelsScraper
 
         private List<ProcessedOrder> GetProcessedOrders()
         {
-            string localFileName = FileHelper.GetSettingsPath(TempFileNameFTP); //Get local Path
+            string localFileName = FileHelper.GetSettingsPath(TempFileNameFTP);
             List<ProcessedOrder> processedOrders;
 
             MessagePrinter.PrintMessage($"Downloading processed orders from FTP. Please wait...");
@@ -539,7 +537,7 @@ namespace WheelsScraper
 
         private void UpdateProcessedOrders(List<ProcessedOrder> processedOrders)
         {
-            string localFileName = FileHelper.GetSettingsPath(TempFileNameFTP); //Get local Path
+            string localFileName = FileHelper.GetSettingsPath(TempFileNameFTP);
             bool succes = false;
             JavaScriptSerializer jss = new JavaScriptSerializer();
             string data = jss.Serialize(processedOrders);
@@ -592,7 +590,6 @@ namespace WheelsScraper
 
         private void ProcessInventoryAndPriceSync()
         {
-            //Read Brand File
             if (string.IsNullOrEmpty(extSett.BrandFilePath))
             {
                 MessagePrinter.PrintMessage("You must choice file with brands", ImportanceLevel.Critical);
@@ -797,8 +794,7 @@ namespace WheelsScraper
 
             if (ScraperStarted)
                 return true;
-
-            //FindProductInSce
+            
             if (extSett.InventorySync || extSett.PriceSync)
             {
                 var attributeInfo = dataItem.attributes;
@@ -816,20 +812,6 @@ namespace WheelsScraper
 
                         transferItem = transferInfoItem;
                     }
-
-                    //if (transferInfoItem.ManufacturerPartNumberSce.ToLower() == manufacturerPartNumber.ToLower())
-                    //{
-                    //    productMatched++;
-
-                    //    transferItem = transferInfoItem;
-                    //}
-
-                    //if (transferInfoItem.PartNumberSce.ToLower() == partNumber.ToLower())
-                    //{
-                    //    productMatched++;
-
-                    //    transferItem = transferInfoItem;
-                    //}
                 }
 
                 if (productMatched > 1)
@@ -910,8 +892,6 @@ namespace WheelsScraper
                 string mainCategory = attributeInfo.category;
                 string subCategory = attributeInfo.subcategory;
                 string description = attributeInfo.part_description;
-
-                //dimensions info
                 string length = string.Empty;
                 string width = string.Empty;
                 string height = string.Empty;
@@ -982,16 +962,6 @@ namespace WheelsScraper
 
                         }
 
-                        //Anonymus Method
-                        //string GetLargetsImage(filesSingleItem item)
-                        //{
-                        //    string largetsImage = string.Empty;
-
-                        //    if (item.links.Any())
-                        //        largetsImage = item.links.First(i => i.width == item.links.Max(m => m.width)).url;
-                        //    return largetsImage;
-                        //}
-
                         if (filesInfo.FirstOrDefault()?.files != null)
                         {
                             foreach (var itemData in filesInfo.FirstOrDefault()?.files)
@@ -1037,13 +1007,6 @@ namespace WheelsScraper
 
                     }
                 }
-
-                //if (extSett.InventorySync || ScraperStarted)
-                //    lock (AllLocations)
-                //        if (!AllLocations.data.Any())
-                //        {
-                //            AllLocations = Turn14apiHelper.GetAllLocations();
-                //        }
 
                 int stock = 0;
                 int manufacturerStock = 0;

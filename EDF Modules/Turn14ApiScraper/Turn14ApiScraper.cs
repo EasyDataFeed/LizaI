@@ -18,6 +18,7 @@ using Turn14ApiScraper.DataItems;
 using Turn14ApiScraper.DataItems.SCE;
 using Turn14ApiScraper.Resources;
 using Turn14ApiScraper.DataItems.Sema;
+using Turn14ApiScraper.DataItems.TEST;
 
 #endregion
 
@@ -157,8 +158,8 @@ namespace WheelsScraper
                             string url = FtpHelper.UploadFileToFtp(Settings.FtpAddress, Settings.FtpUsername, Settings.FtpPassword, "Turn14InventoryUpdate.csv", filePath, true);
                             if (!string.IsNullOrEmpty(url))
                             {
-                                string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
-                                MessagePrinter.PrintMessage($"Invntory file uploaded - {urlForBatch}");
+                                //string urlForBatch = url.Replace("ftp://efilestorage.com", "http://efilestorage.com/scefiles");
+                                //MessagePrinter.PrintMessage($"Invntory file uploaded - {urlForBatch}");
                             }
 
                             //удалить локальный файл
@@ -256,6 +257,7 @@ namespace WheelsScraper
         {
             TokenSemaJson tokenSemaJson = SemaApiHelper.GetSemaToken(extSett.Login, extSett.Password, out string errorST);
             EngineJson enjineJson = SemaApiHelper.GetEngine(tokenSemaJson.token);
+
 #if TEST
             Settings.MaxThreads = 1;
 #endif
@@ -668,7 +670,6 @@ namespace WheelsScraper
 
         private void ProcessInventoryAndPriceSync()
         {
-            //Read Brand File
             if (string.IsNullOrEmpty(extSett.BrandFilePath))
             {
                 MessagePrinter.PrintMessage("You must choice file with brands", ImportanceLevel.Critical);
@@ -873,8 +874,7 @@ namespace WheelsScraper
 
             if (ScraperStarted)
                 return true;
-
-            //FindProductInSce
+            
             if (extSett.InventorySync || extSett.PriceSync)
             {
                 var attributeInfo = dataItem.attributes;
@@ -892,20 +892,6 @@ namespace WheelsScraper
 
                         transferItem = transferInfoItem;
                     }
-
-                    //if (transferInfoItem.ManufacturerPartNumberSce.ToLower() == manufacturerPartNumber.ToLower())
-                    //{
-                    //    productMatched++;
-
-                    //    transferItem = transferInfoItem;
-                    //}
-
-                    //if (transferInfoItem.PartNumberSce.ToLower() == partNumber.ToLower())
-                    //{
-                    //    productMatched++;
-
-                    //    transferItem = transferInfoItem;
-                    //}
                 }
 
                 if (productMatched > 1)
@@ -986,8 +972,7 @@ namespace WheelsScraper
                 string mainCategory = attributeInfo.category;
                 string subCategory = attributeInfo.subcategory;
                 string description = attributeInfo.part_description;
-
-                //dimensions info
+                
                 string length = string.Empty;
                 string width = string.Empty;
                 string height = string.Empty;
@@ -1058,16 +1043,6 @@ namespace WheelsScraper
 
                         }
 
-                        //Anonymus Method
-                        //string GetLargetsImage(filesSingleItem item)
-                        //{
-                        //    string largetsImage = string.Empty;
-
-                        //    if (item.links.Any())
-                        //        largetsImage = item.links.First(i => i.width == item.links.Max(m => m.width)).url;
-                        //    return largetsImage;
-                        //}
-
                         if (filesInfo.FirstOrDefault()?.files != null)
                         {
                             foreach (var itemData in filesInfo.FirstOrDefault()?.files)
@@ -1110,7 +1085,6 @@ namespace WheelsScraper
                         //string fitment1 = string.Empty;
                         //fitment1 = filesInfo.First().vehicle_fitments.Aggregate(fitment1, (current, itemFitments) => current + (itemFitments.vehicle_id + ","));
                         //fitment1 = fitment1.Trim(',');
-
                     }
                 }
 

@@ -527,7 +527,22 @@ namespace WheelsScraper
 
                                             if (!string.IsNullOrEmpty(costPrice))
                                             {
-                                                if (string.IsNullOrEmpty(webPrice))                                                    webPrice = GetPriceRules(brand, double.Parse(costPrice)).ToString();                                                if (string.IsNullOrEmpty(msrp))                                                    msrp = webPrice;                                                if (double.Parse(costPrice) > double.Parse(msrp))                                                    msrp = ((double.Parse(costPrice) + 11) + ((double.Parse(costPrice) + 11) * 0.08)).ToString();                                                if (double.Parse(costPrice) >= double.Parse(webPrice))                                                    webPrice = ((double.Parse(costPrice) + 11) + ((double.Parse(costPrice) + 11) * 0.08)).ToString();                                                if (double.Parse(msrp) < double.Parse(webPrice))                                                    msrp = webPrice;                                                jobber = webPrice;
+                                                if (string.IsNullOrEmpty(webPrice))
+                                                    webPrice = GetPriceRules(brand, double.Parse(costPrice)).ToString();
+
+                                                if (string.IsNullOrEmpty(msrp))
+                                                    msrp = webPrice;
+
+                                                if (double.Parse(costPrice) > double.Parse(msrp))
+                                                    msrp = ((double.Parse(costPrice) + 11) + ((double.Parse(costPrice) + 11) * 0.08)).ToString();
+
+                                                if (double.Parse(costPrice) >= double.Parse(webPrice))
+                                                    webPrice = ((double.Parse(costPrice) + 11) + ((double.Parse(costPrice) + 11) * 0.08)).ToString();
+
+                                                if (double.Parse(msrp) < double.Parse(webPrice))
+                                                    msrp = webPrice;
+
+                                                jobber = webPrice;
                                             }
 
                                             foreach (TransferInfoItem transferInfoItem in extSett.TransferInfoItems)
@@ -564,10 +579,10 @@ namespace WheelsScraper
 
                                                     transferInfoItem.PartNumberTurn14 = partNumber;
                                                     transferInfoItem.ManufacturerPartNumberTurn14 = manufacturerPartNumber;
-                                                    transferInfoItem.Msrp = msrp.Replace(",", string.Empty); ;
-                                                    transferInfoItem.Jobber = jobber.Replace(",", string.Empty); ;
-                                                    transferInfoItem.WebPrice = webPrice.Replace(",", string.Empty); ;
-                                                    transferInfoItem.CostPrice = costPrice.Replace(",", string.Empty); ;
+                                                    transferInfoItem.Msrp = msrp.Replace(",", string.Empty);
+                                                    transferInfoItem.Jobber = jobber.Replace(",", string.Empty);
+                                                    transferInfoItem.WebPrice = webPrice.Replace(",", string.Empty);
+                                                    transferInfoItem.CostPrice = costPrice.Replace(",", string.Empty);
 
                                                     transferInfoItem.Turn14WarehouseWesStock = warehouseWesStock;
                                                     transferInfoItem.Turn14WarehouseEastStock = warehouseEastStock;
@@ -712,7 +727,6 @@ namespace WheelsScraper
 
                 MessagePrinter.PrintMessage("Downloading Premier inventory from FTP. Please wait...");
                 bool premierProcessed = false;
-                // download and read csv file
                 //string csvFilePath = @"D:\Altaresh\SVN\VS\EDF Development\WheelsScraper 2\WheelsScraper\bin\Debug\StandardExport.csv";
                 string csvFilePath = downloadCsvFile();
                 if (String.IsNullOrEmpty(csvFilePath))
@@ -723,7 +737,6 @@ namespace WheelsScraper
                     return;
                 }
 
-                //FIX CORRUPTED FILE
                 using (StreamReader rd = new StreamReader(new FileStream(csvFilePath, FileMode.Open)))
                 {
                     string line;
@@ -834,18 +847,16 @@ namespace WheelsScraper
         {
             try
             {
-                // download zip file from FTP
                 string zipFilePath = Regex.Replace(Settings.Location, @"[\w-%&]*.edf", "PremierItemExport.zip");
                 string csvFileName = "StandardExport.csv";
                 downloadFTPFile(zipFilePath, extSett.InvFtpAddress, extSett.InvFtpLogin, extSett.InvFtpPassword);
                 if (File.Exists(zipFilePath))
                 {
-                    // extract zip
                     using (var zipArc = ZipFile.Read(zipFilePath))
                     {
                         zipArc[csvFileName].Extract(Path.GetDirectoryName(zipFilePath), ExtractExistingFileAction.OverwriteSilently);
                     }
-                    // delete zip file
+                    
                     File.Delete(zipFilePath);
                     return string.Format("{0}\\{1}", Path.GetDirectoryName(zipFilePath), csvFileName);
                 }

@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <ScraperSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SpecialSettings xsi:type="ExtSettings">
-    <ExportFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\Pinterest\EDF\newSceExport1.csv</ExportFilePath>
-    <UseExistingExport>true</UseExistingExport>
-    <UseBusinessesAccount>true</UseBusinessesAccount>
+    <ExportFilePath />
+    <UseExistingExport>false</UseExistingExport>
+    <UseBusinessesAccount>false</UseBusinessesAccount>
+    <ChangeWebsite>false</ChangeWebsite>
+    <SkipHidden>false</SkipHidden>
     <Brand />
-    <BrandItems />
+    <ActionType>MainCategory</ActionType>
   </SpecialSettings>
   <Name>Pinterest</Name>
   <MaxThreads>1</MaxThreads>
@@ -14,8 +16,8 @@
   <MaxImageUploadThreads>0</MaxImageUploadThreads>
   <Logins>
     <LoginInfo>
-      <Login>patrick@mahoneswallpapershop.com</Login>
-      <Password>gr70AEM4aoXyV!G0</Password>
+      <Login />
+      <Password />
       <IsActive>true</IsActive>
       <LastTried>0001-01-01T00:00:00</LastTried>
       <LastSuccessed>0001-01-01T00:00:00</LastSuccessed>
@@ -35,9 +37,9 @@
   </Schedule>
   <Brands />
   <BrandsStr />
-  <FtpAddress />
-  <FtpUsername />
-  <FtpPassword />
+  <FtpAddress>efilestorage.com/elizabetivanova_gmail.com/Pinterest</FtpAddress>
+  <FtpUsername>scefiles@efilestorage.com</FtpUsername>
+  <FtpPassword>12345%%54321</FtpPassword>
   <CustomFtpAddress />
   <CustomFtpUsername />
   <CustomFtpPassword />
@@ -47,7 +49,7 @@
   <SkipExistingImages>false</SkipExistingImages>
   <SkipUploadOfExistingImages>false</SkipUploadOfExistingImages>
   <DontOverwriteImagesOnFtp>false</DontOverwriteImagesOnFtp>
-  <UseOurFTP>0</UseOurFTP>
+  <UseOurFTP>1</UseOurFTP>
   <S3Settings>
     <UploadToS3>false</UploadToS3>
     <ExportByBrand>false</ExportByBrand>
@@ -1926,7 +1928,7 @@
   <FtpFileName>Pinterest</FtpFileName>
   <OverwriteFtpFile>false</OverwriteFtpFile>
   <UseProxy>false</UseProxy>
-  <UseFtp>false</UseFtp>
+  <UseFtp>true</UseFtp>
   <UploadResultsToS3>false</UploadResultsToS3>
   <Fields>
     <FieldInfo>
@@ -3753,9 +3755,11 @@
   <ConvertImages>false</ConvertImages>
   <DownloadImages>false</DownloadImages>
   <UploadImagesToFtp>false</UploadImagesToFtp>
-  <SCEAPIKey>pu5kjk2n3djpfmiv0ds2fk</SCEAPIKey>
-  <SCEAPISecret>nuf00dnenotogn5x0knzld</SCEAPISecret>
-  <SCEAccessKey>0JqSlb4UKK0gzrVegy8pKfoIfTcTd76taDPV/XKqTjI=</SCEAccessKey>
+  <CustomImagesPublicPath>http://efilestorage.com/scefiles/elizabetivanova_gmail.com/Pinterest</CustomImagesPublicPath>
+  <ImagesPublicPath>http://efilestorage.com/scefiles/elizabetivanova_gmail.com/Pinterest</ImagesPublicPath>
+  <SCEAPIKey>emztjojru5xsv1lwgfk4v4</SCEAPIKey>
+  <SCEAPISecret>vfbrqr0bt5kot5qusiu32w</SCEAPISecret>
+  <SCEAccessKey>Q7eg4VGvkiIIev3hXpTy/79bwlPOexlg2B6SFJkvcbA=</SCEAccessKey>
   <SCEServerAddress>https://api.shoppingcartelite.com/master/sceapi.asmx</SCEServerAddress>
   <SCEBatchProcess>false</SCEBatchProcess>
   <SCEUploadType>0</SCEUploadType>

@@ -34,7 +34,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
             this.checkEditUpdateScePrice = new DevExpress.XtraEditors.CheckEdit();
-            this.bsSett = new System.Windows.Forms.BindingSource(this.components);
             this.checkEditTurn14Inventory = new DevExpress.XtraEditors.CheckEdit();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -93,12 +92,12 @@
             this.hyperLinkEdit1 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.memoEditHelpGettingToken = new DevExpress.XtraEditors.MemoEdit();
             this.tokenBox = new System.Windows.Forms.TextBox();
+            this.bsSett = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
             this.layoutControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditUpdateScePrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditTurn14Inventory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEditBrandsFilePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditPremierInventory.Properties)).BeginInit();
@@ -140,6 +139,7 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditHelpGettingToken.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -198,11 +198,7 @@
             this.checkEditUpdateScePrice.Properties.Caption = "Update Price in SCE";
             this.checkEditUpdateScePrice.Size = new System.Drawing.Size(210, 19);
             this.checkEditUpdateScePrice.StyleController = this.layoutControl4;
-            this.checkEditUpdateScePrice.TabIndex = 13;
-            // 
-            // bsSett
-            // 
-            this.bsSett.DataSource = typeof(Databox.Libs.RPMoutletInventory.ExtSettings);
+            this.checkEditUpdateScePrice.TabIndex = 12;
             // 
             // checkEditTurn14Inventory
             // 
@@ -212,7 +208,7 @@
             this.checkEditTurn14Inventory.Properties.Caption = "Create Turn14 Inventory";
             this.checkEditTurn14Inventory.Size = new System.Drawing.Size(207, 19);
             this.checkEditTurn14Inventory.StyleController = this.layoutControl4;
-            this.checkEditTurn14Inventory.TabIndex = 14;
+            this.checkEditTurn14Inventory.TabIndex = 13;
             // 
             // textBox8
             // 
@@ -222,7 +218,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.PasswordChar = '*';
             this.textBox8.Size = new System.Drawing.Size(346, 20);
-            this.textBox8.TabIndex = 16;
+            this.textBox8.TabIndex = 15;
             // 
             // textBox7
             // 
@@ -231,7 +227,7 @@
             this.textBox7.Margin = new System.Windows.Forms.Padding(1);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(346, 20);
-            this.textBox7.TabIndex = 15;
+            this.textBox7.TabIndex = 14;
             // 
             // ftpPassword
             // 
@@ -354,7 +350,7 @@
             this.checkEditMeyerInventory.Properties.Caption = "Create Meyer Inventory";
             this.checkEditMeyerInventory.Size = new System.Drawing.Size(298, 19);
             this.checkEditMeyerInventory.StyleController = this.layoutControl4;
-            this.checkEditMeyerInventory.TabIndex = 17;
+            this.checkEditMeyerInventory.TabIndex = 16;
             // 
             // layoutControlGroup4
             // 
@@ -805,6 +801,10 @@
             this.tokenBox.Size = new System.Drawing.Size(546, 128);
             this.tokenBox.TabIndex = 19;
             // 
+            // bsSett
+            // 
+            this.bsSett.DataSource = typeof(Databox.Libs.RPMoutletInventory.ExtSettings);
+            // 
             // ucExtSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,7 +818,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
             this.layoutControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkEditUpdateScePrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditTurn14Inventory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEditBrandsFilePath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditPremierInventory.Properties)).EndInit();
@@ -861,6 +860,7 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditHelpGettingToken.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).EndInit();
             this.ResumeLayout(false);
 
         }

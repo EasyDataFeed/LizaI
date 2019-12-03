@@ -112,6 +112,8 @@
     <Compile Include="DataItems\Sema\EngineJson.cs" />
     <Compile Include="DataItems\Sema\SemaTurn14Images.cs" />
     <Compile Include="DataItems\Sema\TokenSemaJson.cs" />
+    <Compile Include="DataItems\TEST\CreateFile.cs" />
+    <Compile Include="DataItems\TEST\TestJson.cs" />
     <Compile Include="DataItems\TransferInfoItem.cs" />
     <Compile Include="DataItems\Turn14\AllLocationsJson.cs" />
     <Compile Include="DataItems\Turn14\AuthJson.cs" />

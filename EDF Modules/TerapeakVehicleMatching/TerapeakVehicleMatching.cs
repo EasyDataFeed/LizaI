@@ -44,8 +44,7 @@ namespace WheelsScraper
         private List<SceExportItem> ExportItems { get; set; }
         private Dictionary<string, bool> EbayApiIdKeys = new Dictionary<string, bool>()
         {
-            {"concfacm-concfacm-PRD-eea920fd0-7e03e217", false },
-            {"scelopin-scelopin-PRD-6bd604e77-9fe39324", false },
+            {"Shopping-Shopping-PRD-debee2917-03c4335b", false },
         };
 
         public TerapeakVehicleMatching()
@@ -273,7 +272,6 @@ namespace WheelsScraper
             MessagePrinter.PrintMessage($"Downloading SCE export.");
 
             List<string> exportFiles = new List<string>();
-            //exportFiles.Add(@"D:\Leprizoriy\Work SCE\EDF\EDF Modules\TerapeakVehicleMatching\EDF\newSceExport1.csv");
             exportFiles = SceApiHelper.LoadProductsExport(Settings);
 
             MessagePrinter.PrintMessage($"SCE export downloaded");
@@ -319,8 +317,6 @@ namespace WheelsScraper
 
             #endregion
 
-            //TerapeakVehicleMatchingItems = FileHelper.ReadTerapeakFileScraped(@"D:\Leprizoriy\Work SCE\EDF\EDF Modules\TerapeakVehicleMatching\EDF\TerapeakVehicleMatchingFile.csv");
-
             //int counterForTest = 0;
 
             MessagePrinter.PrintMessage($"{TerapeakVehicleMatchingItems.Count} - products scraped from Terapeak");
@@ -344,7 +340,6 @@ namespace WheelsScraper
         public static void CheckServerError(IWebDriver driver)
         {
             var answerHtmlDoc = GetHtmlDocument(driver);
-            //Если "Server Error". подождать и перезагрузить страницу
             var servErrorNode = answerHtmlDoc.DocumentNode.SelectSingleNode("//*[contains(text(),'Server Error')]");
             if (servErrorNode != null)
             {
@@ -383,7 +378,7 @@ namespace WheelsScraper
             js.ExecuteScript("javascript:window.scrollBy(0,3000)");
             Thread.Sleep(PageScrollSleep);
             js.ExecuteScript("javascript:window.scrollBy(0,3000)");
-            //небольшой слип для ожидания скрола
+            
             Thread.Sleep(PageScrollSleep);
 
             CheckCollapsed(driver);
@@ -391,14 +386,6 @@ namespace WheelsScraper
 
         private static HtmlAgilityPack.HtmlDocument GetHtmlDocument(IWebDriver driver)
         {
-            //string PageInfo = string.Empty;
-            //for (var i = 0; i < lines.Length; i += 1)
-            //{
-            //    PageInfo += lines[i];
-            //    // Process line
-            //}
-            //var answerHtml = PageInfo;
-
             var answerHtml = driver.PageSource;
             var answerHtmlDoc = new HtmlAgilityPack.HtmlDocument();
             answerHtml = HttpUtility.HtmlDecode(answerHtml);
@@ -421,8 +408,7 @@ namespace WheelsScraper
 
                 if (collapsedAnswersElement.Displayed)
                     collapsedAnswersElement.Click();
-
-                //подождать загрузки коментариев
+                
                 Thread.Sleep(PageWaitSleep);
             }
             else
@@ -435,13 +421,11 @@ namespace WheelsScraper
 
                     if (viewMoreElement.Displayed)
                         viewMoreElement.Click();
-
-                    //подождать загрузки коментариев
+                    
                     Thread.Sleep(PageWaitSleep);
                 }
                 else
                 {
-                    //ERROR EXCEPTION 
                     string endPageError = "END PAGE ERROR!";
                 }
             }
@@ -466,9 +450,8 @@ namespace WheelsScraper
 
             try
             {
-                using (IWebDriver driver = new ChromeDriver(AppDomain.CurrentDomain.BaseDirectory)) // передаем путь до chromedriver.exe
+                using (IWebDriver driver = new ChromeDriver(AppDomain.CurrentDomain.BaseDirectory))
                 {
-                    //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));                    Thread.Sleep(PageWaitSleep);
                     var productLink = /*"https://sell.terapeak.com/product-research?buyerCountryCodes&categoryId&endDate=1552719599999&fromPrice=100&isAnyCriteria=false&keywords=clutch&listingConditions=&listingTypes=&productId=&sellerCountryCodes&sellerName=&site=motors.ebay.com&startDate=1544947200000&toPrice&transactionSite"; */ extSett.Link;
                     Thread.Sleep(PageWaitSleep);
                     driver.Navigate().GoToUrl(productLink);
@@ -497,12 +480,6 @@ namespace WheelsScraper
                     quoraPass.SendKeys(pass);
                     Thread.Sleep(PageSendKeysSleep);
 
-                    //IWebElement quoraCheck = driver.FindElement(By.XPath("//span[@class = 'checkbox__icon']/svg"));
-                    //if (quoraCheck.Text == " ")
-                    //{
-
-                    //}
-
                     IWebElement quoraButtonClick = driver.FindElement(By.XPath("//button[@class = 'btn btn--primary btn--large btn--fluid' and @type = 'submit']"));
                     Thread.Sleep(PageWaitSleep);
                     quoraButtonClick.Click();
@@ -523,8 +500,7 @@ namespace WheelsScraper
                     {
                         long oldLength = driver.PageSource.Length;
                         bool endPage = false;
-
-                        //скролл на странице с ответами
+                        
                         while (!endPage)
                         {
                             var htmlDoc = GetHtmlDocument(driver);
@@ -603,8 +579,6 @@ namespace WheelsScraper
                                 }
                             }
                             MessagePrinter.PrintMessage($"Processed items - {itemsIds}");
-                            //MessageBox.Show("abc");
-                            //throw new Exception();
 
                             var nextPage = htmlDoc.DocumentNode.SelectSingleNode("//button[@data-test = 'nextButton']/span");
                             if (nextPage != null)
@@ -787,20 +761,6 @@ namespace WheelsScraper
                                 wi.PartNumber = responseItem.Item.SKU;
 
                                 wi.Categories = responseItem.Item.PrimaryCategoryName;
-                                //bool categoryFound = false;
-                                //foreach (string s in extSett.BrandsForScraping)
-                                //{
-                                //    if (wi.Categories.Contains(s))
-                                //    {
-                                //        categoryFound = true;
-                                //    }
-                                //}
-
-                                //if (!categoryFound)
-                                //{
-                                //    MessagePrinter.PrintMessage($"Item [{wi.ItemNumber}] has another category, skipped", ImportanceLevel.Mid);
-                                //    break;
-                                //}
 
                                 if (responseItem.Item.PictureURL != null)
                                     foreach (string pictireUrl in responseItem.Item.PictureURL)
@@ -935,7 +895,6 @@ namespace WheelsScraper
 
                         if (localWares.Any())
                         {
-                            //FileHelper.CreateScrapeFile(5, localWares);
                             var withoutYearsGroup = localWares.GroupBy(x => new
                             {
                                 ((ExtWareInfo)x).PartNumber,
@@ -949,7 +908,6 @@ namespace WheelsScraper
                             foreach (var groupInfo in withoutYearsGroup)
                             {
                                 var orderedGroupInfo = groupInfo.OrderBy(i => i.Year);
-                                //TODO: check if we have some skippedYearInfo
 
                                 ExtWareInfo orderedGroupInfoFirstWare = orderedGroupInfo.First();
 

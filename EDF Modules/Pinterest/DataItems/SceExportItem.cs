@@ -7,7 +7,7 @@ namespace Pinterest.DataItems
 {
     public class SceExportItem
     {
-        private sealed class PartNumberBrandEqualityComparer : IEqualityComparer<SceExportItem>
+        private sealed class ProdIdBrandEqualityComparer : IEqualityComparer<SceExportItem>
         {
             public bool Equals(SceExportItem x, SceExportItem y)
             {
@@ -15,19 +15,19 @@ namespace Pinterest.DataItems
                 if (ReferenceEquals(x, null)) return false;
                 if (ReferenceEquals(y, null)) return false;
                 if (x.GetType() != y.GetType()) return false;
-                return string.Equals(x.PartNumber, y.PartNumber) && string.Equals(x.Brand, y.Brand);
+                return string.Equals(x.ProdId, y.ProdId) && string.Equals(x.Brand, y.Brand);
             }
 
             public int GetHashCode(SceExportItem obj)
             {
                 unchecked
                 {
-                    return ((obj.PartNumber != null ? obj.PartNumber.GetHashCode() : 0) * 397) ^ (obj.Brand != null ? obj.Brand.GetHashCode() : 0);
+                    return ((obj.ProdId != null ? obj.ProdId.GetHashCode() : 0) * 397) ^ (obj.Brand != null ? obj.Brand.GetHashCode() : 0);
                 }
             }
         }
 
-        public static IEqualityComparer<SceExportItem> PartNumberBrandComparer { get; } = new PartNumberBrandEqualityComparer();
+        public static IEqualityComparer<SceExportItem> ProdIdBrandComparer { get; } = new ProdIdBrandEqualityComparer();
 
         public string GeneralImage { get; set; }
         public string SpiderURL { get; set; }
@@ -35,5 +35,9 @@ namespace Pinterest.DataItems
         public string ProductTitle { get; set; }
         public string PartNumber { get; set; }
         public string Brand { get; set; }
+        public string MainCategory { get; set; }
+        public string SubCategory { get; set; }
+        public string ProdId { get; set; }
+        public string Hidden { get; set; }
     }
 }

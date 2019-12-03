@@ -32,3 +32,15 @@ D:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnect
 D:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.csproj.CopyComplete
 D:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.dll
 D:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.pdb
+E:\Leprizoriy\Work SCE\EDF\WheelsScraper 2\WheelsScraper\bin\Debug\PremierConnector.dll.config
+E:\Leprizoriy\Work SCE\EDF\WheelsScraper 2\WheelsScraper\bin\Debug\PremierConnector.dll
+E:\Leprizoriy\Work SCE\EDF\WheelsScraper 2\WheelsScraper\bin\Debug\PremierConnector.pdb
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.csprojAssemblyReference.cache
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.PremierWaitForm.resources
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\Databox.Libs.PremierConnector.ucExtSettings.resources
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.csproj.GenerateResource.cache
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.dll.licenses
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.csproj.CoreCompileInputs.cache
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.csproj.CopyComplete
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.dll
+E:\Leprizoriy\Work SCE\EDF\EDF Modules\PremierConnector\obj\Debug\PremierConnector.pdb

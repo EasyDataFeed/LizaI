@@ -22,7 +22,7 @@
     <apiTokenEB>AgAAAA**AQAAAA**aAAAAA**qMSAWQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wJkoGgCJWKpgudj6x9nY+seQ**XtEBAA**AAMAAA**SJvHcL9KEn7/TZN23Dad9nXtVj0cG7igO9aQiAKTKdtQFLD/gjnnpU7gPrD3duNx9vMDWa+LSbU8YSPG+wKPBBoj40mpYf8kOaL1GcZxl7wJPu2W+YVHbfC6/+Swmpqs6nXGkxlsVw9+oP4GzNHtKjIme+awyc2TZSdanfgrqU+7CaLpPIkyaGLCH8svtlsusdWBR64j0hoZv/IrzpRo5rv+DCVGIvGbuSdNBcTM5CMCADOQeQ93vVFgZVaVcftiEf0r6gsI+vSUg9E6Zw/tYT6GqhH7+ZbEnojA2+zroHyp0+Y3fnxJszPIrsqXw/Fb8yD5q+HEc+uLOhvjQCMWBTIOqjJDSqWqF+EpFPsMZrH0Nnn9Wcko6CWrvRLV8rX54vACAE0AUBpa1mg6yBe4cZv3Bl0fBnc14FoyjQFdHnBOzap75jkBw1FuNpzw/gMEAT4zwPbvSPpjCCraJ6wJLT+5NAdq325aVjTqnjdH9bNKEqfbRlAuTTYa34Kwyd4xL3PoFjK25mh5QN+ed0knBYprQBnKYCNwKKV3R1bHCH2aO0OQLKRYCbFhurP2lqTbHlSA01I8wFqASlCpPd9fHjhl12UcKM7Krg40n99ix5MHK2as5PzQlS+bFUCFe4USt7Vmv1TaQNuBnnNd+wuxVQ7zuIZUvpfFNlx+UKTWlIyb9OO1MOEwkDlx5QeanpBxPTwXKaZIJy5UH6N0V+VHR5jQB61uC7CrmLX2YhFCmxMlcB10ql9T/VnCt5zAtKS0</apiTokenEB>
     <mayerTokenExp>2017-12-07T10:45:45.601-05:00</mayerTokenExp>
     <mayerToken>14d6bd7dbae28c193c10a5136b273daf</mayerToken>
-    <BrandsFilePath />
+    <BrandsFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\RPMoutletInventory\EDF\RPM.Turn14.Premier.Mayers.csv</BrandsFilePath>
     <Turn14InventoryFile>true</Turn14InventoryFile>
     <PremierInventoryFile>true</PremierInventoryFile>
     <MeyerInventoryFile>true</MeyerInventoryFile>
@@ -1998,7 +1998,7 @@
   <ConvertImages>false</ConvertImages>
   <DownloadImages>false</DownloadImages>
   <UploadImagesToFtp>false</UploadImagesToFtp>
-  <CustomImagesPublicPath>http://efilestorage.com/scefiles/Altaresh91_gmail.com/RPMoutletInventory</CustomImagesPublicPath>
+  <CustomImagesPublicPath>http://efilestorage.com/scefiles/elizabetivanova_gmail.com/RPMoutletInventory</CustomImagesPublicPath>
   <ImagesPublicPath>http://efilestorage.com/scefiles/elizabetivanova_gmail.com/RPMoutletInventory</ImagesPublicPath>
   <SCEAPIKey>jgcronvfz141t1fvi1qwtk</SCEAPIKey>
   <SCEAPISecret>yg53fe2umj0hwmker0z1eh</SCEAPISecret>

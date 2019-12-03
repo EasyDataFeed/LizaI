@@ -23,6 +23,7 @@ namespace Databox.Libs.Turn14_EDF
         public string BrandFilePath { get; set; }
         public double PercentageOfCost { get; set; }
         public bool ConsiderMAPPrice { get; set; }
+        public bool OverridePricesWithMapIfExisting { get; set; }
         [XmlIgnore]
         public DateTime DateFrom { get; set; }
         [XmlIgnore]

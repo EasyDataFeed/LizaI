@@ -17,6 +17,7 @@ using Turn14_EDF.DateItems;
 using Turn14_EDF.Helpers;
 using Turn14_EDF.SCEapi;
 using Microsoft.VisualBasic.FileIO;
+using System.Net;
 
 #endregion
 
@@ -112,6 +113,8 @@ namespace WheelsScraper
             string password = HttpUtility.UrlEncode(loginInfo.Password);
 
             string postData = $"username={login}&password={password}";
+            //ServicePointManager.Expect100Continue = true;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             string html = PageRetriever.WriteToServer(loginURL, postData, true);
 
             if (html.Contains("LOGOUT"))
@@ -136,6 +139,7 @@ namespace WheelsScraper
                     return;
                 }
 
+                extSett.TransferInfoItems.Clear();
                 extSett.BrandsAlignmentsItems = new List<BrandsAlignment>();
                 extSett.BrandsAlignmentsItems = FileHelper.ReadBrandsAlignments(extSett.BrandFilePath);
 
@@ -159,7 +163,7 @@ namespace WheelsScraper
                                 ProdTypeSce = sceItem.ProductType,
                                 BrandSce = sceItem.Brand,
                                 PartNumberSce = sceItem.PartNumber,
-                                ManufacturerPartNumberSce = sceItem.ManufacturerPartNumber,
+                                ManufacturerPartNumberSce = sceItem.ManufacturerPartNumber.Replace("@", ""),
                                 BrandTurn14 = brandsAlignment.BrandInTurn14,
                             });
                         }
@@ -179,58 +183,9 @@ namespace WheelsScraper
                 {
                     GetTurn14AddedOrders();
                     MessagePrinter.PrintMessage($"{sceOrders.Length} - Orders in SCE found!");
-                    // 3523
 
                     foreach (var order in sceOrders)
                     {
-
-                        //MessagePrinter.PrintMessage($"Check inventory for order {order.OrderID}");
-
-                        //int counterItems = 0;
-
-                        //foreach (OrderItem orderItem in order.OrderItems)
-                        //{
-                        //    bool flagFound = false;
-                        //    string partInOrder = orderItem.PartNo;
-                        //    foreach (TransferInfoItem transferInfoItem in extSett.TransferInfoItems)
-                        //    {
-                        //        if (orderItem.PartNo == transferInfoItem.PartNumberSce)
-                        //        {
-                        //            orderItem.PartNo = transferInfoItem.PartNumberTurn14;
-
-                        //            if (orderItem.Qty > int.Parse(transferInfoItem.QuantityTurn14))
-                        //            {
-                        //                MessagePrinter.PrintMessage($"for this pn - {transferInfoItem.PartNumberSce} not enough stock on turn14", ImportanceLevel.High);
-                        //                flagFound = true;
-                        //                break;
-                        //            }
-                        //            else
-                        //            {
-                        //                counterItems++;
-                        //                flagFound = true;
-                        //                break;
-                        //            }
-                        //        }
-
-                        //    }
-
-                        //    if (!flagFound)
-                        //    {
-                        //        MessagePrinter.PrintMessage($"{partInOrder} this pn not exist in turn 14", ImportanceLevel.High);
-                        //        continue;
-                        //    }
-                        //}
-
-                        //if (counterItems != order.OrderItems.Length)
-                        //{
-                        //    MessagePrinter.PrintMessage($"for order - {order.OrderID} not enough stock on turn 14", ImportanceLevel.High);
-                        //    continue;
-                        //}
-                        //else
-                        //{
-                        //    MessagePrinter.PrintMessage($"Processing order - {order.OrderID}");
-                        //}
-
                         if (Turn14AddedOrders.Exists(x => x.OrderSceID == order.OrderID && !x.TrackingNoUpdated)) // if order SCE added to Turn14
                         {
                             // process tracking number
@@ -335,7 +290,12 @@ namespace WheelsScraper
 
                                             string manufacturerPartNumber = csv["PartNumber"];
 
-                                            //if (manufacturerPartNumber == "42132")
+                                            if (manufacturerPartNumber == "712100-HW")
+                                            {
+
+                                            }
+
+                                            //if (manufacturerPartNumber.Contains("@"))
                                             //{
 
                                             //}
@@ -395,6 +355,16 @@ namespace WheelsScraper
                                                 //    msrp = webPrice;
 
                                                 jobber = webPrice;
+
+                                                if (extSett.OverridePricesWithMapIfExisting)
+                                                {
+                                                    if (!string.IsNullOrEmpty(mapPrice))
+                                                    {
+                                                        msrp = mapPrice;
+                                                        webPrice = mapPrice;
+                                                        jobber = mapPrice;
+                                                    }
+                                                }
                                             }
 
                                             foreach (TransferInfoItem transferInfoItem in extSett.TransferInfoItems)
@@ -415,8 +385,6 @@ namespace WheelsScraper
                                                     transferInfoItem.Turn14WarehouseEastStock = warehouseEastStock;
                                                     transferInfoItem.Turn14WarehouseCentralStock = warehouseCentralStock;
                                                     transferInfoItem.QuantityTurn14 = stock;
-
-                                                    // transferInfoItem.EbayPrice = webPrice;
                                                 }
                                             }
                                         }
@@ -564,6 +532,8 @@ namespace WheelsScraper
                     List<Shipment> shipments = new List<Shipment>();
 
                     // empty cart
+                    //ServicePointManager.Expect100Continue = true;
+                    //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     PageRetriever.WriteToServer(currentURL, "action=emptyCart", true, true, false);
                     foreach (Shipment shipment in order.Shipments)
                     {
@@ -578,6 +548,8 @@ namespace WheelsScraper
                                 MessagePrinter.PrintMessage(string.Format("Add Part #{0} to cart in Turn14. Please wait...", partNumber));
                                 postData = string.Format("action=addItem&itemname={0}&quantity={1}",
                                     partNumber, item.Qty);
+                                //ServicePointManager.Expect100Continue = true;
+                                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                                 json = PageRetriever.WriteToServer(currentURL, postData, true);
                                 // get cart result
                                 cartResult = jss.Deserialize<CartResult>(json);
@@ -633,6 +605,8 @@ namespace WheelsScraper
                     else
                     {
                         // empty cart
+                        //ServicePointManager.Expect100Continue = true;
+                        //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                         PageRetriever.WriteToServer(currentURL, "action=emptyCart", true, true, false);
                         MessagePrinter.PrintMessage(string.Format("Some products not found for Order SCE #{0} in Turn14!", order.OrderID));
                     }
@@ -689,6 +663,8 @@ namespace WheelsScraper
 
             MessagePrinter.PrintMessage(string.Format("Add Order SCE #{0} to Turn14. Please wait...", order.OrderID));
             // query 1 - get cart page
+            //ServicePointManager.Expect100Continue = true;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             response = PageRetriever.ReadFromServer(string.Format("{0}cart/cart.php", this.Url), true);
             doc = CreateDoc(response);
             var currentTimeStampHidden = doc.DocumentNode.SelectSingleNode("//div[@class='current-time-stamp hidden']");
@@ -722,23 +698,19 @@ namespace WheelsScraper
                 origCountry = tagOrigCountry.Attributes["value"].Value;
             }
 
-            // query 2 - Calculate Shipping
-            //postData = string.Format("contact={0}&company={1}&address_one={2}&address_two={3}" +
-            //  "&zip_code={4}&city={5}&state={6}&state-us={6}&state-ca=&country={7}&phone={8}" +
-            //  "&recipient_email={9}&orig_zip_code={10}&orig_country={11}&orig_pickup={12}" +
-            //  "&quote_id={13}&action=saveAddressGetSplits&current_time_stamp={14}",
-            //  contactName, company, address1, address2, zipCode, city, state, country, phone,
-            //  email, origZip, origCountry, origPickup, quoteId, currentTimeStamp);
-
             postData = string.Format("contact={0}&company={1}&address_one={2}&address_two={3}&zip_code={4}" +
                 "&city={5}&state=&state-us={6}&state-ca=&country={7}&phone={8}&orig_zip_code=&orig_country=" +
                 "&orig_pickup=N&quote_id={13}&action=saveAddressGetSplits&current_time_stamp={14}",
             contactName, company, address1, address2, zipCode, city, state, country, phone, email, origZip, origCountry, origPickup, quoteId, currentTimeStamp);
+            //ServicePointManager.Expect100Continue = true;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             response = PageRetriever.WriteToServer(currentURL, postData, true).Replace("last_update", "lastupdate");
             orderResult = jss.Deserialize<CartResult>(response);
             currentTimeStamp = HttpUtility.UrlEncode(orderResult.LastUpdate.ToString()).Replace(" ", "+");
 
             // query 3 - get shipping options
+            //ServicePointManager.Expect100Continue = true;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             response = PageRetriever.WriteToServer(string.Format("{0}cart/shipping.php", this.Url), postData, true);
             doc = CreateDoc(response);
             HtmlNode tagShippingOption, tagShippingName;
@@ -772,12 +744,16 @@ namespace WheelsScraper
             {
                 // query 4 - Submit Shipping
                 postData = string.Format("current_time_stamp={0}&shipping_o_{1}={1}&action=saveShippingOptions", currentTimeStamp, shippingNum);
+                //ServicePointManager.Expect100Continue = true;
+                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 response = PageRetriever.WriteToServer(currentURL, postData, true).Replace("last_update", "lastupdate");
                 orderResult = jss.Deserialize<CartResult>(response);
                 currentTimeStamp = HttpUtility.UrlEncode(orderResult.LastUpdate.ToString()).Replace(" ", "+");
 
                 // query 5 - Submit Order
                 postData = string.Format("action=submitOrder&notes=&po_number={0}&current_time_stamp={1}", order.OrderID, currentTimeStamp);
+                //ServicePointManager.Expect100Continue = true;
+                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 response = PageRetriever.WriteToServer(currentURL, postData, true);
                 orderResult = jss.Deserialize<CartResult>(response);
 
@@ -789,6 +765,8 @@ namespace WheelsScraper
                 else
                 {
                     MessagePrinter.PrintMessage(string.Format("Order SCE #{0}. {1}", order.OrderID, orderResult.FailedValidationMessage));
+                    //ServicePointManager.Expect100Continue = true;
+                    //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     PageRetriever.WriteToServer(currentURL, "action=emptyCart", true, true, false);
                 }
             }
@@ -846,6 +824,8 @@ namespace WheelsScraper
             MessagePrinter.PrintMessage(string.Format("Search tracking number for Order #{0} in Turn14. Please wait...", orderID));
             string currentURL = string.Format("{0}transactions.php?transactionType=all_orders&sort=&sortType=" +
                 "&rows_per_page=&start={1}&end={1}&search={2}&column=P.O+%23", this.Url, HttpUtility.UrlEncode(date), orderID);
+            //ServicePointManager.Expect100Continue = true;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             string html = PageRetriever.ReadFromServer(currentURL, true);
             var doc = CreateDoc(html);
             var tableOrders = doc.DocumentNode.SelectSingleNode("//table[@class='table  table-bordered table-striped']");

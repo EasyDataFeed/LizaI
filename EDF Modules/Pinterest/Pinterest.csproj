@@ -90,6 +90,7 @@
     <Compile Include="DataItems\PinterestItem.cs" />
     <Compile Include="DataItems\ProfileInfo.cs" />
     <Compile Include="DataItems\SceExportItem.cs" />
+    <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="ExtSettings.cs" />
     <Compile Include="ExtWareInfo.cs" />

@@ -1,1 +1,3 @@
-﻿Some Info about this EDF
+﻿
+
+ver 1.2

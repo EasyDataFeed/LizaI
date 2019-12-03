@@ -5,9 +5,10 @@
     <OrdersSync>false</OrdersSync>
     <InventorySync>true</InventorySync>
     <PriceSync>false</PriceSync>
-    <BrandFilePath>D:\Leprizoriy\Work SCE\EDF\EDF Modules\Turn14_EDF\EDF\t14_brands.csv</BrandFilePath>
+    <BrandFilePath />
     <PercentageOfCost>0</PercentageOfCost>
     <ConsiderMAPPrice>false</ConsiderMAPPrice>
+    <OverridePricesWithMapIfExisting>false</OverridePricesWithMapIfExisting>
   </SpecialSettings>
   <Name>Turn14_EDF</Name>
   <MaxThreads>1</MaxThreads>
@@ -16,8 +17,8 @@
   <MaxImageUploadThreads>0</MaxImageUploadThreads>
   <Logins>
     <LoginInfo>
-      <Login>Shopping_Cart_Elite</Login>
-      <Password>tetianazavadskaya</Password>
+      <Login />
+      <Password />
       <IsActive>true</IsActive>
       <LastTried>0001-01-01T00:00:00</LastTried>
       <LastSuccessed>0001-01-01T00:00:00</LastSuccessed>
@@ -3755,9 +3756,9 @@
   <ConvertImages>false</ConvertImages>
   <DownloadImages>false</DownloadImages>
   <UploadImagesToFtp>false</UploadImagesToFtp>
-  <SCEAPIKey>jwen5yyctdxxmv0kfexsmq</SCEAPIKey>
-  <SCEAPISecret>unaw0wudmx3rv2wowe4qmg</SCEAPISecret>
-  <SCEAccessKey>i2k/di8GEUtBLoHmCte0VA==</SCEAccessKey>
+  <SCEAPIKey />
+  <SCEAPISecret />
+  <SCEAccessKey />
   <SCEServerAddress>https://api.shoppingcartelite.com/master/sceapi.asmx</SCEServerAddress>
   <SCEBatchProcess>false</SCEBatchProcess>
   <SCEUploadType>0</SCEUploadType>

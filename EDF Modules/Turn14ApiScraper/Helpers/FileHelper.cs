@@ -9,6 +9,7 @@ using System.Text;
 using Turn14ApiScraper.DataItems;
 using Turn14ApiScraper.DataItems.SCE;
 using Turn14ApiScraper.DataItems.Sema;
+using Turn14ApiScraper.DataItems.TEST;
 
 #endregion
 
@@ -318,6 +319,36 @@ namespace Turn14ApiScraper.Helpers
                 foreach (InventoryUpdateInfo item in priceUpdateItems)
                 {
                     string[] productArr = new string[5] { item.Brand, item.PartNumber, item.ManufacturerPartNumber, item.Stock.ToString(), item.ManufacturerStock.ToString() };
+                    for (int i = 0; i < productArr.Length; i++)
+                        if (!String.IsNullOrEmpty(productArr[i]) && !String.IsNullOrWhiteSpace(productArr[i]))
+                            productArr[i] = StringToCSVCell(productArr[i]);
+
+                    string product = String.Join(Separator, productArr);
+                    sb.AppendLine(product);
+                }
+
+                File.WriteAllText(filePath, sb.ToString());
+
+                return filePath;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static string CreateFile(string filePath, TestJson priceUpdateItems)
+        {
+            try
+            {
+                string headers = "baseSKU,benchmarkSKU,gender,brand,collection,subCollection,image1,image2,image3,width,metalType,ringSize,cost,itemTitle,description,totalDiamondWeight,stoneSetting,totalDiamondCount,diamondColor,diamondClarity,diamondShape";
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(headers);
+
+                foreach (Products item in priceUpdateItems.products)
+                {
+                    string[] productArr = new string[21] { item.baseSKU, item.benchmarkSKU, item.gender, item.brand, item.collection, item.subCollection, item.image1, item.image2, item.image3, item.width.ToString(), item.metalType,
+                        item.ringSize.ToString(), item.cost.ToString(), item.itemTitle, item.description, item.totalDiamondWeight.ToString(), item.stoneSetting, item.totalDiamondCount.ToString(), item.diamondColor, item.diamondClarity, item.diamondShape };
                     for (int i = 0; i < productArr.Length; i++)
                         if (!String.IsNullOrEmpty(productArr[i]) && !String.IsNullOrWhiteSpace(productArr[i]))
                             productArr[i] = StringToCSVCell(productArr[i]);
