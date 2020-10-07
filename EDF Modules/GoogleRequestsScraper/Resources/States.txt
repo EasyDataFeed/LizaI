@@ -1,0 +1,57 @@
+﻿State	State Code
+New York	NY
+Maryland	MD
+Georgia	GA
+Maine	ME
+Texas	TX
+Louisiana	LA
+North Dakota	ND
+Idaho	ID
+Massachusetts	MA
+Nevada	NV
+West Virginia	WV
+Wyoming	WY
+South Carolina	SC
+Ohio	OH
+New Hampshire	NH
+Colorado	CO
+Iowa	IA
+Delaware	DE
+Kentucky	KY
+Pennsylvania	PA
+Connecticut	CT
+Montana	MT
+Hawaii	HI
+Indiana	IN
+Mississippi	MS
+Missouri	MO
+Alaska	AK
+Michigan	MI
+Nebraska	NE
+Arkansas	AR
+Wisconsin	WI
+Alabama	AL
+Vermont	VT
+Tennessee	TN
+Oklahoma	OK
+Washington	WA
+Arizona	AZ
+South Dakota	SD
+Rhode Island	RI
+North Carolina	NC
+Virginia	VA
+California	CA
+Oregon	OR
+Utah	UT
+New Mexico	NM
+Illinois	IL
+Minnesota	MN
+Florida	FL
+Kansas	KS
+New Jersey	NJ
+District of Columbia	DC
+American Samoa	AS
+Guam	GU
+Northern Mariana Islands	MP
+Puerto Rico	PR
+U.S. Virgin Islands	VI

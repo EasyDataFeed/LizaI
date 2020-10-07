@@ -1,0 +1,183 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GoogleRequestsScraper.Helpers
+{
+    public class LengthSecret
+    {
+        public static string CheckLengthSecret(int length)
+        {
+            switch (length)
+            {
+                case 4:
+                    return "E";
+                case 5:
+                    return "F";
+                case 6:
+                    return "G";
+                case 7:
+                    return "H";
+                case 8:
+                    return "I";
+                case 9:
+                    return "j";
+                case 10:
+                    return "K";
+                case 11:
+                    return "L";
+                case 12:
+                    return "M";
+                case 13:
+                    return "N";
+                case 14:
+                    return "0";
+                case 15:
+                    return "P";
+                case 16:
+                    return "Q";
+                case 17:
+                    return "R";
+                case 18:
+                    return "S";
+                case 19:
+                    return "T";
+                case 20:
+                    return "U";
+                case 21:
+                    return "V";
+                case 22:
+                    return "W";
+                case 23:
+                    return "X";
+                case 24:
+                    return "Y";
+                case 25:
+                    return "Z";
+                case 26:
+                    return "a";
+                case 27:
+                    return "b";
+                case 28:
+                    return "c";
+                case 29:
+                    return "d";
+                case 30:
+                    return "e";
+                case 31:
+                    return "f";
+                case 32:
+                    return "g";
+                case 33:
+                    return "h";
+                case 34:
+                    return "i";
+                case 35:
+                    return "j";
+                case 36:
+                    return "k";
+                case 37:
+                    return "l";
+                case 38:
+                    return "m";
+                case 39:
+                    return "n";
+                case 40:
+                    return "o";
+                case 41:
+                    return "p";
+                case 42:
+                    return "q";
+                case 43:
+                    return "r";
+                case 44:
+                    return "s";
+                case 45:
+                    return "t";
+                case 46:
+                    return "u";
+                case 47:
+                    return "v";
+                case 48:
+                    return "w";
+                case 49:
+                    return "x";
+                case 50:
+                    return "y";
+                case 51:
+                    return "z";
+                case 52:
+                    return "0";
+                case 53:
+                    return "1";
+                case 54:
+                    return "2";
+                case 55:
+                    return "3";
+                case 56:
+                    return "4";
+                case 57:
+                    return "5";
+                case 58:
+                    return "6";
+                case 59:
+                    return "7";
+                case 60:
+                    return "8";
+                case 61:
+                    return "9";
+                case 62:
+                    return "-";
+                case 63:
+                    return "";
+                case 64:
+                    return "A";
+                case 65:
+                    return "B";
+                case 66:
+                    return "C";
+                case 67:
+                    return "D";
+                case 68:
+                    return "E";
+                case 69:
+                    return "F";
+                case 70:
+                    return "G";
+                case 71:
+                    return "H";
+                case 72:
+                    return "I";
+                case 73:
+                    return "J";
+                case 74:
+                    return "K";
+                case 75:
+                    return "L";
+                case 76:
+                    return "M";
+                case 77:
+                    return "N";
+                case 78:
+                    return "O";
+                case 79:
+                    return "P";
+                case 80:
+                    return "Q";
+                case 81:
+                    return "R";
+                case 82:
+                    return "S";
+                case 83:
+                    return "T";
+                case 89:
+                    return "L";
+                
+                default:
+                    return string.Empty;
+            }
+        }
+    }
+}
