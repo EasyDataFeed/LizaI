@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GoogleRequestsScraper.DataItems;
+using GoogleRequestsScraper.Enums;
 
 namespace Databox.Libs.GoogleRequestsScraper
 {
@@ -21,5 +22,6 @@ namespace Databox.Libs.GoogleRequestsScraper
         public List<GoogleDocItem> GoogleDocItems { get; set; }
         public bool Desktop { get; set; }
         public bool Mobile { get; set; }
+        public ScanMethod ScanMethod { get; set; }
     }
 }

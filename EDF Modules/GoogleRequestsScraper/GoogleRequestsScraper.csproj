@@ -113,6 +113,7 @@
     <Compile Include="DataItems\GoogleJsonItem.cs" />
     <Compile Include="DataItems\GoogleScrapedItem.cs" />
     <Compile Include="DataItems\StatesDataItem.cs" />
+    <Compile Include="Enums\ScanMethod.cs" />
     <Compile Include="DataItems\UuleDataItem.cs" />
     <Compile Include="Enums\DeviceType.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />

@@ -15,7 +15,7 @@ namespace GoogleRequestsScraper.DataItems
         public Pagination pagination { get; set; }
         public Related[] related { get; set; }
         public People_Also_Ask[] people_also_ask { get; set; }
-        public Top_Ads[] top_ads { get; set; }
+        public List<Top_Ads> top_ads { get; set; }
     }
 
     public class General
