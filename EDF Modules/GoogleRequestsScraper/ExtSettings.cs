@@ -23,5 +23,6 @@ namespace Databox.Libs.GoogleRequestsScraper
         public bool Desktop { get; set; }
         public bool Mobile { get; set; }
         public ScanMethod ScanMethod { get; set; }
+        public bool DumpPages { get; set; }
     }
 }

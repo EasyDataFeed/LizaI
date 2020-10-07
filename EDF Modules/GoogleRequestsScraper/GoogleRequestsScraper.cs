@@ -304,6 +304,12 @@ namespace WheelsScraper
                             client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36");
 
                         var resp = client.DownloadString(urlForScrape);
+                        if (extSett.DumpPages)
+                        {
+                            var fn = $"{keyword}_{Guid.NewGuid()}.html";
+                            var f = Path.Combine(Path.GetDirectoryName(extSett.DomainsFilePath), fn);
+                            File.WriteAllText(f, resp);
+                        }
 
                         var googleJsonItem = ParseSearchHtmlResponse(resp);
                         if (googleJsonItem != null)

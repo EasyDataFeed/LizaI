@@ -55,6 +55,8 @@
             this.cbeScanMethod = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bsSett = new System.Windows.Forms.BindingSource(this.components);
+            this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditLuminatiLogin.Properties)).BeginInit();
@@ -80,10 +82,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbeScanMethod.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSett)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.checkEdit3);
             this.layoutControl1.Controls.Add(this.cbeScanMethod);
             this.layoutControl1.Controls.Add(this.textBoxKeywordsForScrape);
             this.layoutControl1.Controls.Add(this.textEditLuminatiLogin);
@@ -106,11 +111,11 @@
             // 
             // textBoxKeywordsForScrape
             // 
-            this.textBoxKeywordsForScrape.Location = new System.Drawing.Point(177, 310);
+            this.textBoxKeywordsForScrape.Location = new System.Drawing.Point(177, 339);
             this.textBoxKeywordsForScrape.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxKeywordsForScrape.Multiline = true;
             this.textBoxKeywordsForScrape.Name = "textBoxKeywordsForScrape";
-            this.textBoxKeywordsForScrape.Size = new System.Drawing.Size(451, 391);
+            this.textBoxKeywordsForScrape.Size = new System.Drawing.Size(451, 362);
             this.textBoxKeywordsForScrape.TabIndex = 6;
             this.textBoxKeywordsForScrape.TextChanged += new System.EventHandler(this.textBoxKeywordsForScrape_TextChanged);
             // 
@@ -186,22 +191,22 @@
             // checkEdit1
             // 
             this.checkEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bsSett, "Desktop", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkEdit1.Location = new System.Drawing.Point(177, 278);
+            this.checkEdit1.Location = new System.Drawing.Point(177, 307);
             this.checkEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "";
-            this.checkEdit1.Size = new System.Drawing.Size(412, 19);
+            this.checkEdit1.Size = new System.Drawing.Size(122, 19);
             this.checkEdit1.StyleController = this.layoutControl1;
             this.checkEdit1.TabIndex = 12;
             // 
             // checkEdit2
             // 
             this.checkEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bsSett, "Mobile", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkEdit2.Location = new System.Drawing.Point(756, 278);
+            this.checkEdit2.Location = new System.Drawing.Point(466, 307);
             this.checkEdit2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "";
-            this.checkEdit2.Size = new System.Drawing.Size(122, 19);
+            this.checkEdit2.Size = new System.Drawing.Size(412, 19);
             this.checkEdit2.StyleController = this.layoutControl1;
             this.checkEdit2.TabIndex = 13;
             // 
@@ -235,7 +240,8 @@
             this.layoutControlItem6,
             this.layoutControlItem9,
             this.layoutControlItem10,
-            this.layoutControlItem11});
+            this.layoutControlItem11,
+            this.layoutControlItem12});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1188, 721);
@@ -264,19 +270,19 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.textBoxKeywordsForScrape;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 290);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 319);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem3.Size = new System.Drawing.Size(618, 401);
+            this.layoutControlItem3.Size = new System.Drawing.Size(618, 372);
             this.layoutControlItem3.Text = "Keywords For Scrape:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(154, 19);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(618, 290);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(618, 319);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(540, 401);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(540, 372);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
@@ -322,20 +328,20 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.checkEdit1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 258);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 287);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem6.Size = new System.Drawing.Size(579, 32);
+            this.layoutControlItem6.Size = new System.Drawing.Size(289, 32);
             this.layoutControlItem6.Text = "Scrape Desktop:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(154, 19);
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.checkEdit2;
-            this.layoutControlItem9.Location = new System.Drawing.Point(579, 258);
+            this.layoutControlItem9.Location = new System.Drawing.Point(289, 287);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem9.Size = new System.Drawing.Size(289, 32);
+            this.layoutControlItem9.Size = new System.Drawing.Size(579, 32);
             this.layoutControlItem9.Text = "Scrape Mobile:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(154, 19);
             // 
@@ -352,7 +358,7 @@
             // cbeScanMethod
             // 
             this.cbeScanMethod.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bsSett, "ScanMethod", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.cbeScanMethod.Location = new System.Drawing.Point(1043, 276);
+            this.cbeScanMethod.Location = new System.Drawing.Point(1043, 305);
             this.cbeScanMethod.Name = "cbeScanMethod";
             this.cbeScanMethod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -364,7 +370,7 @@
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.cbeScanMethod;
-            this.layoutControlItem11.Location = new System.Drawing.Point(868, 258);
+            this.layoutControlItem11.Location = new System.Drawing.Point(868, 287);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(290, 32);
             this.layoutControlItem11.Text = "Scan Method:";
@@ -373,6 +379,25 @@
             // bsSett
             // 
             this.bsSett.DataSource = typeof(Databox.Libs.GoogleRequestsScraper.ExtSettings);
+            // 
+            // checkEdit3
+            // 
+            this.checkEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bsSett, "DumpPages", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkEdit3.Location = new System.Drawing.Point(18, 276);
+            this.checkEdit3.Name = "checkEdit3";
+            this.checkEdit3.Properties.Caption = "Dump pages";
+            this.checkEdit3.Size = new System.Drawing.Size(1152, 23);
+            this.checkEdit3.StyleController = this.layoutControl1;
+            this.checkEdit3.TabIndex = 16;
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.checkEdit3;
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 258);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(1158, 29);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem12.TextVisible = false;
             // 
             // ucExtSettings
             // 
@@ -408,6 +433,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbeScanMethod.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsSett)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -440,5 +467,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraEditors.ComboBoxEdit cbeScanMethod;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraEditors.CheckEdit checkEdit3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
     }
 }
