@@ -172,7 +172,7 @@ namespace WheelsScraper
             List<GeotargetsDataItem> geotargetsDataItems = new List<GeotargetsDataItem>();
             if (!string.IsNullOrEmpty(extSett.GeotargetsFilePath))
                 geotargetsDataItems.AddRange(FileHelper.ReadGeotargetsFile(extSett.GeotargetsFilePath));
-            
+
             if (!string.IsNullOrEmpty(extSett.DomainsFilePath))
                 Domains.AddRange(FileHelper.ReadDomainsFile(extSett.DomainsFilePath));
 
@@ -205,12 +205,22 @@ namespace WheelsScraper
                         break;
                     lock (this)
                     {
-                        lstProcessQueue.Add(new ProcessQueueItem()
-                        {
-                            Name = keyword,
-                            ItemType = 20,
-                            Item = uule
-                        });
+                        if (extSett.Mobile)
+                            lstProcessQueue.Add(new ExtProcessQueueItem
+                            {
+                                Name = keyword,
+                                ItemType = 20,
+                                Item = uule,
+                                DeviceType = DeviceType.Mobile
+                            });
+                        if (extSett.Desktop)
+                            lstProcessQueue.Add(new ExtProcessQueueItem
+                            {
+                                Name = keyword,
+                                ItemType = 20,
+                                Item = uule,
+                                DeviceType = DeviceType.Desktop
+                            });
                     }
                 }
             }
@@ -280,8 +290,12 @@ namespace WheelsScraper
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    using (var client = new WebClient())
+                    using (var client = new MyWebClient(TimeSpan.FromSeconds(10)))
                     {
+                        //var client = new PageRetriever();
+                        //client.Proxies = new List<ProxyInfo> { new ProxyInfo { Address = proxyInfo.Address, Login = proxyInfo.Login, Password = proxyInfo.Password } };
+
+
                         client.Proxy = new WebProxy(proxyInfo.Address);
                         if (!string.IsNullOrEmpty(proxyInfo.Login) && !string.IsNullOrEmpty(proxyInfo.Password))
                             client.Proxy.Credentials = new NetworkCredential()
@@ -300,10 +314,13 @@ namespace WheelsScraper
 
                         if (deviceType == DeviceType.Mobile)
                             client.Headers.Add("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53");
+                            //client.AfterSetHeaders += (x, y) => x.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53";
                         else
                             client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36");
+                            //client.AfterSetHeaders += (x, y) => x.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36";
 
                         var resp = client.DownloadString(urlForScrape);
+                        //var resp = client.ReadFromServer(urlForScrape);
                         if (extSett.DumpPages)
                         {
                             var fn = $"{keyword}_{Guid.NewGuid()}.html";
@@ -647,6 +664,7 @@ namespace WheelsScraper
                     AddWareInfo(wi);
                     OnItemLoaded(wi);
                 }
+                MessagePrinter.PrintMessage($"Received {searchResult.Count} results for {keyword} @{stateName}");
             }
             else
             {
@@ -665,17 +683,20 @@ namespace WheelsScraper
                 AddWareInfo(wi);
                 OnItemLoaded(wi);
 
-                var msg = $"No ADS for [{keyword}]" + uule != null ? $", uule [{uule}]" : "" + $" found.Device[{deviceType}]";
+                var msg = $"No ADS for [{keyword}]" + (uule != null ? $", uule [{uule}] ({stateName})" : "") + $" found.Device[{deviceType}]";
                 MessagePrinter.PrintMessage(msg, ImportanceLevel.Mid);
             }
         }
 
         protected void ProcessUuleByKeyword(ProcessQueueItem pqi)
         {
-            if (extSett.Mobile)
-                ProcessKeywordSearchResult(pqi, DeviceType.Mobile);
-            if (extSett.Desktop)
-                ProcessKeywordSearchResult(pqi, DeviceType.Desktop);
+            var extPqi = (ExtProcessQueueItem)pqi;
+            ProcessKeywordSearchResult(pqi, extPqi.DeviceType);
+            pqi.Processed = true;
+            //if (extSett.Mobile)
+            //    ProcessKeywordSearchResult(pqi, DeviceType.Mobile);
+            //if (extSett.Desktop)
+            //    ProcessKeywordSearchResult(pqi, DeviceType.Desktop);
         }
 
 

@@ -54,9 +54,9 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.cbeScanMethod = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bsSett = new System.Windows.Forms.BindingSource(this.components);
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bsSett = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditLuminatiLogin.Properties)).BeginInit();
@@ -81,9 +81,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeScanMethod.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -215,7 +215,7 @@
             this.buttonEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bsSett, "DomainsFilePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.buttonEdit2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsSett, "DomainsFilePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.buttonEdit2.Location = new System.Drawing.Point(177, 242);
-            this.buttonEdit2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonEdit2.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.buttonEdit2.Name = "buttonEdit2";
             this.buttonEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -376,10 +376,6 @@
             this.layoutControlItem11.Text = "Scan Method:";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(154, 19);
             // 
-            // bsSett
-            // 
-            this.bsSett.DataSource = typeof(Databox.Libs.GoogleRequestsScraper.ExtSettings);
-            // 
             // checkEdit3
             // 
             this.checkEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bsSett, "DumpPages", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -398,6 +394,10 @@
             this.layoutControlItem12.Size = new System.Drawing.Size(1158, 29);
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
+            // 
+            // bsSett
+            // 
+            this.bsSett.DataSource = typeof(Databox.Libs.GoogleRequestsScraper.ExtSettings);
             // 
             // ucExtSettings
             // 
@@ -432,9 +432,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeScanMethod.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSett)).EndInit();
             this.ResumeLayout(false);
 
         }

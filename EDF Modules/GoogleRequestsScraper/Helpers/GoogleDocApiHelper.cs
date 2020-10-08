@@ -135,6 +135,7 @@ namespace GoogleRequestsScraper.Helpers
             catch (Exception e)
             {
                 scraper.MessagePrinter.PrintMessage($"Error with uploading to Google doc. {e.Message}", ImportanceLevel.High);
+                scraper.Log.Error(e);
             }
 
             if (valuesToUpload.Values.Count > 0)
