@@ -68,6 +68,7 @@ namespace Databox.Libs.GoogleRequestsScraper
                     textBoxKeywordsForScrape.AppendText(item + Environment.NewLine);
                 }
             }
+            cbeScanMethod.Properties.Items.AddRange(typeof(global::GoogleRequestsScraper.Enums.ScanMethod).GetEnumValues());
         }
 
         private void buttonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

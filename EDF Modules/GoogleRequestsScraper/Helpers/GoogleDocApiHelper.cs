@@ -121,8 +121,20 @@ namespace GoogleRequestsScraper.Helpers
                 rangeToStart = "A1:H";
                 values = GetSpreadSheet(settings, rangeToStart);
 
+                string link = settings.GoogleSheetsLink;
+                var linkStr = link.Split('/');
+                var key = linkStr.Length > 0 ? linkStr[5] : string.Empty;
+
+                SheetsService service = GetGoogleService();
+                String spreadsheetId = key;
+
+                SpreadsheetsResource.ValuesResource.ClearRequest clear =
+                    service.Spreadsheets.Values.Clear(null, spreadsheetId, $"A2:H");
+                ClearValuesResponse result = clear.Execute();
+
                 headers = GetSpreadSheet(settings, rangeHeaders);
-                range = $"A{values.Values.Count + 1}:H{(values.Values.Count + 1) + googleScrapedItems.Count}";
+                //range = $"A{values.Values.Count + 1}:H{(values.Values.Count + 1) + googleScrapedItems.Count}";
+                range = $"A2:H";
 
                 int rowIndex = 0;
                 foreach (GoogleScrapedItem item in googleScrapedItems)
@@ -135,6 +147,7 @@ namespace GoogleRequestsScraper.Helpers
             catch (Exception e)
             {
                 scraper.MessagePrinter.PrintMessage($"Error with uploading to Google doc. {e.Message}", ImportanceLevel.High);
+                scraper.Log.Error(e);
             }
 
             if (valuesToUpload.Values.Count > 0)
