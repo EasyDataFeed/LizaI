@@ -186,7 +186,7 @@ namespace GoogleRequestsScraper.Helpers
         public static string CreateGoogleScrapedItemsFile(string filePath, List<GoogleScrapedItem> items)
         {
             string headers =
-                $"keyword,domain,position,state,device,time,placement";
+                $"keyword,domain,position,state,device,time,placement,dump page id";
 
             using (StreamWriter writer = new StreamWriter(filePath))
             {
@@ -196,10 +196,10 @@ namespace GoogleRequestsScraper.Helpers
                 {
                     try
                     {
-                        string[] productArr = new string[7]
+                        string[] productArr = new string[8]
                         {
                             item.Keyword, item.Domain, item.Position, item.State, item.Device,
-                            item.Time, item.Placement
+                            item.Time, item.Placement, item.DumpPageId
                         };
                         for (int i = 0; i < productArr.Length; i++)
                             if (!String.IsNullOrEmpty(productArr[i]) && !String.IsNullOrWhiteSpace(productArr[i]))

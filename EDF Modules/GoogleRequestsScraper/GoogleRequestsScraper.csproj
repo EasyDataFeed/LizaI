@@ -86,15 +86,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\WheelsScraper 2\Libs\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -102,9 +106,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web" />
-    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataItems\DomainsDataItem.cs" />
@@ -112,24 +113,26 @@
     <Compile Include="DataItems\GoogleDocItem.cs" />
     <Compile Include="DataItems\GoogleJsonItem.cs" />
     <Compile Include="DataItems\GoogleScrapedItem.cs" />
+    <Compile Include="DataItems\MySql\GoogleItem.cs" />
     <Compile Include="DataItems\StatesDataItem.cs" />
     <Compile Include="DataItems\UuleDataItem.cs" />
     <Compile Include="Enums\DeviceType.cs" />
-	<Compile Include="Enums\ScanMethod.cs" />
+    <Compile Include="Enums\ScanMethod.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-	<Compile Include="ExtProcessQueueItem.cs" />
+    <Compile Include="ExtProcessQueueItem.cs" />
     <Compile Include="ExtSettings.cs" />
     <Compile Include="ExtWareInfo.cs" />
     <Compile Include="GoogleRequestsScraper.cs" />
+    <None Include="app.config" />
     <None Include="EDF\GoogleRequestsScraper.edf" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\GoogleDocApiHelper.cs" />
     <Compile Include="Helpers\LengthSecret.cs" />
+    <Compile Include="Helpers\MySql\ApplicationContext.cs" />
     <Compile Include="Helpers\SeleniumHelper.cs" />
-	<Compile Include="MyWebClient.cs">
+    <Compile Include="MyWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
-
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmbededLibs.Designer.cs">
       <AutoGen>True</AutoGen>

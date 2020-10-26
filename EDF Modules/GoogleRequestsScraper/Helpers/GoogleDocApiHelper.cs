@@ -108,7 +108,7 @@ namespace GoogleRequestsScraper.Helpers
         public static void UploadToGoogleDoc(ExtSettings settings, List<GoogleScrapedItem> googleScrapedItems, BaseScraper scraper)
         {
             String rangeToStart = string.Empty;
-            String rangeHeaders = "A1:H1";
+            String rangeHeaders = "A1:I1";
             String range = string.Empty;
 
             ValueRange valuesToUpload = new ValueRange();
@@ -118,7 +118,7 @@ namespace GoogleRequestsScraper.Helpers
                 ValueRange values = new ValueRange();
                 ValueRange headers = new ValueRange();
 
-                rangeToStart = "A1:H";
+                rangeToStart = "A1:I";
                 values = GetSpreadSheet(settings, rangeToStart);
 
                 string link = settings.GoogleSheetsLink;
@@ -129,12 +129,12 @@ namespace GoogleRequestsScraper.Helpers
                 String spreadsheetId = key;
 
                 SpreadsheetsResource.ValuesResource.ClearRequest clear =
-                    service.Spreadsheets.Values.Clear(null, spreadsheetId, $"A2:H");
+                    service.Spreadsheets.Values.Clear(null, spreadsheetId, $"A2:I");
                 ClearValuesResponse result = clear.Execute();
 
                 headers = GetSpreadSheet(settings, rangeHeaders);
                 //range = $"A{values.Values.Count + 1}:H{(values.Values.Count + 1) + googleScrapedItems.Count}";
-                range = $"A2:H";
+                range = $"A2:I";
 
                 int rowIndex = 0;
                 foreach (GoogleScrapedItem item in googleScrapedItems)
@@ -172,6 +172,7 @@ namespace GoogleRequestsScraper.Helpers
             row[headers.Values[0].IndexOf("time")] = item.Time;
             row[headers.Values[0].IndexOf("position")] = item.Position;
             row[headers.Values[0].IndexOf("company name")] = item.CompanyName;
+            row[headers.Values[0].IndexOf("dump page id")] = item.DumpPageId;
 
             return row;
         }

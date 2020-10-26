@@ -19,6 +19,8 @@ using GoogleRequestsScraper.Enums;
 using GoogleRequestsScraper.Extensions;
 using GoogleRequestsScraper.Helpers;
 using System.Text.RegularExpressions;
+using GoogleRequestsScraper.DataItems.MySql;
+using GoogleRequestsScraper.Helpers.MySql;
 
 namespace WheelsScraper
 {
@@ -58,7 +60,9 @@ namespace WheelsScraper
                     State = ((ExtWareInfo)i).State,
                     Keyword = ((ExtWareInfo)i).Keyword,
                     Position = ((ExtWareInfo)i).Position,
-                    CompanyName = ((ExtWareInfo)i).CompanyName
+                    CompanyName = ((ExtWareInfo)i).CompanyName,
+                    DumpPageId = ((ExtWareInfo)i).DumpPageId
+
                 }));
 
                 if (googleScrapedItems.Any())
@@ -144,6 +148,8 @@ namespace WheelsScraper
 
         protected override void RealStartProcess()
         {
+            //CheckConnection();
+
             states = FileHelper.FillCountryStateZip();
             Uules.Clear();
             Wares.Clear();
@@ -228,6 +234,56 @@ namespace WheelsScraper
             StartOrPushPropertiesThread();
         }
 
+        //private void CheckConnection()
+        //{
+        //    using (ApplicationContext db = new ApplicationContext())
+        //    {
+        //        var items = db.GoogleItems.ToList();
+        //    }
+        //}
+
+        //private void CreateDB()
+        //{
+        //    try
+        //    {
+        //        using (ApplicationContext db = new ApplicationContext())
+        //        {
+        //            var items = db.GoogleItems.ToList();
+        //            items.Clear();
+
+        //            items.AddRange(Wares.Select(i => new GoogleItem()
+        //            {
+        //                Device = ((ExtWareInfo)i).Device,
+        //                Placement = ((ExtWareInfo)i).Placement,
+        //                Domain = ((ExtWareInfo)i).Domain,
+        //                Time = ((ExtWareInfo)i).Time,
+        //                State = ((ExtWareInfo)i).State,
+        //                Keyword = ((ExtWareInfo)i).Keyword,
+        //                Position = ((ExtWareInfo)i).Position,
+        //                CompanyName = ((ExtWareInfo)i).CompanyName
+        //            }));
+
+        //            if (items.Any())
+        //            {
+        //                foreach (var mySqlDataItem in items)
+        //                {
+        //                    db.GoogleItems.Add(mySqlDataItem);
+        //                }
+
+        //                db.SaveChanges();
+        //            }
+        //            else
+        //            {
+        //                MessagePrinter.PrintMessage($"Nothing data scraped", ImportanceLevel.Mid);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessagePrinter.PrintMessage($"Nothing data scraped", ImportanceLevel.Mid);
+        //    }
+        //}
+
         private GoogleJsonItem ParseSearchHtmlResponse(string rawHtml)
         {
             var res = new GoogleJsonItem { general = new General() };
@@ -263,7 +319,7 @@ namespace WheelsScraper
                     });
                     rank++;
                 }
-            }          
+            }
 
             return res;
         }
@@ -277,7 +333,7 @@ namespace WheelsScraper
             return googleJsonItem;
         }
 
-        private List<GoogleScrapedItem> ScrapeGoogleByKeywordRaw(string uule, string keyword, DeviceType deviceType)
+        private List<GoogleScrapedItem> ScrapeGoogleByKeywordRaw(UuleDataItem uule, string keyword, DeviceType deviceType)
         {
             var proxyInfo = new
             {
@@ -306,26 +362,37 @@ namespace WheelsScraper
 
                         string urlForScrape = string.Empty;
 
-
-                        if (!string.IsNullOrEmpty(uule))
-                            urlForScrape = $"http://www.google.com/search?q={keyword}&uule={uule}";
+                        if (uule != null && !string.IsNullOrEmpty(uule.Uule))
+                            urlForScrape = $"http://www.google.com/search?q={keyword}&uule={uule.Uule}";
                         else
                             urlForScrape = $"http://www.google.com/search?q={keyword}";
 
                         if (deviceType == DeviceType.Mobile)
                             client.Headers.Add("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53");
-                            //client.AfterSetHeaders += (x, y) => x.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53";
+                        //client.AfterSetHeaders += (x, y) => x.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53";
                         else
                             client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36");
-                            //client.AfterSetHeaders += (x, y) => x.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36";
+                        //client.AfterSetHeaders += (x, y) => x.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36";
 
                         var resp = client.DownloadString(urlForScrape);
                         //var resp = client.ReadFromServer(urlForScrape);
+                        string dumpPageId = string.Empty;
                         if (extSett.DumpPages)
                         {
-                            var fn = $"{keyword}_{Guid.NewGuid()}.html";
-                            var f = Path.Combine(Path.GetDirectoryName(extSett.DomainsFilePath), fn);
-                            File.WriteAllText(f, resp);
+                            if (uule != null)
+                            {
+                                var fn = $"{keyword}_{Guid.NewGuid()}_{deviceType}_{uule.CanonicalName}.html";
+                                dumpPageId = fn.Replace($"{keyword}_", "").Replace($"_{deviceType}_{uule.CanonicalName}.html", "");
+                                var f = Path.Combine(Path.GetDirectoryName(extSett.DomainsFilePath), fn);
+                                File.WriteAllText(f, resp);
+                            }
+                            else
+                            {
+                                var fn = $"{keyword}_{Guid.NewGuid()}_{deviceType}.html";
+                                dumpPageId = fn.Replace($"{keyword}_", "").Replace($"_{deviceType}.html", "");
+                                var f = Path.Combine(Path.GetDirectoryName(extSett.DomainsFilePath), fn);
+                                File.WriteAllText(f, resp);
+                            }
                         }
 
                         var googleJsonItem = ParseSearchHtmlResponse(resp);
@@ -340,6 +407,7 @@ namespace WheelsScraper
                                 continue;
 
                             string link = string.Empty;
+                            string domain = string.Empty;
                             var time = $"{DateTime.Now:hh tt}";
                             List<GoogleScrapedItem> items = new List<GoogleScrapedItem>();
                             foreach (var top_ad in googleJsonItem.top_ads)
@@ -349,15 +417,21 @@ namespace WheelsScraper
                                 else
                                     link = top_ad.link;
 
+                                //domain = link.Replace("https://", "").Replace("http://", "");
+                                domain = $"{link.Substring(0, link.IndexOf('/') + 2)}";
+                                link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").LastIndexOf('/') + 1)}";
+                                string fullLink = domain + link;
+
                                 var item = new GoogleScrapedItem
                                 {
                                     State = googleJsonItem.general?.location,
                                     Device = deviceType.ToString(),
-                                    Domain = link,
+                                    Domain = fullLink,
                                     Keyword = keyword.Replace("+", " "),
                                     Placement = top_ad.rank,
                                     Time = time,
-                                    Position = "top"
+                                    Position = "top",
+                                    DumpPageId = dumpPageId
                                 };
 
                                 items.Add(item);
@@ -392,7 +466,7 @@ namespace WheelsScraper
             return null;
         }
 
-        private List<GoogleScrapedItem> ScrapeGoogleByKeyword(string uule, string keyword, DeviceType deviceType)
+        private List<GoogleScrapedItem> ScrapeGoogleByKeyword(UuleDataItem uule, string keyword, DeviceType deviceType)
         {
             if (extSett.ScanMethod == ScanMethod.LuminatiJson)
                 return ScrapeGoogleByKeywordLuminatiJson(uule, keyword, deviceType);
@@ -400,7 +474,7 @@ namespace WheelsScraper
                 return ScrapeGoogleByKeywordRaw(uule, keyword, deviceType);
         }
 
-        private List<GoogleScrapedItem> ScrapeGoogleByKeywordLuminatiJson(string uule, string keyword, DeviceType deviceType)
+        private List<GoogleScrapedItem> ScrapeGoogleByKeywordLuminatiJson(UuleDataItem uule, string keyword, DeviceType deviceType)
         {
             var proxyInfo = new
             {
@@ -425,11 +499,11 @@ namespace WheelsScraper
 
                         string urlForScrape = string.Empty;
 
-                        if (!string.IsNullOrEmpty(uule))
+                        if (uule != null && !string.IsNullOrEmpty(uule.Uule))
                         {
                             urlForScrape = deviceType == DeviceType.Desktop ?
-                                $"http://www.google.com/search?q={keyword}&uule={uule}&lum_json=1" :
-                                $"http://www.google.com/search?q={keyword}&lum_mobile=1&uule={uule}&lum_json=1";
+                                $"http://www.google.com/search?q={keyword}&uule={uule.Uule}&lum_json=1" :
+                                $"http://www.google.com/search?q={keyword}&lum_mobile=1&uule={uule.Uule}&lum_json=1";
                         }
                         else
                         {
@@ -542,7 +616,7 @@ namespace WheelsScraper
 
                     if (extSett.Desktop)
                     {
-                        var desktopResult = ScrapeGoogleByKeyword(string.Empty, keyword.Replace(" ", "+"), DeviceType.Desktop);
+                        var desktopResult = ScrapeGoogleByKeyword(null, keyword.Replace(" ", "+"), DeviceType.Desktop);
                         if (desktopResult != null)
                         {
                             foreach (var result in desktopResult)
@@ -583,7 +657,7 @@ namespace WheelsScraper
 
                     if (extSett.Mobile)
                     {
-                        var mobileResult = ScrapeGoogleByKeyword(string.Empty, keyword.Replace(" ", "+"), DeviceType.Mobile);
+                        var mobileResult = ScrapeGoogleByKeyword(null, keyword.Replace(" ", "+"), DeviceType.Mobile);
                         if (mobileResult != null)
                         {
                             foreach (var result in mobileResult)
@@ -642,7 +716,7 @@ namespace WheelsScraper
             string stateName = extPqi?.CanonicalName ?? "";
 
             string keyword = pqi.Name;
-            var searchResult = ScrapeGoogleByKeyword(uule, keyword.Replace(" ", "+"), deviceType);
+            var searchResult = ScrapeGoogleByKeyword(extPqi, keyword.Replace(" ", "+"), deviceType);
             if (searchResult != null)
             {
                 foreach (var result in searchResult)
@@ -700,117 +774,117 @@ namespace WheelsScraper
         }
 
 
-        protected void ProcessUuleByKeyword_old(ProcessQueueItem pqi)
-        {
-            if (cancel)
-                return;
+        //protected void ProcessUuleByKeyword_old(ProcessQueueItem pqi)
+        //{
+        //    if (cancel)
+        //        return;
 
-            try
-            {
-                string uule = ((UuleDataItem)pqi.Item).Uule;
-                string stateName = ((UuleDataItem)pqi.Item).CanonicalName;
-                string keyword = pqi.Name;
+        //    try
+        //    {
+        //        string uule = ((UuleDataItem)pqi.Item).Uule;
+        //        string stateName = ((UuleDataItem)pqi.Item).CanonicalName;
+        //        string keyword = pqi.Name;
 
-                List<StatesDataItem> states = new List<StatesDataItem>();
-                states = FileHelper.FillCountryStateZip();
+        //        List<StatesDataItem> states = new List<StatesDataItem>();
+        //        states = FileHelper.FillCountryStateZip();
 
-                if (extSett.Desktop)
-                {
-                    var desktopResult = ScrapeGoogleByKeyword(uule, keyword.Replace(" ", "+"), DeviceType.Desktop);
-                    if (desktopResult != null)
-                    {
-                        foreach (var result in desktopResult)
-                        {
-                            string domain = string.Empty;
-                            var domainSpl = result.Domain.Split('/');
-                            domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
-                            var companyName = Domains.Find(i => i.Website == domain.Replace("www.", ""));
-                            if (companyName != null && !string.IsNullOrEmpty(companyName.Legal))
-                                result.CompanyName = companyName.Legal;
-                            else
-                                result.CompanyName = "Unknown";
+        //        if (extSett.Desktop)
+        //        {
+        //            var desktopResult = ScrapeGoogleByKeyword(uule, keyword.Replace(" ", "+"), DeviceType.Desktop);
+        //            if (desktopResult != null)
+        //            {
+        //                foreach (var result in desktopResult)
+        //                {
+        //                    string domain = string.Empty;
+        //                    var domainSpl = result.Domain.Split('/');
+        //                    domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
+        //                    var companyName = Domains.Find(i => i.Website == domain.Replace("www.", ""));
+        //                    if (companyName != null && !string.IsNullOrEmpty(companyName.Legal))
+        //                        result.CompanyName = companyName.Legal;
+        //                    else
+        //                        result.CompanyName = "Unknown";
 
-                            var state = states.Find(i => stateName.Contains(i.State));
-                            if (state != null)
-                                result.State = state.StateCode;
+        //                    var state = states.Find(i => stateName.Contains(i.State));
+        //                    if (state != null)
+        //                        result.State = state.StateCode;
 
-                            ExtWareInfo wi = new ExtWareInfo(result);
-                            AddWareInfo(wi);
-                            OnItemLoaded(wi);
-                        }
-                    }
-                    else
-                    {
-                        ExtWareInfo wi = new ExtWareInfo();
-                        wi.Device = DeviceType.Desktop.ToString();
-                        wi.Domain = "N/A";
-                        wi.Keyword = keyword;
-                        wi.Time = $"{DateTime.Now:hh tt}";
+        //                    ExtWareInfo wi = new ExtWareInfo(result);
+        //                    AddWareInfo(wi);
+        //                    OnItemLoaded(wi);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                ExtWareInfo wi = new ExtWareInfo();
+        //                wi.Device = DeviceType.Desktop.ToString();
+        //                wi.Domain = "N/A";
+        //                wi.Keyword = keyword;
+        //                wi.Time = $"{DateTime.Now:hh tt}";
 
-                        var state = states.Find(i => stateName.Contains(i.State));
-                        if (state != null)
-                            wi.State = state.StateCode;
+        //                var state = states.Find(i => stateName.Contains(i.State));
+        //                if (state != null)
+        //                    wi.State = state.StateCode;
 
-                        AddWareInfo(wi);
-                        OnItemLoaded(wi);
+        //                AddWareInfo(wi);
+        //                OnItemLoaded(wi);
 
-                        MessagePrinter.PrintMessage($"Nothing ADS for [{keyword}], uule [{uule}] found. Device [{DeviceType.Desktop}]", ImportanceLevel.Mid);
-                    }
-                }
+        //                MessagePrinter.PrintMessage($"Nothing ADS for [{keyword}], uule [{uule}] found. Device [{DeviceType.Desktop}]", ImportanceLevel.Mid);
+        //            }
+        //        }
 
-                if (extSett.Mobile)
-                {
-                    var mobileResult = ScrapeGoogleByKeyword(uule, keyword.Replace(" ", "+"), DeviceType.Mobile);
-                    if (mobileResult != null)
-                    {
-                        foreach (var result in mobileResult)
-                        {
-                            string domain = string.Empty;
-                            var domainSpl = result.Domain.Split('/');
-                            domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
-                            var companyName = Domains.Find(i => i.Website == domain.Replace("www.", ""));
-                            if (companyName != null && !string.IsNullOrEmpty(companyName.Legal))
-                                result.CompanyName = companyName.Legal;
-                            else
-                                result.CompanyName = "Unknown";
+        //        if (extSett.Mobile)
+        //        {
+        //            var mobileResult = ScrapeGoogleByKeyword(uule, keyword.Replace(" ", "+"), DeviceType.Mobile);
+        //            if (mobileResult != null)
+        //            {
+        //                foreach (var result in mobileResult)
+        //                {
+        //                    string domain = string.Empty;
+        //                    var domainSpl = result.Domain.Split('/');
+        //                    domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
+        //                    var companyName = Domains.Find(i => i.Website == domain.Replace("www.", ""));
+        //                    if (companyName != null && !string.IsNullOrEmpty(companyName.Legal))
+        //                        result.CompanyName = companyName.Legal;
+        //                    else
+        //                        result.CompanyName = "Unknown";
 
-                            var state = states.Find(i => stateName.Contains(i.State));
-                            if (state != null)
-                                result.State = state.StateCode;
+        //                    var state = states.Find(i => stateName.Contains(i.State));
+        //                    if (state != null)
+        //                        result.State = state.StateCode;
 
-                            ExtWareInfo wi = new ExtWareInfo(result);
-                            AddWareInfo(wi);
-                            OnItemLoaded(wi);
-                        }
-                    }
-                    else
-                    {
-                        ExtWareInfo wi = new ExtWareInfo();
-                        wi.Device = DeviceType.Mobile.ToString();
-                        wi.Domain = "N/A";
-                        wi.Keyword = keyword;
-                        wi.Time = $"{DateTime.Now:hh tt}";
+        //                    ExtWareInfo wi = new ExtWareInfo(result);
+        //                    AddWareInfo(wi);
+        //                    OnItemLoaded(wi);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                ExtWareInfo wi = new ExtWareInfo();
+        //                wi.Device = DeviceType.Mobile.ToString();
+        //                wi.Domain = "N/A";
+        //                wi.Keyword = keyword;
+        //                wi.Time = $"{DateTime.Now:hh tt}";
 
-                        var state = states.Find(i => stateName.Contains(i.State));
-                        if (state != null)
-                            wi.State = state.StateCode;
+        //                var state = states.Find(i => stateName.Contains(i.State));
+        //                if (state != null)
+        //                    wi.State = state.StateCode;
 
-                        AddWareInfo(wi);
-                        OnItemLoaded(wi);
+        //                AddWareInfo(wi);
+        //                OnItemLoaded(wi);
 
-                        MessagePrinter.PrintMessage($"Nothing ADS for [{keyword}], uule [{uule}] found. Device [{DeviceType.Mobile}]", ImportanceLevel.Mid);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessagePrinter.PrintMessage($"Error with uule. {e.Message}");
-            }
+        //                MessagePrinter.PrintMessage($"Nothing ADS for [{keyword}], uule [{uule}] found. Device [{DeviceType.Mobile}]", ImportanceLevel.Mid);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessagePrinter.PrintMessage($"Error with uule. {e.Message}");
+        //    }
 
-            pqi.Processed = true;
-            MessagePrinter.PrintMessage("Brands list processed");
-            StartOrPushPropertiesThread();
-        }
+        //    pqi.Processed = true;
+        //    MessagePrinter.PrintMessage("Brands list processed");
+        //    StartOrPushPropertiesThread();
+        //}
 
         protected override Action<ProcessQueueItem> GetItemProcessor(ProcessQueueItem item)
         {

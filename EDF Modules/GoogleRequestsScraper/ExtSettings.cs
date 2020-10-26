@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 using GoogleRequestsScraper.DataItems;
 using GoogleRequestsScraper.Enums;
 
@@ -9,6 +10,7 @@ namespace Databox.Libs.GoogleRequestsScraper
         public ExtSettings()
         {
             KeywordsForScrape = new List<string>();
+            GoogleDocItems = new List<GoogleDocItem>();
         }
 
         public List<string> KeywordsForScrape { get; set; }
@@ -19,7 +21,7 @@ namespace Databox.Libs.GoogleRequestsScraper
         public string StatesFilePath { get; set; }
         public string DomainsFilePath { get; set; }
         public string GoogleSheetsLink { get; set; }
-        public List<GoogleDocItem> GoogleDocItems { get; set; }
+        [XmlIgnore] public List<GoogleDocItem> GoogleDocItems { get; set; }
         public bool Desktop { get; set; }
         public bool Mobile { get; set; }
         public ScanMethod ScanMethod { get; set; }
