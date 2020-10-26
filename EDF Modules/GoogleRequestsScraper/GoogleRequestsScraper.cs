@@ -224,7 +224,7 @@ namespace WheelsScraper
                     }
                 }
             }
-
+            
             StartOrPushPropertiesThread();
         }
 
@@ -254,12 +254,17 @@ namespace WheelsScraper
 
                     if (string.IsNullOrEmpty(url))
                         continue;
+                    if (url.Length < 5)
+                        url = adb.ParentNode.NextSibling.InnerTextOrNull();
+
                     if (!url.StartsWith("http"))
                         url = $"http://{url}";
+
+                    var uri = new Uri(new Uri(url), "/");
                     res.top_ads.Add(new Top_Ads
                     {
                         rank = rank.ToString(),
-                        link = url
+                        link = uri.ToString()
                     });
                     rank++;
                 }
