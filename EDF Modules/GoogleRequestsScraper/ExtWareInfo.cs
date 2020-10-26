@@ -24,6 +24,7 @@ namespace GoogleRequestsScraper
             Time = item.Time;
             Position = item.Position;
             CompanyName = item.CompanyName;
+            DumpPageId = item.DumpPageId;
         }
 
         public string Keyword { get; set; }
@@ -34,5 +35,6 @@ namespace GoogleRequestsScraper
         public string Time { get; set; }
         public string Placement { get; set; }
         public string CompanyName { get; set; }
+        public string DumpPageId { get; set; }
     }
 }
