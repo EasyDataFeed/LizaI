@@ -11,16 +11,16 @@
     <LuminatiAddress>zproxy.luminati.io:22225</LuminatiAddress>
     <LuminatiLogin>lum-customer-shopping_cart_elite-zone-zoneserp1-country-us</LuminatiLogin>
     <LuminatiPassword>1ees5rnsmeo6</LuminatiPassword>
-    <GeotargetsFilePath />
+    <GeotargetsFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\GoogleRequestsScraper\EDF\geotargets-2020-09-08.csv</GeotargetsFilePath>
     <StatesFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\GoogleRequestsScraper\EDF\States.csv</StatesFilePath>
-    <DomainsFilePath />
-    <GoogleSheetsLink />
+    <DomainsFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\GoogleRequestsScraper\EDF\Competitor_Domains_2020_10_06.csv</DomainsFilePath>
+    <GoogleSheetsLink>https://docs.google.com/spreadsheets/d/19CHlfnpekB4Yufqq3R4q59ePGbBB2PrK7ZIlRzDSPXI/edit?usp=sharing</GoogleSheetsLink>
     <GoogleDocItems />
-    <Desktop>false</Desktop>
+    <Desktop>true</Desktop>
     <Mobile>false</Mobile>
   </SpecialSettings>
   <Name>GoogleRequestsScraper</Name>
-  <MaxThreads>5</MaxThreads>
+  <MaxThreads>1</MaxThreads>
   <MaxDelay>0</MaxDelay>
   <MaxImageDownloadThreads>0</MaxImageDownloadThreads>
   <MaxImageUploadThreads>0</MaxImageUploadThreads>
