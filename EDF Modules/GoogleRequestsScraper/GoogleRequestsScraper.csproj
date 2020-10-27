@@ -114,6 +114,7 @@
     <Compile Include="DataItems\GoogleJsonItem.cs" />
     <Compile Include="DataItems\GoogleScrapedItem.cs" />
     <Compile Include="DataItems\MySql\GoogleItem.cs" />
+    <Compile Include="DataItems\DomainsInfo.cs" />
     <Compile Include="DataItems\StatesDataItem.cs" />
     <Compile Include="DataItems\UuleDataItem.cs" />
     <Compile Include="Enums\DeviceType.cs" />

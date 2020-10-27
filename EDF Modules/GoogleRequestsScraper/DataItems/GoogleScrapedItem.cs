@@ -11,5 +11,7 @@
         public string Placement { get; set; }
         public string CompanyName { get; set; }
         public string DumpPageId { get; set; }
+        public string Title { get; set; }
+        public string UniqueDomains { get; set; }
     }
 }

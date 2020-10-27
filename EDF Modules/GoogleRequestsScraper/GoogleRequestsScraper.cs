@@ -61,12 +61,25 @@ namespace WheelsScraper
                     Keyword = ((ExtWareInfo)i).Keyword,
                     Position = ((ExtWareInfo)i).Position,
                     CompanyName = ((ExtWareInfo)i).CompanyName,
-                    DumpPageId = ((ExtWareInfo)i).DumpPageId
-
+                    DumpPageId = ((ExtWareInfo)i).DumpPageId,
+                    UniqueDomains = ((ExtWareInfo)i).UniqueDomains,
+                    Title = ((ExtWareInfo)i).Title,
                 }));
 
                 if (googleScrapedItems.Any())
                 {
+                    var googleScrapedItemGrouped = googleScrapedItems.GroupBy(x => new
+                    {
+                        ((GoogleScrapedItem)x).CompanyName,
+                        ((GoogleScrapedItem)x).Domain
+                    });
+
+                    foreach (var googleScrapedItem in googleScrapedItems)
+                    {
+                        var findAllGoogleScrapedItems = googleScrapedItemGrouped.ToList().FindAll(i => i.Key.CompanyName == googleScrapedItem.CompanyName);
+                        googleScrapedItem.UniqueDomains = findAllGoogleScrapedItems.Count.ToString();
+                    }
+
                     GoogleDocApiHelper.UploadToGoogleDoc(extSett, googleScrapedItems, this);
 
                     var date = $"{DateTime.Now:MM-dd-yyyy-hh-mm}";
@@ -230,7 +243,7 @@ namespace WheelsScraper
                     }
                 }
             }
-
+            
             StartOrPushPropertiesThread();
         }
 
@@ -310,12 +323,17 @@ namespace WheelsScraper
 
                     if (string.IsNullOrEmpty(url))
                         continue;
+                    if (url.Length < 5)
+                        url = adb.ParentNode.NextSibling.InnerTextOrNull();
+
                     if (!url.StartsWith("http"))
                         url = $"http://{url}";
+
+                    var uri = new Uri(new Uri(url), "/");
                     res.top_ads.Add(new Top_Ads
                     {
                         rank = rank.ToString(),
-                        link = url
+                        link = uri.ToString()
                     });
                     rank++;
                 }
@@ -416,10 +434,10 @@ namespace WheelsScraper
                                     link = top_ad.display_link;
                                 else
                                     link = top_ad.link;
-
-                                //domain = link.Replace("https://", "").Replace("http://", "");
+                                
                                 domain = $"{link.Substring(0, link.IndexOf('/') + 2)}";
-                                link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").LastIndexOf('/') + 1)}";
+                                //link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").LastIndexOf('/') + 1)}";
+                                link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").IndexOf('/') + 1)}";
                                 string fullLink = domain + link;
 
                                 var item = new GoogleScrapedItem
@@ -431,7 +449,8 @@ namespace WheelsScraper
                                     Placement = top_ad.rank,
                                     Time = time,
                                     Position = "top",
-                                    DumpPageId = dumpPageId
+                                    DumpPageId = dumpPageId,
+                                    Title = top_ad.title
                                 };
 
                                 items.Add(item);
@@ -529,6 +548,7 @@ namespace WheelsScraper
                                 continue;
 
                             string link = string.Empty;
+                            string domain = string.Empty;
                             var time = $"{DateTime.Now:hh tt}";
                             List<GoogleScrapedItem> items = new List<GoogleScrapedItem>();
                             foreach (var top_ad in googleJsonItem.top_ads)
@@ -538,15 +558,21 @@ namespace WheelsScraper
                                 else
                                     link = top_ad.link;
 
+                                domain = $"{link.Substring(0, link.IndexOf('/') + 2)}";
+                                //link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").LastIndexOf('/') + 1)}";
+                                link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").IndexOf('/') + 1)}";
+                                string fullLink = domain + link;
+
                                 var item = new GoogleScrapedItem
                                 {
                                     State = googleJsonItem?.general.location,
                                     Device = deviceType.ToString(),
-                                    Domain = link,
+                                    Domain = fullLink,
                                     Keyword = keyword.Replace("+", " "),
                                     Placement = top_ad.rank,
                                     Time = time,
-                                    Position = "top"
+                                    Position = "top",
+                                    Title = top_ad.title
                                 };
 
                                 items.Add(item);
