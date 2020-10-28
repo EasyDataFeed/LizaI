@@ -63,6 +63,7 @@ namespace WheelsScraper
                     CompanyName = ((ExtWareInfo)i).CompanyName,
                     DumpPageId = ((ExtWareInfo)i).DumpPageId,
                     UniqueDomains = ((ExtWareInfo)i).UniqueDomains,
+                    UniqueDomainsQty = ((ExtWareInfo)i).UniqueDomainsQty,
                     Title = ((ExtWareInfo)i).Title,
                 }));
 
@@ -76,8 +77,39 @@ namespace WheelsScraper
 
                     foreach (var googleScrapedItem in googleScrapedItems)
                     {
+                        int uniqueDomainsQty = 0;
                         var findAllGoogleScrapedItems = googleScrapedItemGrouped.ToList().FindAll(i => i.Key.CompanyName == googleScrapedItem.CompanyName);
-                        googleScrapedItem.UniqueDomains = findAllGoogleScrapedItems.Count.ToString();
+
+                        foreach (var findAllGoogleScrapedItem in findAllGoogleScrapedItems)
+                        {
+                            string uniqueDomains = googleScrapedItem.UniqueDomains.Replace("https://", "")
+                                                                                  .Replace("http://", "")
+                                                                                  .Replace("www.", "");
+                            string findAllDomains = findAllGoogleScrapedItem.Key.Domain.Replace("https://", "")
+                                                                                       .Replace("http://", "")
+                                                                                       .Replace("www.", "");
+                            if (!uniqueDomains.Contains(findAllDomains))
+                            {
+                                var domainSpl = findAllDomains.Split('.');
+                                string domain = domainSpl.Length > 1 ? domainSpl[1] : string.Empty;
+                                if (!string.IsNullOrEmpty(domain))
+                                {
+                                    if (!uniqueDomains.Contains(domain))
+                                    {
+                                        googleScrapedItem.UniqueDomains += $"{findAllGoogleScrapedItem.Key.Domain},";
+                                        uniqueDomainsQty++;
+                                    }
+                                }
+                                else
+                                {
+                                    googleScrapedItem.UniqueDomains += $"{findAllGoogleScrapedItem.Key.Domain},";
+                                    uniqueDomainsQty++;
+                                }
+                            }
+                        }
+
+                        googleScrapedItem.UniqueDomainsQty = uniqueDomainsQty.ToString();
+                        googleScrapedItem.UniqueDomains = googleScrapedItem.UniqueDomains.Trim(',');
                     }
 
                     GoogleDocApiHelper.UploadToGoogleDoc(extSett, googleScrapedItems, this);
@@ -310,6 +342,13 @@ namespace WheelsScraper
             var doc = new HtmlDocument();
             doc.LoadHtml(rawHtml);
 
+            string adsTitle = string.Empty;
+            var title = doc.DocumentNode.SelectSingleNode(".//div[@class = 'cfxYMc JfZTW c4Djg MUxGbd v0nnCb']");
+            if (title != null)
+            {
+                adsTitle = title.InnerTextOrNull();
+            }
+
             //var ads = doc.DocumentNode.SelectNodes("//div[@id='tvcap']//div[@data-hveid][.//a]");
             var ads = doc.DocumentNode.SelectNodes(".//a//span[./text()[1]='Ad']");
             int rank = 1;
@@ -333,7 +372,8 @@ namespace WheelsScraper
                     res.top_ads.Add(new Top_Ads
                     {
                         rank = rank.ToString(),
-                        link = uri.ToString()
+                        link = uri.ToString(),
+                        title = adsTitle
                     });
                     rank++;
                 }

@@ -2,6 +2,11 @@
 {
     public class GoogleScrapedItem
     {
+        public GoogleScrapedItem()
+        {
+            UniqueDomains = string.Empty;
+        }
+
         public string Keyword { get; set; }
         public string Domain { get; set; }
         public string Position { get; set; }
@@ -12,6 +17,7 @@
         public string CompanyName { get; set; }
         public string DumpPageId { get; set; }
         public string Title { get; set; }
+        public string UniqueDomainsQty { get; set; }
         public string UniqueDomains { get; set; }
     }
 }

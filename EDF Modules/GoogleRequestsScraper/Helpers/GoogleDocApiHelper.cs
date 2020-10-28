@@ -108,7 +108,7 @@ namespace GoogleRequestsScraper.Helpers
         public static void UploadToGoogleDoc(ExtSettings settings, List<GoogleScrapedItem> googleScrapedItems, BaseScraper scraper)
         {
             String rangeToStart = string.Empty;
-            String rangeHeaders = "A1:K1";
+            String rangeHeaders = "A1:L1";
             String range = string.Empty;
 
             ValueRange valuesToUpload = new ValueRange();
@@ -118,7 +118,7 @@ namespace GoogleRequestsScraper.Helpers
                 ValueRange values = new ValueRange();
                 ValueRange headers = new ValueRange();
 
-                rangeToStart = "A1:K";
+                rangeToStart = "A1:L";
                 values = GetSpreadSheet(settings, rangeToStart);
 
                 string link = settings.GoogleSheetsLink;
@@ -129,12 +129,12 @@ namespace GoogleRequestsScraper.Helpers
                 String spreadsheetId = key;
 
                 SpreadsheetsResource.ValuesResource.ClearRequest clear =
-                    service.Spreadsheets.Values.Clear(null, spreadsheetId, $"A2:K");
+                    service.Spreadsheets.Values.Clear(null, spreadsheetId, $"A2:L");
                 ClearValuesResponse result = clear.Execute();
 
                 headers = GetSpreadSheet(settings, rangeHeaders);
                 //range = $"A{values.Values.Count + 1}:H{(values.Values.Count + 1) + googleScrapedItems.Count}";
-                range = $"A2:K";
+                range = $"A2:L";
 
                 int rowIndex = 0;
                 foreach (GoogleScrapedItem item in googleScrapedItems)
@@ -174,6 +174,7 @@ namespace GoogleRequestsScraper.Helpers
             row[headers.Values[0].IndexOf("company name")] = item.CompanyName;
             row[headers.Values[0].IndexOf("dump page id")] = item.DumpPageId;
             row[headers.Values[0].IndexOf("unique domains")] = item.UniqueDomains;
+            row[headers.Values[0].IndexOf("unique domains qty")] = item.UniqueDomainsQty;
             row[headers.Values[0].IndexOf("title")] = item.Title;
 
             return row;

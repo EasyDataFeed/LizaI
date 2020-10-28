@@ -27,6 +27,7 @@ namespace GoogleRequestsScraper
             DumpPageId = item.DumpPageId;
             Title = item.Title;
             UniqueDomains = item.UniqueDomains;
+            UniqueDomainsQty = item.UniqueDomainsQty;
         }
 
         public string Keyword { get; set; }
@@ -40,5 +41,6 @@ namespace GoogleRequestsScraper
         public string DumpPageId { get; set; }
         public string Title { get; set; }
         public string UniqueDomains { get; set; }
+        public string UniqueDomainsQty { get; set; }
     }
 }
