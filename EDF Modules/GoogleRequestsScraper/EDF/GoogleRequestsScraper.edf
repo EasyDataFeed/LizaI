@@ -7,6 +7,9 @@
       <string>Post office</string>
       <string>United States Postal Service</string>
       <string>usps change of address</string>
+      <string>Mail forwarding</string>
+      <string>Forward mail</string>
+      <string>Us postal service</string>
     </KeywordsForScrape>
     <LuminatiAddress>zproxy.luminati.io:22225</LuminatiAddress>
     <LuminatiLogin>lum-customer-shopping_cart_elite-zone-zoneserp1-country-us</LuminatiLogin>
@@ -15,9 +18,10 @@
     <StatesFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\GoogleRequestsScraper\EDF\States.csv</StatesFilePath>
     <DomainsFilePath>E:\Leprizoriy\Work SCE\EDF\EDF Modules\GoogleRequestsScraper\EDF\Competitor_Domains_2020_10_06.csv</DomainsFilePath>
     <GoogleSheetsLink>https://docs.google.com/spreadsheets/d/19CHlfnpekB4Yufqq3R4q59ePGbBB2PrK7ZIlRzDSPXI/edit?usp=sharing</GoogleSheetsLink>
-    <GoogleDocItems />
     <Desktop>true</Desktop>
     <Mobile>false</Mobile>
+    <ScanMethod>LuminatiJson</ScanMethod>
+    <DumpPages>false</DumpPages>
   </SpecialSettings>
   <Name>GoogleRequestsScraper</Name>
   <MaxThreads>1</MaxThreads>

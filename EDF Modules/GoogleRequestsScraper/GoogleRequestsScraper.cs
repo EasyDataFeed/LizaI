@@ -82,9 +82,14 @@ namespace WheelsScraper
 
                         foreach (var findAllGoogleScrapedItem in findAllGoogleScrapedItems)
                         {
-                            string uniqueDomains = googleScrapedItem.UniqueDomains.Replace("https://", "")
-                                                                                  .Replace("http://", "")
-                                                                                  .Replace("www.", "");
+                            string uniqueDomains = string.Empty;
+                            if (!string.IsNullOrEmpty(googleScrapedItem.UniqueDomains))
+                            {
+                                uniqueDomains = googleScrapedItem.UniqueDomains.Replace("https://", "")
+                                                                               .Replace("http://", "")
+                                                                               .Replace("www.", "");
+                            }
+                            
                             string findAllDomains = findAllGoogleScrapedItem.Key.Domain.Replace("https://", "")
                                                                                        .Replace("http://", "")
                                                                                        .Replace("www.", "");

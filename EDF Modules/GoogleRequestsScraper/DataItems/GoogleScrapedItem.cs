@@ -2,11 +2,6 @@
 {
     public class GoogleScrapedItem
     {
-        public GoogleScrapedItem()
-        {
-            UniqueDomains = string.Empty;
-        }
-
         public string Keyword { get; set; }
         public string Domain { get; set; }
         public string Position { get; set; }
