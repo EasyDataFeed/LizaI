@@ -96,10 +96,16 @@ namespace WheelsScraper
                             if (!uniqueDomains.Contains(findAllDomains))
                             {
                                 var domainSpl = findAllDomains.Split('.');
-                                string domain = domainSpl.Length > 1 ? domainSpl[1] : string.Empty;
-                                if (!string.IsNullOrEmpty(domain))
+                                string domain = domainSpl.Length > 0 ? domainSpl[0] : string.Empty;
+                                string domain1 = domainSpl.Length > 1 ? domainSpl[1] : string.Empty;
+                                if (!string.IsNullOrEmpty(domain1))
                                 {
-                                    if (!uniqueDomains.Contains(domain))
+                                    if (!uniqueDomains.Contains(domain1))
+                                    {
+                                        googleScrapedItem.UniqueDomains += $"{findAllGoogleScrapedItem.Key.Domain},";
+                                        uniqueDomainsQty++;
+                                    }
+                                    else if (!uniqueDomains.Contains(domain))
                                     {
                                         googleScrapedItem.UniqueDomains += $"{findAllGoogleScrapedItem.Key.Domain},";
                                         uniqueDomainsQty++;
@@ -115,6 +121,9 @@ namespace WheelsScraper
 
                         googleScrapedItem.UniqueDomainsQty = uniqueDomainsQty.ToString();
                         googleScrapedItem.UniqueDomains = googleScrapedItem.UniqueDomains.Trim(',');
+
+                        if (!string.IsNullOrEmpty(googleScrapedItem.Title))
+                            googleScrapedItem.Title = StringExtensions.RemoveDirtyData(googleScrapedItem.Title);
                     }
 
                     GoogleDocApiHelper.UploadToGoogleDoc(extSett, googleScrapedItems, this);
@@ -471,7 +480,8 @@ namespace WheelsScraper
 
                             string link = string.Empty;
                             string domain = string.Empty;
-                            var time = $"{DateTime.Now:hh tt}";
+                            //var time = $"{DateTime.Now:hh tt}";
+                            var time = $"{DateTime.Now:HH:mm:ss}";
                             List<GoogleScrapedItem> items = new List<GoogleScrapedItem>();
                             foreach (var top_ad in googleJsonItem.top_ads)
                             {
@@ -594,7 +604,8 @@ namespace WheelsScraper
 
                             string link = string.Empty;
                             string domain = string.Empty;
-                            var time = $"{DateTime.Now:hh tt}";
+                            //var time = $"{DateTime.Now:hh tt}";
+                            var time = $"{DateTime.Now:HH:mm:ss}";
                             List<GoogleScrapedItem> items = new List<GoogleScrapedItem>();
                             foreach (var top_ad in googleJsonItem.top_ads)
                             {
@@ -716,7 +727,8 @@ namespace WheelsScraper
                             wi.Device = DeviceType.Desktop.ToString();
                             wi.Domain = "N/A";
                             wi.Keyword = keyword;
-                            wi.Time = $"{DateTime.Now:hh tt}";
+                            //wi.Time = $"{DateTime.Now:hh tt}";
+                            wi.Time = $"{DateTime.Now:HH:mm:ss}";
                             wi.State = "N/A";
 
                             AddWareInfo(wi);
@@ -757,7 +769,8 @@ namespace WheelsScraper
                             wi.Device = DeviceType.Mobile.ToString();
                             wi.Domain = "N/A";
                             wi.Keyword = keyword;
-                            wi.Time = $"{DateTime.Now:hh tt}";
+                            //wi.Time = $"{DateTime.Now:hh tt}";
+                            wi.Time = $"{DateTime.Now:HH:mm:ss}";
                             wi.State = "N/A";
 
                             AddWareInfo(wi);
@@ -817,7 +830,8 @@ namespace WheelsScraper
                 wi.Device = deviceType.ToString();
                 wi.Domain = "N/A";
                 wi.Keyword = keyword;
-                wi.Time = $"{DateTime.Now:hh tt}";
+                //wi.Time = $"{DateTime.Now:hh tt}";
+                wi.Time = $"{DateTime.Now:HH:mm:ss}";
 
                 var state = states.Find(i => stateName.Contains(i.State));
                 if (state != null)
