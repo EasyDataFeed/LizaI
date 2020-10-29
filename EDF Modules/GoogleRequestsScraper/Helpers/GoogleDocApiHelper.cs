@@ -137,10 +137,12 @@ namespace GoogleRequestsScraper.Helpers
                 range = $"A2:L";
 
                 int rowIndex = 0;
+                var date = $"{DateTime.Now:hh-mm}";
                 foreach (GoogleScrapedItem item in googleScrapedItems)
                 {
                     rowIndex++;
                     valuesToUpload.Values.Add(GenerateNewRow(headers));
+                    item.Time = date;
                     valuesToUpload.Values[rowIndex - 1] = FillData(valuesToUpload.Values[rowIndex - 1], headers, item);
                 }
             }

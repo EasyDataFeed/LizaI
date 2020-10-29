@@ -356,18 +356,27 @@ namespace WheelsScraper
             var doc = new HtmlDocument();
             doc.LoadHtml(rawHtml);
 
-            string adsTitle = string.Empty;
-            var title = doc.DocumentNode.SelectSingleNode(".//div[@class = 'cfxYMc JfZTW c4Djg MUxGbd v0nnCb']");
-            if (title != null)
-            {
-                adsTitle = title.InnerTextOrNull();
-            }
-
             //var ads = doc.DocumentNode.SelectNodes("//div[@id='tvcap']//div[@data-hveid][.//a]");
             var ads = doc.DocumentNode.SelectNodes(".//a//span[./text()[1]='Ad']");
             int rank = 1;
             if (ads != null)
             {
+                string adsTitle = string.Empty;
+                var title = doc.DocumentNode.SelectSingleNode(".//div[@class = 'cfxYMc JfZTW c4Djg MUxGbd v0nnCb']");
+                if (title != null)
+                {
+                    adsTitle = title.InnerTextOrNull();
+                }
+
+                if (string.IsNullOrEmpty(adsTitle))
+                {
+                    var titleM = doc.DocumentNode.SelectSingleNode(".//div[@class = 'V7Sr0 p5AXld PpBGzd YcUVQe']/span");
+                    if (titleM != null)
+                    {
+                        adsTitle = titleM.InnerTextOrNull();
+                    }
+                }
+
                 foreach (var adb in ads)
                 {
                     if (adb.NextSibling == null)
@@ -480,8 +489,8 @@ namespace WheelsScraper
 
                             string link = string.Empty;
                             string domain = string.Empty;
-                            //var time = $"{DateTime.Now:hh tt}";
-                            var time = $"{DateTime.Now:HH:mm:ss}";
+                            var time = $"{DateTime.Now:hh tt}";
+                            //var time = $"{DateTime.Now:HH:mm:ss}";
                             List<GoogleScrapedItem> items = new List<GoogleScrapedItem>();
                             foreach (var top_ad in googleJsonItem.top_ads)
                             {
@@ -604,8 +613,8 @@ namespace WheelsScraper
 
                             string link = string.Empty;
                             string domain = string.Empty;
-                            //var time = $"{DateTime.Now:hh tt}";
-                            var time = $"{DateTime.Now:HH:mm:ss}";
+                            var time = $"{DateTime.Now:hh tt}";
+                            //var time = $"{DateTime.Now:HH:mm:ss}";
                             List<GoogleScrapedItem> items = new List<GoogleScrapedItem>();
                             foreach (var top_ad in googleJsonItem.top_ads)
                             {
@@ -727,8 +736,8 @@ namespace WheelsScraper
                             wi.Device = DeviceType.Desktop.ToString();
                             wi.Domain = "N/A";
                             wi.Keyword = keyword;
-                            //wi.Time = $"{DateTime.Now:hh tt}";
-                            wi.Time = $"{DateTime.Now:HH:mm:ss}";
+                            wi.Time = $"{DateTime.Now:hh tt}";
+                            //wi.Time = $"{DateTime.Now:HH:mm:ss}";
                             wi.State = "N/A";
 
                             AddWareInfo(wi);
@@ -769,8 +778,8 @@ namespace WheelsScraper
                             wi.Device = DeviceType.Mobile.ToString();
                             wi.Domain = "N/A";
                             wi.Keyword = keyword;
-                            //wi.Time = $"{DateTime.Now:hh tt}";
-                            wi.Time = $"{DateTime.Now:HH:mm:ss}";
+                            wi.Time = $"{DateTime.Now:hh tt}";
+                            //wi.Time = $"{DateTime.Now:HH:mm:ss}";
                             wi.State = "N/A";
 
                             AddWareInfo(wi);
@@ -830,8 +839,8 @@ namespace WheelsScraper
                 wi.Device = deviceType.ToString();
                 wi.Domain = "N/A";
                 wi.Keyword = keyword;
-                //wi.Time = $"{DateTime.Now:hh tt}";
-                wi.Time = $"{DateTime.Now:HH:mm:ss}";
+                wi.Time = $"{DateTime.Now:hh tt}";
+                //wi.Time = $"{DateTime.Now:HH:mm:ss}";
 
                 var state = states.Find(i => stateName.Contains(i.State));
                 if (state != null)
