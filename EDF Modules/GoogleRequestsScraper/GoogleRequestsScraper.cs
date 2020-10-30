@@ -361,26 +361,13 @@ namespace WheelsScraper
             int rank = 1;
             if (ads != null)
             {
-                string adsTitle = string.Empty;
-                var title = doc.DocumentNode.SelectSingleNode(".//div[@class = 'cfxYMc JfZTW c4Djg MUxGbd v0nnCb']");
-                if (title != null)
-                {
-                    adsTitle = title.InnerTextOrNull();
-                }
-
-                if (string.IsNullOrEmpty(adsTitle))
-                {
-                    var titleM = doc.DocumentNode.SelectSingleNode(".//div[@class = 'V7Sr0 p5AXld PpBGzd YcUVQe']/span");
-                    if (titleM != null)
-                    {
-                        adsTitle = titleM.InnerTextOrNull();
-                    }
-                }
-
                 foreach (var adb in ads)
                 {
                     if (adb.NextSibling == null)
                         continue;
+
+                    string adsTitle = adb.SelectSingleNode("./ancestor::a/div[2]").InnerTextOrNull();
+
                     var url = adb.NextSibling.InnerTextOrNull();
 
                     if (string.IsNullOrEmpty(url))
@@ -498,8 +485,9 @@ namespace WheelsScraper
                                     link = top_ad.display_link;
                                 else
                                     link = top_ad.link;
-                                
-                                domain = $"{link.Substring(0, link.IndexOf('/') + 2)}";
+
+                                //domain = $"{link.Substring(0, link.IndexOf('/') + 2)}";
+                                domain = new Uri(link).Host.ToLower().Replace("www.", "");
                                 //link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").LastIndexOf('/') + 1)}";
                                 link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").IndexOf('/') + 1)}";
                                 string fullLink = domain + link;
@@ -508,7 +496,7 @@ namespace WheelsScraper
                                 {
                                     State = googleJsonItem.general?.location,
                                     Device = deviceType.ToString(),
-                                    Domain = fullLink,
+                                    Domain = domain,
                                     Keyword = keyword.Replace("+", " "),
                                     Placement = top_ad.rank,
                                     Time = time,
