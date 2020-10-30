@@ -366,7 +366,7 @@ namespace WheelsScraper
                     if (adb.NextSibling == null)
                         continue;
 
-                    string adsTitle = adb.SelectSingleNode("./ancestor::a/div[2]").InnerTextOrNull();
+                    string adsTitle = adb.SelectSingleNode("./ancestor::a/div[@role='heading']").InnerTextOrNull();
 
                     var url = adb.NextSibling.InnerTextOrNull();
 
@@ -802,9 +802,9 @@ namespace WheelsScraper
             {
                 foreach (var result in searchResult)
                 {
-                    string domain = string.Empty;
-                    var domainSpl = result.Domain.Split('/');
-                    domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
+                    string domain = result.Domain;
+                    //var domainSpl = result.Domain.Split('/');
+                    //domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
                     var companyName = Domains.Find(i => string.Compare(i.Website, domain.Replace("www.", ""), true) == 0);
                     if (companyName != null && !string.IsNullOrEmpty(companyName.Legal))
                         result.CompanyName = companyName.Legal;
