@@ -371,6 +371,15 @@ namespace WheelsScraper
             return res;
         }
 
+        private string ExtractTopLevelDomain(string url)
+        {
+            var uri = new Uri(url);
+            var spls = uri.Host.Split('.');
+            if (spls.Length > 1)
+                return spls[spls.Length - 2] + "." + spls[spls.Length - 1];
+            return uri.Host;
+        }
+
         private List<Top_Ads> ParseAdBlock(HtmlNode n, int startRank)
         {
             var res = new List<Top_Ads>();
@@ -385,7 +394,13 @@ namespace WheelsScraper
                 {
                     if (adb.NextSibling == null)
                         continue;
-                    var url = adb.SelectSingleNode(".//div[1]/div[1]/span[2]").InnerTextOrNull();
+                    //var url = adb.SelectSingleNode("./div[1]/div[1]/span[2]").InnerTextOrNull();
+                    string url = null;
+                    var dataPcu = adb.AttributeOrNull("data-pcu");
+                    if (!string.IsNullOrEmpty(dataPcu))
+                           url = dataPcu.Split(',')[0];
+                    if (string.IsNullOrEmpty(url))
+                        url = adb.SelectSingleNode(".//span[contains(@class, 'gBIQub')]").InnerTextOrNull();
 
                     if (string.IsNullOrEmpty(url))
                         continue;
@@ -394,6 +409,7 @@ namespace WheelsScraper
 
                     if (!url.StartsWith("http"))
                         url = $"http://{url}";
+                    url = new Uri(ExtractTopLevelDomain(url)).ToString();
 
                     string adsTitle = adb.SelectSingleNode(".//div[@role='heading']").InnerTextOrNull();
                     var uri = new Uri(new Uri(url), "/");
