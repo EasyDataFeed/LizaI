@@ -65,6 +65,7 @@ namespace WheelsScraper
                     UniqueDomains = ((ExtWareInfo)i).UniqueDomains,
                     UniqueDomainsQty = ((ExtWareInfo)i).UniqueDomainsQty,
                     Title = ((ExtWareInfo)i).Title,
+                    Tag = ((ExtWareInfo)i).Tag
                 }));
 
                 if (googleScrapedItems.Any())
@@ -357,38 +358,57 @@ namespace WheelsScraper
             doc.LoadHtml(rawHtml);
 
             //var ads = doc.DocumentNode.SelectNodes("//div[@id='tvcap']//div[@data-hveid][.//a]");
-            var ads = doc.DocumentNode.SelectNodes(".//a//span[./text()[1]='Ad']");
-            int rank = 1;
+            var nTop = doc.DocumentNode.SelectSingleNode(".//*[@id='taw']");
+            var nBottom = doc.DocumentNode.SelectSingleNode(".//*[@id='bottomads']");
+
+            var topAds = ParseAdBlock(nTop, 1);
+            res.top_ads.AddRange(topAds);
+
+            var rank = topAds.Count;
+            var bottomAds = ParseAdBlock(nBottom, topAds.Count + 1);
+            res.top_ads.AddRange(bottomAds);
+
+            return res;
+        }
+
+        private List<Top_Ads> ParseAdBlock(HtmlNode n, int startRank)
+        {
+            var res = new List<Top_Ads>();
+            if (n == null)
+                return res;
+
+            var ads = n.SelectNodes(".//a");
+            int rank = startRank;
             if (ads != null)
             {
                 foreach (var adb in ads)
                 {
                     if (adb.NextSibling == null)
                         continue;
-
-                    string adsTitle = adb.SelectSingleNode("./ancestor::a/div[@role='heading']").InnerTextOrNull();
-
-                    var url = adb.NextSibling.InnerTextOrNull();
+                    var url = adb.SelectSingleNode(".//div[1]/div[1]/span[2]").InnerTextOrNull();
 
                     if (string.IsNullOrEmpty(url))
                         continue;
                     if (url.Length < 5)
-                        url = adb.ParentNode.NextSibling.InnerTextOrNull();
+                        continue;
 
                     if (!url.StartsWith("http"))
                         url = $"http://{url}";
 
+                    string adsTitle = adb.SelectSingleNode(".//div[@role='heading']").InnerTextOrNull();
                     var uri = new Uri(new Uri(url), "/");
-                    res.top_ads.Add(new Top_Ads
+                    var domain = uri.Host.Replace("www.", "").ToLower();
+
+                    res.Add(new Top_Ads
                     {
                         rank = rank.ToString(),
-                        link = uri.ToString(),
+                        link = uri.ToString().ToLower(),
                         title = adsTitle
                     });
+
                     rank++;
                 }
             }
-
             return res;
         }
 
@@ -805,9 +825,12 @@ namespace WheelsScraper
                     string domain = result.Domain;
                     //var domainSpl = result.Domain.Split('/');
                     //domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
-                    var companyName = Domains.Find(i => string.Compare(i.Website, domain.Replace("www.", ""), true) == 0);
-                    if (companyName != null && !string.IsNullOrEmpty(companyName.Legal))
-                        result.CompanyName = companyName.Legal;
+                    var company = Domains.Find(i => string.Compare(i.Website, domain.Replace("www.", ""), true) == 0);
+                    if (company != null)
+                    {
+                        result.CompanyName = company.Legal;
+                        result.Tag = company.Tag;
+                    }
                     else
                         result.CompanyName = "Unknown";
 
