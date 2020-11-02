@@ -108,7 +108,7 @@ namespace GoogleRequestsScraper.Helpers
         public static void UploadToGoogleDoc(ExtSettings settings, List<GoogleScrapedItem> googleScrapedItems, BaseScraper scraper)
         {
             String rangeToStart = string.Empty;
-            String rangeHeaders = "A1:L1";
+            String rangeHeaders = "A1:Z1";
             String range = string.Empty;
 
             ValueRange valuesToUpload = new ValueRange();
@@ -118,7 +118,7 @@ namespace GoogleRequestsScraper.Helpers
                 ValueRange values = new ValueRange();
                 ValueRange headers = new ValueRange();
 
-                rangeToStart = "A1:L";
+                rangeToStart = "A1:Z";
                 values = GetSpreadSheet(settings, rangeToStart);
 
                 string link = settings.GoogleSheetsLink;
@@ -129,12 +129,12 @@ namespace GoogleRequestsScraper.Helpers
                 String spreadsheetId = key;
 
                 SpreadsheetsResource.ValuesResource.ClearRequest clear =
-                    service.Spreadsheets.Values.Clear(null, spreadsheetId, $"A2:L");
+                    service.Spreadsheets.Values.Clear(null, spreadsheetId, $"A2:Z");
                 ClearValuesResponse result = clear.Execute();
 
                 headers = GetSpreadSheet(settings, rangeHeaders);
                 //range = $"A{values.Values.Count + 1}:H{(values.Values.Count + 1) + googleScrapedItems.Count}";
-                range = $"A2:L";
+                range = $"A2:Z";
 
                 int rowIndex = 0;
                 var date = $"{DateTime.Now:hh-mm}";
@@ -166,20 +166,27 @@ namespace GoogleRequestsScraper.Helpers
 
         private static IList<object> FillData(IList<object> row, ValueRange headers, GoogleScrapedItem item)
         {
-            row[headers.Values[0].IndexOf("keyword")] = item.Keyword;
-            row[headers.Values[0].IndexOf("domain")] = item.Domain;
-            row[headers.Values[0].IndexOf("placement")] = item.Placement;
-            row[headers.Values[0].IndexOf("state")] = item.State;
-            row[headers.Values[0].IndexOf("device")] = item.Device;
-            row[headers.Values[0].IndexOf("time")] = item.Time;
-            row[headers.Values[0].IndexOf("position")] = item.Position;
-            row[headers.Values[0].IndexOf("company name")] = item.CompanyName;
-            row[headers.Values[0].IndexOf("dump page id")] = item.DumpPageId;
-            row[headers.Values[0].IndexOf("unique domains")] = item.UniqueDomains;
-            row[headers.Values[0].IndexOf("unique domains qty")] = item.UniqueDomainsQty;
-            row[headers.Values[0].IndexOf("title")] = item.Title;
-
+            SetRowValue(row, headers, "keyword", item.Keyword);
+            SetRowValue(row, headers, "domain", item.Domain);
+            SetRowValue(row, headers, "placement", item.Placement);
+            SetRowValue(row, headers, "state", item.State);
+            SetRowValue(row, headers, "device", item.Device);
+            SetRowValue(row, headers, "time", item.Time);
+            SetRowValue(row, headers, "position", item.Position);
+            SetRowValue(row, headers, "company name", item.CompanyName);
+            SetRowValue(row, headers, "dump page id", item.DumpPageId);
+            SetRowValue(row, headers, "unique domains", item.UniqueDomains);
+            SetRowValue(row, headers, "unique domains qty", item.UniqueDomainsQty);
+            SetRowValue(row, headers, "title", item.Title);
+            SetRowValue(row, headers, "tag", item.Tag);
             return row;
+        }
+
+        private static void SetRowValue(IList<object> row, ValueRange headers, string columnName, string value)
+        {
+            var idx = headers.Values[0].IndexOf(columnName);
+            if (idx < 0) return;
+            row[idx] = value;
         }
     }
 }
