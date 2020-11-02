@@ -409,7 +409,7 @@ namespace WheelsScraper
 
                     if (!url.StartsWith("http"))
                         url = $"http://{url}";
-                    url = new Uri(ExtractTopLevelDomain(url)).ToString();
+                    url = new Uri("http://" + ExtractTopLevelDomain(url)).ToString();
 
                     string adsTitle = adb.SelectSingleNode(".//div[@role='heading']").InnerTextOrNull();
                     var uri = new Uri(new Uri(url), "/");
