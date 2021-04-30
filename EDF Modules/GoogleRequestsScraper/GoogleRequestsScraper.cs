@@ -65,6 +65,7 @@ namespace WheelsScraper
                     UniqueDomains = ((ExtWareInfo)i).UniqueDomains,
                     UniqueDomainsQty = ((ExtWareInfo)i).UniqueDomainsQty,
                     Title = ((ExtWareInfo)i).Title,
+                    Tag = ((ExtWareInfo)i).Tag
                 }));
 
                 if (googleScrapedItems.Any())
@@ -357,51 +358,73 @@ namespace WheelsScraper
             doc.LoadHtml(rawHtml);
 
             //var ads = doc.DocumentNode.SelectNodes("//div[@id='tvcap']//div[@data-hveid][.//a]");
-            var ads = doc.DocumentNode.SelectNodes(".//a//span[./text()[1]='Ad']");
-            int rank = 1;
+            var nTop = doc.DocumentNode.SelectSingleNode(".//*[@id='taw']");
+            var nBottom = doc.DocumentNode.SelectSingleNode(".//*[@id='bottomads']");
+
+            var topAds = ParseAdBlock(nTop, 1);
+            res.top_ads.AddRange(topAds);
+
+            var rank = topAds.Count;
+            var bottomAds = ParseAdBlock(nBottom, topAds.Count + 1);
+            res.top_ads.AddRange(bottomAds);
+
+            return res;
+        }
+
+        private string ExtractTopLevelDomain(string url)
+        {
+            var uri = new Uri(url);
+            var spls = uri.Host.Split('.');
+            if (spls.Length > 1)
+                return spls[spls.Length - 2] + "." + spls[spls.Length - 1];
+            return uri.Host;
+        }
+
+        private List<Top_Ads> ParseAdBlock(HtmlNode n, int startRank)
+        {
+            var res = new List<Top_Ads>();
+            if (n == null)
+                return res;
+
+            var ads = n.SelectNodes(".//a");
+            int rank = startRank;
             if (ads != null)
             {
-                string adsTitle = string.Empty;
-                var title = doc.DocumentNode.SelectSingleNode(".//div[@class = 'cfxYMc JfZTW c4Djg MUxGbd v0nnCb']");
-                if (title != null)
-                {
-                    adsTitle = title.InnerTextOrNull();
-                }
-
-                if (string.IsNullOrEmpty(adsTitle))
-                {
-                    var titleM = doc.DocumentNode.SelectSingleNode(".//div[@class = 'V7Sr0 p5AXld PpBGzd YcUVQe']/span");
-                    if (titleM != null)
-                    {
-                        adsTitle = titleM.InnerTextOrNull();
-                    }
-                }
-
                 foreach (var adb in ads)
                 {
                     if (adb.NextSibling == null)
                         continue;
-                    var url = adb.NextSibling.InnerTextOrNull();
+                    //var url = adb.SelectSingleNode("./div[1]/div[1]/span[2]").InnerTextOrNull();
+                    string url = null;
+                    var dataPcu = adb.AttributeOrNull("data-pcu");
+                    if (!string.IsNullOrEmpty(dataPcu))
+                           url = dataPcu.Split(',')[0];
+                    if (string.IsNullOrEmpty(url))
+                        url = adb.SelectSingleNode(".//span[contains(@class, 'gBIQub')]").InnerTextOrNull();
 
                     if (string.IsNullOrEmpty(url))
                         continue;
                     if (url.Length < 5)
-                        url = adb.ParentNode.NextSibling.InnerTextOrNull();
+                        continue;
 
                     if (!url.StartsWith("http"))
                         url = $"http://{url}";
+                    url = new Uri("http://" + ExtractTopLevelDomain(url)).ToString();
 
+                    string adsTitle = adb.SelectSingleNode(".//div[@role='heading']").InnerTextOrNull();
                     var uri = new Uri(new Uri(url), "/");
-                    res.top_ads.Add(new Top_Ads
+                    var domain = uri.Host.Replace("www.", "").ToLower();
+
+                    res.Add(new Top_Ads
                     {
                         rank = rank.ToString(),
-                        link = uri.ToString(),
+                        link = uri.ToString().ToLower(),
                         title = adsTitle
                     });
+
                     rank++;
                 }
             }
-
             return res;
         }
 
@@ -498,8 +521,9 @@ namespace WheelsScraper
                                     link = top_ad.display_link;
                                 else
                                     link = top_ad.link;
-                                
-                                domain = $"{link.Substring(0, link.IndexOf('/') + 2)}";
+
+                                //domain = $"{link.Substring(0, link.IndexOf('/') + 2)}";
+                                domain = new Uri(link).Host.ToLower().Replace("www.", "");
                                 //link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").LastIndexOf('/') + 1)}";
                                 link = $"{link.Replace(domain, "").Substring(0, link.Replace(domain, "").IndexOf('/') + 1)}";
                                 string fullLink = domain + link;
@@ -508,7 +532,7 @@ namespace WheelsScraper
                                 {
                                     State = googleJsonItem.general?.location,
                                     Device = deviceType.ToString(),
-                                    Domain = fullLink,
+                                    Domain = domain,
                                     Keyword = keyword.Replace("+", " "),
                                     Placement = top_ad.rank,
                                     Time = time,
@@ -814,12 +838,15 @@ namespace WheelsScraper
             {
                 foreach (var result in searchResult)
                 {
-                    string domain = string.Empty;
-                    var domainSpl = result.Domain.Split('/');
-                    domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
-                    var companyName = Domains.Find(i => string.Compare(i.Website, domain.Replace("www.", ""), true) == 0);
-                    if (companyName != null && !string.IsNullOrEmpty(companyName.Legal))
-                        result.CompanyName = companyName.Legal;
+                    string domain = result.Domain;
+                    //var domainSpl = result.Domain.Split('/');
+                    //domain = domainSpl.Length > 2 ? domainSpl[2] : string.Empty;
+                    var company = Domains.Find(i => string.Compare(i.Website, domain.Replace("www.", ""), true) == 0);
+                    if (company != null)
+                    {
+                        result.CompanyName = company.Legal;
+                        result.Tag = company.Tag;
+                    }
                     else
                         result.CompanyName = "Unknown";
 
